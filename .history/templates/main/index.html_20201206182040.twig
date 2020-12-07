@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row text-center mt-5">
+        <h1 class="col font-weight-lighter"> Mealia </h1>
+    </div>
+    <div class="row text-center" id="logo">
+        <div class="col">
+            <img src="{{ asset('images/Logo-couleur-vectorisé.png') }}" alt="logo">
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">ACCUEIL</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">BOUTIQUE</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">A PROPOS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link>POINTS DE VENTE</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link">CONTACT</a>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+{% endblock %}

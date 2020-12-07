@@ -1,0 +1,14 @@
+body{
+    font-family: 'Dosis', sans-serif;
+}
+#nav a{
+    color: black;
+}
+#nav a:hover{
+    color: #ff9593
+}
+
+#logo img{
+    width: 25%;
+    height: 280px;
+}

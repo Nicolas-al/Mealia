@@ -1,0 +1,11 @@
+body{
+    font-family: 'Dosis', sans-serif;
+}
+nav a{
+    margin-top: 56px
+}
+
+#logo img{
+    width: 25%;
+    height: 280px;
+}
