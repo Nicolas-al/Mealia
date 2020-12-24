@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+{% include('template.html.twig') %}
+<div class="container mt-5" id="products_container">
+    <div class="row d-flex">
+
+    {% for product in products %}
+        <div class="col-lg-4">
+            <div class="product_block">
+                {# {% set img = 'uploads/images/'~product.image %} #}
+                <img  class="product_img" src="{{ vich_uploader_asset( product.image , 'oneFile') | imagine_filter('small_thumb')}}" alt="produit Méalia">
+                <div class="product_description">
+                    <p class="mb-0">{{ product.name }} - {{ product.collection.name }}</p>
+                    <p>{{ product.price.TTC }} €</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %} 
+        {# {{ knp_pagination_render(productsPage) }} #}
+    </div>
+    
+
+</div>
+{% endblock %}

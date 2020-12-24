@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% include('template.html.twig') %}
+{{ include('admin/product/form.html.twig', {form: form, button : 'Editer'}) }}
+             
+            {{ form_end(form) }}
+  
+{% endblock %}
+
+       

@@ -1,0 +1,13 @@
+.btn-a{
+    background-color: #ff9593;
+    color: white;
+    padding: 7px 12px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+.btn-a:hover{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
