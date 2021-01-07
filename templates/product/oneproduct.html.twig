@@ -1,0 +1,190 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+            {% for message in app.flashes('success') %}
+            <div id="success" class="alert alert-success">
+                {{ message }}
+            </div>
+            {% endfor %}
+{% include('template.html.twig') %}
+<div class="container mt-5" id="product_container">
+<!--Section: Block Content-->
+<section class="mb-5">
+
+  <div class="row">
+    <div class="col-md-7 mb-4 mb-md-0">
+
+      <div class="mdb-lightbox">
+
+        <div class="product-gallery mx-1 d-flex">
+
+          <div class="col-9 mb-0">
+                <figure class="product-L">
+                <a href="{{ vich_uploader_asset( product.image , 'oneFile') | imagine_filter('large_thumb')}}"
+                    >
+                    <img src="{{ vich_uploader_asset( product.image , 'oneFile') | imagine_filter('large_thumb')}}"
+                    class="img-fluid z-depth-1">
+                </a>
+                </figure>
+           
+           
+                <figure class="product-L">
+                <a href="{{vich_uploader_asset( product.image , 'twoFile') | imagine_filter('large_thumb')}}"
+                    >
+                    <img src="{{vich_uploader_asset( product.image , 'twoFile') | imagine_filter('large_thumb')}}"
+                    class="img-fluid z-depth-1">
+                </a>
+                </figure>
+                <figure class="product-L">
+                <a href="{{ vich_uploader_asset( product.image , 'threeFile') | imagine_filter('large_thumb')}}"
+                    >
+                    <img src="{{ vich_uploader_asset( product.image , 'threeFile') | imagine_filter('large_thumb')}}"
+                    class="img-fluid z-depth-1">
+                </a>
+                </figure>
+                <figure class="product-L">
+                <a href="{{ vich_uploader_asset( product.image , 'fourFile') | imagine_filter('large_thumb')}}"
+                    >
+                    <img src="{{ vich_uploader_asset( product.image , 'fourFile') | imagine_filter('large_thumb')}}"
+                    class="img-fluid z-depth-1">
+                </a>
+                </figure>
+            
+          </div>
+          <div class="col-3 d-flex">
+            <div class="row">
+              <div class="col-12 mb-1 product-small">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src="{{ vich_uploader_asset( product.image , 'twoFile') | imagine_filter('large_thumb')}}"
+                    class="img-fluid">
+                  <div class="d-none mask rgba-white-slight"></div>
+                </div>
+              </div>
+              <div class="col-12 mb-1 product-small">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src="{{ vich_uploader_asset( product.image , 'threeFile') | imagine_filter('large_thumb')}}"
+                    class="img-fluid">
+                  <div class="d-none mask rgba-white-slight"></div>
+                </div>
+              </div>
+              <div class="col-12 mb-1 product-small">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src="{{ vich_uploader_asset( product.image , 'fourFile') | imagine_filter('large_thumb')}}"
+                    class="img-fluid">
+                  <div class="d-none mask rgba-white-slight"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-5">
+
+      <h5>{{ product.category.name }}</h5>
+      <p><span class="mr-1"><strong>{{ product.price.TTC }}€</strong></span></p>
+      <p class="pt-1">{{ product.description }}</p>
+      <div class="table-responsive">
+        <table class="table table-sm table-borderless mb-0">
+          <tbody>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Collection</strong></th>
+              <td>{{ product.collection.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div class="table-responsive mb-2">
+        <table class="table table-sm table-borderless">
+          <tbody>
+            <tr>
+              <td class="pl-0 pb-0 w-25">Stock</td>
+            </tr>
+            <tr>
+              <td class="pl-0">
+                <div class="def-number-input number-input safari_only mb-0" id="block_stock">
+                  <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                    ><i class="fas fa-minus"></i></button>
+                  <input class="stock" name="stock" value="1" type="number">
+                  <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                    ><i class="fas fa-plus"></i></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Ajouter au panier</button>
+    </div>
+  </div>
+
+</section>
+<section id="Avis">
+    {% if is_granted('ROLE_USER') %}
+    <div class="container">
+                {{ form_start(form) }} 
+              
+            <div class="form-row">
+                    <div class="col-md-6">
+                        {{ form_row(form.content, {'label' : 'Laisser un avis'}) }}
+                    </div>
+                    <div class="col-md-6">
+                        <input class="" type="number" name="rating" id="rating-input" min="1" max="5" />
+                        <div class="rating" role="optgroup">
+                        <!-- in Rails just use 1.upto(5) -->  
+                        <i class="far fa-star rating-star" id="rating-1" data-rating="1" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
+                        <i class="far fa-star rating-star" id="rating-2" data-rating="2" tabindex="0" aria-label="Rate as two out of 5 stars" role="radio"></i>
+                        <i class="far fa-star rating-star" id="rating-3" data-rating="3" tabindex="0" aria-label="Rate as three out of 5 stars" role="radio"></i>
+                        <i class="far fa-star rating-star" id="rating-4" data-rating="4" tabindex="0" aria-label="Rate as four out of 5 stars" role="radio"></i>
+                        <i class="far fa-star rating-star" id="rating-5" data-rating="5" tabindex="0" aria-label="Rate as five out of 5 stars" role="radio"></i>
+                        </div>
+                    </div>
+            </div> 
+                    <button type="submit" class="btn btn-primary">commenter</button>
+
+                {{ form_end(form) }}
+    </div>
+    {% else %}
+    <p>veuillez vous connecter ou creer un compte pour laisser un commentaire</p>
+    <a href="{{ path('app_login')}}">connexion</a>
+    <a href="{{ path('registration')}}">Creer un compte</a>
+
+    {% endif %}
+    <div class="container mt-5 border border-dark">
+        <h1 class="text-center mb-5">Avis</h1>
+        <div class="row">
+            <p class="col-lg-2"><strong>Avis des clients :</strong></p>
+            {% for rate in rates %}
+            <input type="number" name="Average_rating" class="d-none" id="average_number" value="{{rate}}">
+            <div class="col-lg-2 rating" role="optgroup">
+                <!-- in Rails just use 1.upto(5) -->  
+                <i class="far fa-star average-rating-star" id="average-rating-1" data-rating="1" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
+                <i class="far fa-star average-rating-star" id="average-rating-2" data-rating="2" tabindex="0" aria-label="Rate as two out of 5 stars" role="radio"></i>
+                <i class="far fa-star average-rating-star" id="average-rating-3" data-rating="3" tabindex="0" aria-label="Rate as three out of 5 stars" role="radio"></i>
+                <i class="far fa-star average-rating-star" id="average-rating-4" data-rating="4" tabindex="0" aria-label="Rate as four out of 5 stars" role="radio"></i>
+                <i class="far fa-star average-rating-star" id="average-rating-5" data-rating="5" tabindex="0" aria-label="Rate as five out of 5 stars" role="radio"></i>
+                </div>
+            {% endfor %}
+        </div>
+        <hr>
+        {% for one in avis %}
+        <div id="avis" class="row">
+            <div class="col-lg-12">{{ one.note }}</div>
+            <div class="col-lg-12">
+                <h5>{{ one.user.firstname }}</h5>
+            </div>
+            <div class="col-lg-12">
+                <p>{{ one.content }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+</div>
+{% endblock %}

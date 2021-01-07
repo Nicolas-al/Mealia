@@ -17,5 +17,13 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * @Route("/apropos", name="a_propos")
+     */
+    public function showPropos(){
+        return $this->render('main/apropos.html.twig', [
+        ]);
+    }
 }
  

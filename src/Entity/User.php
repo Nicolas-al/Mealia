@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use App\Entity\Adress;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
-use App\Repository\UserRepository;
 
 
 /**
@@ -55,9 +57,19 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToOne(targetEntity=Adress::class , cascade={"persist", "remove"}, inversedBy="user")
+     * @ORM\OneToOne(targetEntity=Adress::class, cascade={"persist", "remove"}, inversedBy="user")
      */
     protected $adress;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="user")
+     */
+    private $avis;
+
+    public function __construct()
+    {
+        $this->avis = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -219,5 +231,35 @@ class User implements UserInterface
     {
         $format = "User (id: %s, firstname: %s, lastname: %s, role: %s, address: %s)\n";
         return sprintf($format, $this->id, $this->firstname, $this->lastname, $this->role, $this->address);
+    }
+
+    /**
+     * @return Collection|Avis[]
+     */
+    public function getAvis(): Collection
+    {
+        return $this->avis;
+    }
+
+    public function addAvi(Avis $avi): self
+    {
+        if (!$this->avis->contains($avi)) {
+            $this->avis[] = $avi;
+            $avi->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvi(Avis $avi): self
+    {
+        if ($this->avis->removeElement($avi)) {
+            // set the owning side to null (unless already changed)
+            if ($avi->getUser() === $this) {
+                $avi->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

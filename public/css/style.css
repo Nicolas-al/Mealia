@@ -12,3 +12,33 @@ body{
     width: 25%;
     height: 280px;
 }
+
+/* étoiles Avis */
+.fas{
+    color: #fbaeac;
+}
+.far{
+    color: #fbaeac;
+}
+
+.rating {
+	cursor: pointer;
+}
+
+.rating .rating-star {
+	display: inline-block;
+    position: relative;
+    padding-right: 5px;
+    margin-left: -5px;
+    color: #2e270a;
+}
+.rating .selected:before {
+    content: '\f005';
+}
+.rating-star:focus{
+    outline: none
+}
+
+#apropos{
+    margin-top: 110px;
+}
