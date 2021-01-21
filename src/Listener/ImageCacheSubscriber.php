@@ -3,8 +3,6 @@
 namespace App\Listener;
 
 use App\Entity\Image;
-use App\Entity\Skills;
-use App\Entity\Portfolio;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\Persistence\Event\LifecycleEventArgs;

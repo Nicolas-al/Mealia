@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Entity\Category;
 use App\Form\ProductType;
 use App\Entity\ProductCollection;
+use App\Repository\AvisRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,30 +37,49 @@ class ProductController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("admin/product/{id}", name="show_admin_product")
+     */
+    public function showOne(Product $product, AvisRepository $avisRepository)
+    {
+        
+        $avis = $avisRepository->findBy(array('product' => $product->getId()), array('createdAt' => 'DESC'));
+
+        $arrayRate = $avisRepository->averageRate($product->getId());
+        
+        foreach ($arrayRate as $rates){
+        }
+
+        // $user = $user;
+        // $allAvis = $avisRepository->findAll();       
+        
+        return $this->render('product/oneproduct.html.twig', [
+            'product' => $product,
+            'avis' => $avis,
+            'rates' => $rates,       
+        ]);
+    }
+
     /** 
      * @Route("/admin/product/create", name="add_product")
      */
     public function new(Request $request): Response
     {
+
+        // form product
         $newProduct = new Product();
         $form = $this->createForm(ProductType::class, $newProduct);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $collection = new ProductCollection();
-            $category = new Category();
             $dataCategory = $request->request->get('product')['category'];
             $dataCollection = $request->request->get('product')['collection'];
-            if (!isset($dataCategory['zeroWaste'])){
-                $zeroWaste = 0;
-                $category->setZeroWaste($zeroWaste);
-            }
-            else{
-                $category->setZeroWaste($dataCategory['zeroWaste']);
-            }
-
-           $collection->setName($dataCollection['name']);
-           $category->setName($dataCategory['name']);
-       
+            $repoCategory = $this->getDoctrine()->getManager()->getRepository(Category::class);
+            $category = $repoCategory->find($dataCategory);
+            $repoCollection = $this->getDoctrine()->getManager()->getRepository(ProductCollection::class);
+            $collection = $repoCollection->find($dataCollection);
+            $collection->setName($collection->getName());
+            $category->setName($category->getName());
             $collection->addProduct($newProduct);
             $category->addProduct($newProduct); 
             $newProduct->setCreatedAt(new \DateTime());
@@ -90,7 +110,7 @@ class ProductController extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
          $this->em->flush();
-         return $this->redirectToRoute('admin');
+         return $this->redirectToRoute('admin_products');
         }
        return $this->render('admin/product/update.html.twig', [
         'product' => $product,
@@ -109,6 +129,6 @@ class ProductController extends AbstractController
         $this->em->remove($product);
         $this->em->flush();
         }
-        return $this->redirectToRoute('product');
+        return $this->redirectToRoute('adnin_products');
     }
 }

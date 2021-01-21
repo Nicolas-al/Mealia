@@ -18,13 +18,19 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
             ->add('description')
             ->add('price', PriceType::class)
             ->add('addInformation', AddInformationType::class)
-            ->add('collection', ProductCollectionType::class)
+            ->add('collection', EntityType::class, [
+                'class' => ProductCollection::class,
+                'choice_label' => 'name'
+            ])
             ->add('image', ImageType::class)
-            ->add('category', CategoryType::class);
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name'
+            ])
+            ->add('stock');
 
     }
 

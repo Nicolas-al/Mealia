@@ -20,9 +20,6 @@ $(document).ready(function () {
             });
         }
 
-        //message success formulaire Avis
-        $('#success').delay(7000).fadeOut(2000);
-
     });
 
     // formulaire étoiles avis
@@ -84,7 +81,8 @@ $(document).ready(function () {
     else{
         $('#average-rating-' + nearestNomber).removeClass('fas fa-star').addClass('fas fa-star-half');
     }
-    // for(let i=0; i <= stars.length; i++){
-    //     if (averageRate)
-    // }
+
+
+    //message success formulaire Avis
+    $('#success').delay(7000).fadeOut(2000);
 });

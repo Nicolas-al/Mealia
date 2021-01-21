@@ -63,3 +63,11 @@
 #avis{
     box-shadow: 0px 4px 6px grey;
 }
+
+/* EDIT PRODUCT */
+
+#form_delete_product{
+    position: absolute;
+    margin-left: 72.6%;
+    margin-top: -38px;
+}

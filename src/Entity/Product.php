@@ -22,11 +22,6 @@ class Product
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products", cascade={"persist"})
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
@@ -66,9 +61,14 @@ class Product
     private $created_at;
 
     /**
-     * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="product")
+     * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="product", cascade={"persist", "remove"})
      */
     private $avis;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $stock;
 
     public function __construct()
     {
@@ -78,18 +78,6 @@ class Product
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getCategory(): ?Category
@@ -201,6 +189,18 @@ class Product
                 $avi->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStock(): ?int
+    {
+        return $this->stock;
+    }
+
+    public function setStock(int $stock): self
+    {
+        $this->stock = $stock;
 
         return $this;
     }

@@ -3,10 +3,14 @@
 namespace App\Form;
 
 use App\Entity\Image;
+use App\Listener\ImageCacheSubscriber;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 
 class ImageType extends AbstractType
 {

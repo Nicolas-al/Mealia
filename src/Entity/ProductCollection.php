@@ -7,10 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CollectionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
  * @ORM\Entity(repositoryClass=CollectionRepository::class)
+ * @UniqueEntity("name")
  */
 class ProductCollection
 {
@@ -25,6 +27,11 @@ class ProductCollection
      * @ORM\Column(type="string", length=255)
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $zeroWaste = false;
 
     /**
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="collection")
@@ -69,7 +76,7 @@ class ProductCollection
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setCollection($this);
+            // $product->setCollection($this);
         }
 
         return $this;
@@ -83,6 +90,26 @@ class ProductCollection
                 $product->setCollection(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of zeroWaste
+     */ 
+    public function getZeroWaste()
+    {
+        return $this->zeroWaste;
+    }
+
+    /**
+     * Set the value of zeroWaste
+     *
+     * @return  self
+     */ 
+    public function setZeroWaste($zeroWaste)
+    {
+        $this->zeroWaste = $zeroWaste;
 
         return $this;
     }

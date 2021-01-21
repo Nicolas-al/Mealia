@@ -14,6 +14,7 @@ class ProductCollectionType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('zeroWaste')
         ;
     }
 

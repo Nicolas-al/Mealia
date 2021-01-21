@@ -19,10 +19,31 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
-    // /**
-    //  * @return Category[] Returns an array of Category objects
-    //  */
+
+    /**
+     * @return Category[] Returns an array of Category objects
+     */
+    public function getDistinct(){
+        return $this->createQueryBuilder('category')
+            ->select('category.id, category.name')
+            ->distinct()
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Category[] Returns an array of Category objects
+     */
+    // public function findBy($category)
+    // {
+    //     return $this->createQueryBuilder('category')
+    //         ->where('category.name' = $category);
+
+
+    // }
+    
     /*
+
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('c')
@@ -36,15 +57,15 @@ class CategoryRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Category
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    
+    // public function findOneBySomeField($value): ?Category
+    // {
+    //     return $this->createQueryBuilder('c')
+    //         ->andWhere('c.exampleField = :val')
+    //         ->setParameter('val', $value)
+    //         ->getQuery()
+    //         ->getOneOrNullResult()
+    //     ;
+    // }
+    
 }

@@ -4,10 +4,9 @@
 
 {% block body %}
 {% include('template.html.twig') %}
-<div class="container">
-    <h1>Bonjour {{admin.firstName}}</h1>
-    <a class="btn-a" href="{{ path('admin_products')}}">Mes produits</a>
-
+{% include('admin/nav.html.twig')%}
+<div class="container" id="body_admin">
+    <h1 class="text-center" id="welcome_admin">Bonjour {{admin.firstName}}</h1>
 </div>
  
 {% endblock %}

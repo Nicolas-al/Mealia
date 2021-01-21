@@ -11,3 +11,12 @@
     color: white;
     cursor: pointer;
 }
+
+#welcome_admin{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+#body_admin{
+    height: 300px;
+}

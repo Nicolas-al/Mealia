@@ -13,10 +13,23 @@
                 {# {% set img = 'uploads/images/'~product.image %} #}
                 <img  class="product_img" src="{{ vich_uploader_asset( product.image , 'oneFile') | imagine_filter('small_thumb')}}" alt="produit Méalia">
                 <div class="product_description">
-                    <p class="mb-0">{{ product.name }} - {{ product.collection.name }}</p>
+                    <p class="mb-0">{{ product.collection.name }}</p>
                     <p>{{ product.price.TTC }} €</p>
                 </div>
-            </div>
+            </div>            
+            {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('show_admin_product' ,  { 'id' : product.id})}}" class="btn btn-primary">voir le produit</a>
+            {% else %}
+            <a href="{{ path('show_product' ,  { 'id' : product.id})}}" class="btn btn-primary">voir le produit</a>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="row">
+                    <div class="col">
+                        <a href="{{ path('update_product' ,  { 'id' : product.id})}}">modifier le produit</a>
+                    </div>
+                </div>
+                {% endif %} 
+                  
         </div>
     {% endfor %} 
         {# {{ knp_pagination_render(productsPage) }} #}

@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% include('template.html.twig') %}
+
+<div class="container">
+    <div class="example-wrapper">
+        <div class="row">
+        {% for category in categories %}
+        <form class="form-inline mb-4" action="/admin/products/stock?categorie={{ category.name }}&id={{ category.id }}" method="get">
+        {% endfor %}
+            <fieldset>    
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <select id="categorie" name="categorie" class="form-control">
+                    <option selected="selected" id="cat-option-0" value="0">Catégorie</option>
+                    {% set i = 0 %}
+                    {% for category in categories %}
+                    {% set i = i + 1 %}
+                    <option id="option-{{ i }}" class="option-cat" value="{{ category.name }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <input id="saisie" name="saisie" type="text" class="form-control" aria-label="Saisie de mots clés" required="required">
+                <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Recherche</button>
+                </div>
+            </div>
+            </fieldset> 
+        </form>
+        {% for collection in collections %}
+        <form class="form-inline mb-4 ml-3" action="/admin/products/stock?collection={{ collection.name }}&id={{ collection.id }}" method="get">
+        {% endfor %}
+            <fieldset>    
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <select id="collection" name="collection" class="form-control">
+                    <option selected="selected" id="coll-option-0" value="0">Collection</option>
+                    {% set i = 0 %}
+                    {% for collection in collections %}
+                    {% set i = i + 1 %}
+                    <option id="option-col-{{ i }}" class="option-col" value="{{ collection.name }}">{{ collection.name }}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <input id="saisie" name="saisie" type="text" class="form-control" aria-label="Saisie de mots clés" required="required">
+                <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Recherche</button>
+                </div>
+            </div>
+            </fieldset> 
+        </form>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" class="d-none"></th>
+                    <th scope="col">nom</th>
+                    <th scope="col">Categorie</th>
+                    <th scope="col">Collection</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">prix HT</th>
+                    <th scope="col">prix TTC</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            {% set i = 0 %}
+            {% for product in products %}
+            <tbody class="products_stock">
+                <tr>
+                    {% set i = i + 1 %}
+                    <th scope="row">{{ i }}</th>
+                    <th scope="row" id="id-{{ product.id }}" class="d-none">{{ product.id }}</th>
+                    <td>Mark</td>
+                    <td>{{ product.category.name }}</td>
+                    <td>{{ product.collection.name }}</td>
+                    <td id="stock-{{ i }}" class="stock">{{ product.stock }}</td>
+                    <td>{{ product.price.HT }}€</td>
+                    <td>{{ product.price.TTC }}€</td>
+                    <td>
+                        <button id="update_stock_{{ i }}" onclick="updateStock({{ i }})" class="update-stock btn-stock">Gerer le stock</button>
+                        <button id="save_stock_{{ i }}" onclick="saveStock({{ i }}, {{ product.id }})" class="save-stock btn-stock d-none">Sauvegarder le stock</button>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+            {# {% if app.request.query.get('collection') is defined %}
+            {% for product in productCat %}
+             <tbody class="products_stock">
+                <tr>
+                    {% set i = i + 1 %}
+                    <th scope="row">{{ i }}</th>
+                    <th scope="row" id="id-{{ product.id }}" class="d-none">{{ product.id }}</th>
+                    <td>Mark</td>
+                    <td>{{ product.category.name }}</td>
+                    <td>{{ product.collection.name }}</td>
+                    <td id="stock-{{ i }}" class="stock">{{ product.stock }}</td>
+                    <td>{{ product.price.HT }}€</td>
+                    <td>{{ product.price.TTC }}€</td>
+                    <td>
+                        <button id="update_stock_{{ i }}" onclick="updateStock({{ i }})" class="update-stock btn-stock">Gerer le stock</button>
+                        <button id="save_stock_{{ i }}" onclick="saveStock({{ i }}, {{ product.id }})" class="save-stock btn-stock d-none">Sauvegarder le stock</button>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+            {% endif %} #}
+        </table>
+    </div>
+</div>
+{% endblock %}

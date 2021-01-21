@@ -1,0 +1,12 @@
+.btn-stock{
+    background: #febab8;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: white;
+    border: 1px solid #e68d8b;
+    border-radius: 4px;
+}
+
+.btn-stock:hover{
+    background: #fb807d
+}

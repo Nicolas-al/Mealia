@@ -99,6 +99,8 @@
         </table>
       </div>
       <hr>
+      {% if is_granted('ROLE_ADMIN') %}
+      {% else %}
       <div class="table-responsive mb-2">
         <table class="table table-sm table-borderless">
           <tbody>
@@ -121,6 +123,7 @@
       </div>
       <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Ajouter au panier</button>
     </div>
+    {% endif %}
   </div>
 
 </section>

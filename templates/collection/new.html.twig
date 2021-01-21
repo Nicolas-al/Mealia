@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% include('template.html.twig') %}
+<div class="container">
+    {{ form_start(formCollection) }}
+
+     <div class="form-row"> 
+        <div class="col-md-6">    
+            {{ form_row(formCollection.name, {'label': 'Collection'}) }}   
+        </div>
+        <div class="col-md-6">    
+            {{ form_row(formCollection.zeroWaste, {'label': 'zero-dechet'}) }}   
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">{{ button|default('Ajouter')}}</button>
+
+
+    {{ form_end(formCollection) }}
+
+</div>
+
+{% endblock %}
