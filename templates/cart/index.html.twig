@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% include('template.html.twig') %}
+<div class="container" id="block_cart">
+    <h1 class="">Votre Panier</h1>
+
+{% if app.session.get('panier') == null %}
+    <p class="text-center">suprise, c'est vide !</p>
+{% else %}
+    {% if items | length > 0 %}
+    <table class="table">
+        <thead>
+            <th>Produit</th>
+            <th class="text-center">Prix</th>
+            <th class="text-center">Quantité</th>
+            <th class="text-center">total</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <th>{{ item.product.category.name  }} - {{ item.product.collection }}</th>
+                    <th class="text-center">{{ item.product.price.TTC }} €</th>
+                    <th class="text-center">{{ item.quantity }}</th>
+                    <th class="text-center">{{ item.product.price.TTC * item.quantity }} €</th>
+                    <th class="text-center">
+                        <a href="#" class="btn btn-danger btn-small">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </th>
+                </tr>
+                {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total : </td>
+                <td class="text-center">{{ total }} €</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+    <a href="{{ path('payment')}}">valider la commande</a>
+    {% else %}
+
+    {% endif %}
+{% endif %}
+</div>
+{% endblock %}

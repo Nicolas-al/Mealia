@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% include('template.html.twig') %}
+
+<div class="container mt-5" id="points_sale_block">
+    <figure>
+        <img src="{{ asset('images/France.png') }}" alt="carte de France" id="france">
+        <figcaption class="text-center"> Voici la liste des boutiques dans lesquelles vous pourrez trouver certaines de nos créations :
+        </figcaption>
+    </figure>
+    <div>
+        <img src="" alt="">
+        <div class="points_sale_line m-auto"></div>
+        <p class="text-center mt-3" id="Kabanon">KABANON Concept Store</p>
+        <p class="text-center">2 rue Leperdit</p>
+        <p class="text-center">35000 Rennes</p>
+    </div>
+</div>
+
+{% endblock %}

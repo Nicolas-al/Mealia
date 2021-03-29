@@ -14,7 +14,7 @@
         <a class="nav-link dropdown-toggle" id="toggle-{{ i }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
         {% set j = j + 1 %}
         <div class="drop-menu" id="menu-{{ j }}">
-            <a class="dropdown-item" href="#">Afficher les catégories</a>
+            <a class="dropdown-item" href="{{ path('admin_category')}}">Afficher les catégories</a>
             <a class="dropdown-item" href="{{ path('add_category')}}">Ajouter nouvelle Catégorie</a>
             <a class="dropdown-item" href="#">Something else here</a>
             <div class="dropdown-divider"></div>
@@ -26,7 +26,7 @@
         <a class="nav-link dropdown-toggle" id="toggle-{{ i }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Collections</a>
         {% set j = j + 1 %}
         <div class="drop-menu" id="menu-{{ j }}">
-            <a class="dropdown-item" href="#">Afficher les collections</a>
+            <a class="dropdown-item" href="{{ path('admin_collection')}}">Afficher les collections</a>
             <a class="dropdown-item" href="{{ path('add_collection')}}">Ajouter nouvelle collection</a>
             <a class="dropdown-item" href="#">Something else here</a>
             <div class="dropdown-divider"></div>

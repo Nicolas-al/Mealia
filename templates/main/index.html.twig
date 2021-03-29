@@ -5,4 +5,35 @@
 {% block body %}
 {{ include('template.html.twig') }}
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6"></div>
+        <div class="col-lg-6"></div>
+    </div>
+        <div class="row">
+        <div class="col-lg-6">
+            <div class="row d-flex flex-column">
+                <div class="col cercle w-auto mx-auto mb-5">
+                    <img src="{{ asset('images/Fabrication-artisanale.png') }}" alt="">
+                </div>
+                <div class="col text-center">
+                    <h2>FABRICATION ARTISANALE</h2>
+                    <p>Créations rennaises, confectionnées dans l'atelier de Marine.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row d-flex flex-column">
+                <div class="col cercle w-auto mx-auto mb-5">
+                    <img src="{{ asset('images/Eco-responsable.png') }}" alt="">
+                </div>
+                <div class="col text-center">
+                <h2>DÉMARCHE ÉCO-RESPONSABLE</h2>
+                <p>La plupart des tissus utilisés respectent l'environnement et la santé, avec des certifcations comme OEKO-TEX ou GOTS.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

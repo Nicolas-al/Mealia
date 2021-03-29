@@ -9,6 +9,9 @@
             </div>
             {% endfor %}
 {% include('template.html.twig') %}
+<div class="addCart-msg">
+  <p> La selection à bien été ajouter au panier </p>
+</div>
 <div class="container mt-5" id="product_container">
 <!--Section: Block Content-->
 <section class="mb-5">
@@ -84,7 +87,7 @@
 
     </div>
     <div class="col-md-5">
-
+  
       <h5>{{ product.category.name }}</h5>
       <p><span class="mr-1"><strong>{{ product.price.TTC }}€</strong></span></p>
       <p class="pt-1">{{ product.description }}</p>
@@ -112,7 +115,7 @@
                 <div class="def-number-input number-input safari_only mb-0" id="block_stock">
                   <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                     ><i class="fas fa-minus"></i></button>
-                  <input class="stock" name="stock" value="1" type="number">
+                  <input class="nb-products" name="stock" value="1" type="number">
                   <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                     ><i class="fas fa-plus"></i></button>
                 </div>
@@ -121,7 +124,7 @@
           </tbody>
         </table>
       </div>
-      <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Ajouter au panier</button>
+      <button onclick="addCart({{ product.id }})"class="btn btn-primary btn-md mr-1 mb-2"> Ajouter au panier </a> 
     </div>
     {% endif %}
   </div>

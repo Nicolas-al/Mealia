@@ -57,7 +57,6 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col" class="d-none"></th>
-                    <th scope="col">nom</th>
                     <th scope="col">Categorie</th>
                     <th scope="col">Collection</th>
                     <th scope="col">Stock</th>
@@ -73,7 +72,6 @@
                     {% set i = i + 1 %}
                     <th scope="row">{{ i }}</th>
                     <th scope="row" id="id-{{ product.id }}" class="d-none">{{ product.id }}</th>
-                    <td>Mark</td>
                     <td>{{ product.category.name }}</td>
                     <td>{{ product.collection.name }}</td>
                     <td id="stock-{{ i }}" class="stock">{{ product.stock }}</td>

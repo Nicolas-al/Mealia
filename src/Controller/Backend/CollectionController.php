@@ -4,6 +4,7 @@ namespace App\Controller\Backend;
 
 use App\Entity\ProductCollection;
 use App\Form\ProductCollectionType;
+use App\Repository\CollectionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +19,15 @@ class CollectionController extends AbstractController
         $this->em = $em;
     }
     /**
-     * @Route("/collection", name="collection")
+     * @Route("/admin/collection", name="admin_collection")
      */
-    public function index(): Response
+    public function index(CollectionRepository $repoCollection): Response
     {
+        $collections = $repoCollection->findAll();
+
         return $this->render('collection/index.html.twig', [
             'controller_name' => 'CollectionController',
+            'collections' => $collections
         ]);
     }
 
@@ -48,5 +52,41 @@ class CollectionController extends AbstractController
             'formCollection' => $formCollection->createView(),
         ]);
     }
+
+     /**
+     * @Route("/admin/collection/edit/{id}", name="update_collection", methods="GET|POST")
+     * @param ProductCollection $collection
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function update(Request $request , ProductCollection $collection)
+    {
+        $form = $this->createForm(ProductCollectionType::class, $collection);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+         $this->em->flush();
+         return $this->redirectToRoute('category');
+        }
+       return $this->render('collection/update.html.twig', [
+        'collection' => $collection,
+        'formCollection' => $form->createView(),
+       ]);
+    }
+
+    /**
+     * @Route("/admin/collection/edit/{id}", name="remove_collection", methods="DELETE")
+     * @param ProductCollection $collection
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function remove(ProductCollection $collection, Request $request)
+    {
+        if ($this->isCsrfTokenValid('delete' . $collection->getId(), $request->get('_token'))){ 
+            $this->em->remove($collection);
+            $this->em->flush();
+            }
+            return $this->redirectToRoute('admin_products');
+    }
+
 
 }

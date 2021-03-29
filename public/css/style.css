@@ -1,10 +1,11 @@
 body{
     font-family: 'Dosis', sans-serif;
 }
-#nav a{
-    color: black;
-}
+
 #nav a:hover{
+    color: #ff9593;
+}
+#nav a:hover i{
     color: #ff9593;
 }
 
@@ -13,13 +14,38 @@ body{
     height: 280px;
 }
 
+.fa-angle-down{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 3px;
+    color: black;
+    margin-top: 2px;
+}
+.black-item{
+    color: black;
+}
+.pink-item{
+    color: #ff9593;
+}
+
+
+/* page d'acceuil */
+
+.cercle{
+    height: 200px;
+    width: 200px; 
+    border-radius: 50%; 
+}
+.cercle img{
+    width: inherit;
+    height: inherit;
+}
+
 /* étoiles Avis */
-.fas{
+.fa-star{
     color: #fbaeac;
 }
-.far{
-    color: #fbaeac;
-}
+
 
 .rating {
 	cursor: pointer;
@@ -39,6 +65,106 @@ body{
     outline: none
 }
 
-#apropos{
-    margin-top: 110px;
+
+/* page Category et Collection */
+
+.card-select{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+}
+
+.figure{
+    width: 235px;
+    height: 340px;
+    display: block;
+    margin: auto;
+}
+
+.figure img{
+    position: absolute;
+    width: 235px;
+    height: 340px;
+}
+
+.opacity-select{ 
+    height: inherit;
+    background: black;
+    width: inherit;
+    opacity: 0.4;
+    position: absolute;
+}
+.figure figcaption{
+    position: absolute;
+    width: inherit;
+    text-align: center;
+    margin-top: 8%;
+    color: white;
+    font-size: 1.2em;
+}
+
+.figure form{
+    margin-top: 11%;
+    text-align: center;
+    width: inherit;
+    position: absolute;
+}
+.figure form button{
+    border-radius: 17px;
+    background: #f1642b;
+    color: white;
+    border: none;
+    padding: 6px 20px;
+    
+}
+.figure form button:focus{
+    outline: none;
+}
+
+/* page_contact */
+
+#contact_block{
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+}
+ 
+.contact-line{
+    opacity: 0.4;
+    margin-top: 26px;
+    width: 6%;
+    height: 1px;
+    background: black;
+}
+
+.title{
+    width: fit-content;
+    align-items: center;
+}
+
+.title p{
+    font-size: 1.5em;
+}
+
+.fa-envelope{
+    display: block;
+    margin-left: 15px;
+    font-size: 1.5em;
+}
+
+/* page Points de ventes */
+
+#france{
+    width: 100%;
+}
+
+.points_sale_line{
+    height: 1px;
+    width: 10%;
+    background: black;
+}
+
+#Kabanon{
+    font-size: 20px;
 }

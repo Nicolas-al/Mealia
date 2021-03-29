@@ -4,18 +4,7 @@
 {% block body %}
 {% include('template.html.twig') %}
 <div class="container">
-    {{ form_start(formCategory) }}
-
-     <div class="form-row"> 
-        <div class="col-md-6">    
-            {{ form_row(formCategory.name, {'label': 'Catégorie'}) }}   
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">{{ button|default('Ajouter')}}</button>
-
-
-    {{ form_end(formCategory) }}
-
+        {{ include('category/form.html.twig', {form: formCategory, button : 'Ajouter'}) }}
 </div>
 
 {% endblock %}

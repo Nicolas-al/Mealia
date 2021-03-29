@@ -5,8 +5,9 @@ namespace App\Form;
 use App\Entity\ProductCollection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ProductCollectionType extends AbstractType
 {
@@ -15,6 +16,9 @@ class ProductCollectionType extends AbstractType
         $builder
             ->add('name')
             ->add('zeroWaste')
+            ->add('imageFile', FileType::class, [
+                'required' => 'false'
+            ])
         ;
     }
 

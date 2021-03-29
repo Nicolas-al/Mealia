@@ -13,3 +13,19 @@
 .product_description{
     margin: 9px 14px;
 }
+
+/* EDIT PRODUCT */
+
+#form_delete_product{
+    position: absolute;
+    margin-left: 72.6%;
+    margin-top: -38px;
+}
+
+/* EDIT CATEGORY */
+
+#form_delete_category{
+    position: absolute;
+    margin-left: 72.6%;
+    margin-top: -38px;
+}

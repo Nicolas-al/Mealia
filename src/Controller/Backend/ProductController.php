@@ -4,9 +4,11 @@ namespace App\Controller\Backend;
 
 use App\Entity\Product;
 use App\Entity\Category;
-use App\Form\ProductType;
 use App\Entity\ProductCollection;
+use App\Form\ProductType;
 use App\Repository\AvisRepository;
+use App\Repository\CategoryRepository;
+use App\Repository\CollectionRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,16 +27,40 @@ class ProductController extends AbstractController
     /** 
      * @Route("/admin/products", name="admin_products")
      */
-    public function show(ProductRepository $repo): Response
+    public function show(ProductRepository $repoProduct): Response
     {
-        $products = $repo->findAll();
 
-
+        $products = $repoProduct->findAll();
 
         return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
             'products' => $products,
         ]);
+    }
+    /**
+     * @Route("/admin/products/category/{id}/", name="admin_products_category")
+     */
+    public function showByCategory(Category $category)
+    {
+
+        $products = $category->getProducts(); 
+          
+        return $this->render('product/index.html.twig', [
+            'products' => $products,
+        ]);
+
+    }
+     /**
+     * @Route("/admin/products/collection/{id}/", name="admin_products_collection")
+     */
+    public function showByCollection(ProductCollection $collection)
+    {
+
+        $products = $collection->getProducts(); 
+          
+        return $this->render('product/index.html.twig', [
+            'products' => $products,
+        ]);
+
     }
 
     /**
@@ -61,11 +87,10 @@ class ProductController extends AbstractController
     }
 
     /** 
-     * @Route("/admin/product/create", name="add_product")
+     * @Route("/admin/Product/create", name="add_product")
      */
     public function new(Request $request): Response
     {
-
         // form product
         $newProduct = new Product();
         $form = $this->createForm(ProductType::class, $newProduct);
@@ -129,6 +154,6 @@ class ProductController extends AbstractController
         $this->em->remove($product);
         $this->em->flush();
         }
-        return $this->redirectToRoute('adnin_products');
+        return $this->redirectToRoute('admin_products');
     }
 }

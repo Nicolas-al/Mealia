@@ -6,14 +6,17 @@ namespace App\Controller\Frontend;
 use App\Entity\Avis;
 use App\Form\AvisType;
 use App\Entity\Product;
+use App\Entity\Category;
+use App\Entity\ProductCollection;
 use App\Repository\AvisRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProductController extends AbstractController
 {
@@ -35,12 +38,40 @@ class ProductController extends AbstractController
             
         ]);
     }
+     /**
+     * @Route("/products/category/{id}/", name="products_category")
+     */
+    public function showByCategory(Category $category)
+    {
+        $products = $category->getProducts(); 
+          
+        return $this->render('product/index.html.twig', [
+            'products' => $products,
+        ]);
+    }
+
+     /**
+     * @Route("/products/collection/{id}/", name="products_collection")
+     */
+    public function showByCollection(ProductCollection $collection)
+    {
+
+        $products = $collection->getProducts(); 
+          
+        return $this->render('product/index.html.twig', [
+            'products' => $products,
+        ]);
+
+    }
 
     /**
      * @Route("/product/{id}", name="show_product")
      */
-    public function showOne(Product $product, Request $request, AvisRepository $avisRepository, UserInterface $user = null)
+    public function showOne(Product $product, Request $request, AvisRepository $avisRepository, UserInterface $user = null, SessionInterface $session)
     {
+       
+       var_dump($session->get('panier'));
+
         $newAvis = New Avis;
         $form = $this->createForm(AvisType::class, $newAvis);
         $userId = null !== $user ? $this->getUser()->getId() : null;
@@ -72,6 +103,5 @@ class ProductController extends AbstractController
             'rates' => $rates,       
         ]);
     }
-
     
 }

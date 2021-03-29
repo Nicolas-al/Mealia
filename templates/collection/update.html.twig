@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% include('template.html.twig') %}
+<div class="container">
+        {{ include('collection/form.html.twig', {form: formCollection, button : 'Modifier'}) }}
+        <form method="post" action="{{ path('remove_collection', {id: collection.id})}}" id="form_delete_collection" style="display:inline-block">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ collection.id) }}">
+            <button class="btn btn-danger">Supprimer</button>
+        </form>
+</div>
+
+{% endblock %}

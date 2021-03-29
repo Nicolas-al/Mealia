@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/", name="main")
+     * @Route("/accueil", name="main")
      */
     public function index(): Response
     {
@@ -25,5 +25,16 @@ class MainController extends AbstractController
         return $this->render('main/apropos.html.twig', [
         ]);
     }
+
+    /**
+     * @Route("/points-de-vente", name="points_sale")
+     */
+    public function showPointsSale(){
+
+        return $this->render('main/points-sale.html.twig', [
+        ]);
+    }
+
+
 }
  

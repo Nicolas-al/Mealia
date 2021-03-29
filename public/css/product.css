@@ -1,6 +1,21 @@
 #product_container{
 
 }
+.addCart-msg{
+    width: 100%;
+    display: none;
+    top: 0;
+    z-index: 2;
+    position: fixed;
+    background: #fed8d8;
+}
+.addCart-msg p{
+    width: 40%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin: auto;
+    text-align: center;
+}
 .product-gallery{
     flex-direction: row-reverse;
 }
@@ -64,10 +79,3 @@
     box-shadow: 0px 4px 6px grey;
 }
 
-/* EDIT PRODUCT */
-
-#form_delete_product{
-    position: absolute;
-    margin-left: 72.6%;
-    margin-top: -38px;
-}

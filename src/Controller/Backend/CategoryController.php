@@ -4,6 +4,7 @@ namespace App\Controller\Backend;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +19,15 @@ class CategoryController extends AbstractController
         $this->em = $em;
     }
     /**
-     * @Route("/category", name="category")
+     * @Route("/admin/category", name="admin_category")
      */
-    public function index(): Response
+    public function index(CategoryRepository $repoCategory): Response
     {
+        $categories = $repoCategory->findAll();
+
         return $this->render('category/index.html.twig', [
             'controller_name' => 'CategoryController',
+            'categories' => $categories
         ]);
     }
 
@@ -38,8 +42,10 @@ class CategoryController extends AbstractController
         if($formCategory->isSubmitted() && $formCategory->isValid()){
 
             $this->em->persist($newCategory);
+            var_dump($request->request->get('category'));
+
             $this->em->flush();
-            return $this->redirectToRoute('admin');
+            // return $this->redirectToRoute('admin');
             
         }
 
@@ -47,6 +53,41 @@ class CategoryController extends AbstractController
             'controller_name' => 'ProductController',
             'formCategory' => $formCategory->createView(),
         ]);
+    }
+
+     /**
+     * @Route("/admin/category/edit/{id}", name="update_category", methods="GET|POST")
+     * @param Category $category
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function update(Request $request , Category $category)
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+         $this->em->flush();
+         return $this->redirectToRoute('category');
+        }
+       return $this->render('category/update.html.twig', [
+        'category' => $category,
+        'formCategory' => $form->createView(),
+       ]);
+    }
+
+    /**
+     * @Route("/admin/category/edit/{id}", name="remove_category", methods="DELETE")
+     * @param Category $category
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function remove(Category $category, Request $request)
+    {
+        if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->get('_token'))){ 
+            $this->em->remove($category);
+            $this->em->flush();
+            }
+            return $this->redirectToRoute('admin_products');
     }
 
 }

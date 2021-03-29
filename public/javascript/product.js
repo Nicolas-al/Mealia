@@ -1,3 +1,24 @@
+//  Ajout au panier d'un produit
+ function addCart(id)
+ {
+   let nbProduct = $('.nb-products');
+   $.ajax({
+    url: '/panier/add/' + id + '/?action=addCart&nbProduct=' + nbProduct.val(),
+    type: 'GET',
+    dataType: 'html',
+    success: function (code_html, statut) {
+      console.log(code_html);
+      $('.addCart-msg').show();
+      setTimeout(function(){
+        $('.addCart-msg').hide();
+      }, 4000)
+    },
+    error: function(){
+
+    }
+ })
+}
+
 $(document).ready(function () {
     // MDB Lightbox Init
     $(function () {
@@ -21,6 +42,8 @@ $(document).ready(function () {
         }
 
     });
+
+   
 
     // formulaire étoiles avis
     function setRating(rating) {
@@ -63,7 +86,6 @@ $(document).ready(function () {
       });
 
     //   Affichage des Etoiles avis
-
     var stars = $('.average-rating-star');
     var averageRate = $('#average_number');
     console.log(averageRate.val());
