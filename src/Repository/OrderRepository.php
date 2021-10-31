@@ -22,19 +22,30 @@ class OrderRepository extends ServiceEntityRepository
     // /**
     //  * @return Order[] Returns an array of Order objects
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findCreatedAt()
     {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('o.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT o.createdAt
+            FROM App\Entity\Order o'
+        );
+
+        // returns an array of Product objects
+        return $query->getResult();
     }
-    */
+
+    public function findOneByMax()
+    {
+        $query = $this->createQueryBuilder('o');
+        $query->select('o');
+        $query->orderBy('o.invoiceNumber', 'DESC');
+        $query->setMaxResults(1);
+
+        return $query->getQuery()
+          ->getOneOrNullResult();
+    }
+    
 
     /*
     public function findOneBySomeField($value): ?Order

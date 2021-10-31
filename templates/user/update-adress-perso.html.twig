@@ -1,0 +1,56 @@
+{% block body %}
+
+<div>
+    {% include('template.html.twig') %}
+    <div class="d-flex">
+        {{ include('user/template.html.twig') }}
+        <div class="w-100 body_update_info_perso" id="body_update_info_perso">
+            <div class="row">
+                <h5>Informations personnelles</h5>
+            </div>
+            <hr>
+            <div class="row block_update_info_perso" id="block_update_info_perso">
+                <div class="col">
+                    <h5>Mon adresse</h5>
+                    <p class="mb-4 mt-4 text-center">Vous pouvez modifier vos informations.</p>
+                    <p class="mb-3 text-center">* Champs requis</p>
+
+                    {{ form_start(formAdress)}}
+                        <div class="form-row mb-3">
+                        
+                        {{ form_row(formAdress.street, {'label': 'Rue*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'text-center label-update'  } }) }}
+                    
+                        </div>
+                        <div class="form-row mb-3">
+                        
+                        {{ form_row(formAdress.adressSupplement, {'label': 'complément d\'adresse', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'text-center label-update'  } }) }}
+                    
+                        </div>
+                        <div class="form-row mb-3">
+                        
+                        {{ form_row(formAdress.zipCode, {'label': 'code postal', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'text-center label-update'  } }) }}
+                    
+                        </div>
+                        <div class="form-row mb-3">
+                        
+                        {{ form_row(formAdress.city, {'label': 'Ville*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'text-center label-update'  } }) }}
+                    
+                        </div>
+                        <div class="form-row mb-3">
+                        
+                        {{ form_row(formAdress.country, {'label': 'Ville*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'text-center label-update'  } }) }}
+                    
+                        </div>
+                        <div class="form-row mb-3" id="block_button_info-perso">
+                            <button type="submit" class="btn button-form">Enregistrer</button>
+                        </div>
+
+                    {{form_end(formAdress)}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

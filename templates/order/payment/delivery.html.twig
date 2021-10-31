@@ -1,0 +1,120 @@
+{% block body %}
+{{ include('template.html.twig') }}
+
+<div class="container" id="delivery">
+    {{ include('order/template-steps.html.twig')}}
+    <div class="row mb-5">
+        <h2 class="">Vos Articles</h2>
+    </div>
+    <table class="table">
+        <thead>
+            <th>Produit</th>
+            <th class="text-center">Prix</th>
+            <th class="text-center">Quantité</th>
+            <th class="text-center">total</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <th>{{ item.product.category.name  }} - {{ item.product.collection }}</th>
+                    {% if item.size == "stockSizeOne" %}
+                    <th class="text-center">{{ item.product.size.priceSizeOne }} €</th>
+                    {% elseif item.size == "stockSizeTwo" %}
+                    <th class="text-center">{{ item.product.size.priceSizeTwo }} €</th>
+                    {% elseif item.size == "stockSizeThree" %}
+                    <th class="text-center">{{ item.product.size.priceSizeThree }} €</th>
+                    {% endif %}
+                    <th class="text-center">{{ item.quantity }}</th>
+                    {% if item.size == "stockSizeOne" %}
+                    <th class="text-center">{{ item.product.size.priceSizeOne * item.quantity }} €</th>
+                    {% elseif item.size == "stockSizeTwo" %}
+                    <th class="text-center">{{ item.product.size.priceSizeTwo * item.quantity }} €</th>
+                    {% elseif item.size == "stockSizeThree" %}
+                    <th class="text-center">{{ item.product.size.priceSizeThree * item.quantity }} €</th>
+                    {% endif %}
+                    <th class="text-center">
+                        <a href="#" class="btn-small">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </th>
+                </tr>
+                {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total : </td>
+                <td class="text-center">{{ total }} €</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+    {# <div class="row mb-4 d-flex justify-content-end" id="block_promo_code">
+        <div>
+            <p class="text-center mt-3">VOTRE CODE AVANTAGE, AVOIR OU CARTE CADEAUX</p>
+            <div id="form_code">
+                <div class="mb-4 w-100">
+                    <label for="promo-code" > VOTRE CODE AVANTAGE</label>
+                    <input type="text" name="promo-code" id="promo_code">
+                </div>
+                <button type="" name="avantage-button" id="avantage_btn">OK</button>
+            </div>
+        </div>
+    </div> #}
+    <div class="row d-flex justify-content-end mb-4" id="block_choice_delivery">
+        {{ form_start(form) }}
+                    <div id="delivery-form-choice">
+                        <div class="form-row flex-column">
+                            <h3 class="text-center">LIVRAISON</h3>
+                            <p class="text-center">Choisissez votre option de Livraison</p>
+                        </div>
+                        <div class="form-row mb-3 d-flex justify-content-center m-auto">
+                        
+                            {{ form_row(form.country, {'label': 'PAYS', 'row_attr' : {'class' : 'form-size w-50'}, 'label_attr' : {'class' : 'label-delivery'} }) }}
+                        
+                        </div>
+                        <div class="form-row delivery-form">
+                            <div class="mb-4 m-auto">
+                                <div class="form-flex">
+                                    <input type="radio" name="delivery-type" class="input-summary" id="colissimo" value="Colissimo">
+                                    <label for="colissimo">Colissimo : 4,95 €</label>
+                                </div>
+                                <div class="text-center">
+                                    <p>Livraison entre le {{ dateColissimo1 }} et le {{ dateColissimo2 }}</p>
+                                </div>
+                            </div>
+                            <div class="mb-4 m-auto">
+                                <div class="form-flex">
+                                    <input type="radio" name="delivery-type" class="input-summary" id="letter" value="Lettre suivie" checked>
+                                    <label for="letter">Lettre suivie : 2,16 €</label>
+                                </div>
+                                <div class="text-center">
+                                    <p>Livraison à partir du {{ dateColissimo1 }} et jusqu'à 6 jours ouvrés. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mb-4" id="block_price_order">
+                        <div>
+                            <div>
+                                <p class="m-auto">Montant total :  </p>
+                                <p class="m-auto"> {{ total }} €</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" id="block_order_validate">
+                        <div>
+                            <button id="btn_delivery">Valider ma commande</button>
+                        </div>
+                    </div>
+                
+        
+        {{ form_end(form)}}
+    </div>       
+</div>
+       
+
+{{ include('footer.html.twig') }}
+
+
+{% endblock %}

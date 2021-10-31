@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% include('template.html.twig') %}
+<div class="d-flex">
+    {% include('admin/template.html.twig')%}
+    <div class="container">
+            <h3 class="text-center">Modifier le type du produit</h3>
+            {{ include('type/form.html.twig', {form: formType, button : 'Modifier'}) }}
+                    
+            {% if app.request.get('_route') == 'remove_type' %}
+
+            <form method="post" action="{{ path('remove_collection', {id: type.id})}}" id="form_delete_collection" style="display:inline-block">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ type.id) }}">
+                <button class="btn btn-danger">Supprimer</button>
+            </form>
+            {% endif %}
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

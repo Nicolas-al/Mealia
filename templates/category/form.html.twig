@@ -1,14 +1,20 @@
-{{ form_start(formCategory) }}
+{{ form_start(formCategory, { 'attr' : { 'class': 'w-50 m-auto' }})}}
 
-     <div class="form-row"> 
-        <div class="col-md-6">    
+     <div class="form-row mt-5"> 
+        <div class="col-md-8">    
             {{ form_row(formCategory.name, {'label': 'Catégorie'}) }}   
         </div>
-         <div class="col-md-6">    
+         <div class="col-md-8">    
             {{ form_row(formCategory.imageFile, {'label': 'Image'}) }}   
         </div>
+        <div class="col-md-8">    
+            {{ form_row(formCategory.imageFileTwo, {'label': 'Image 2'}) }}   
+        </div>
+        <div class="col-md-8">
+            {{ form_row(formCategory.type, {'label': 'type'}) }}   
+        </div> 
     </div>
-    <button type="submit" class="btn btn-primary">{{ button|default('Ajouter')}}</button>
+    <button type="submit" class="btn button-form">{{ button|default('Ajouter')}}</button>
 
 
 {{ form_end(formCategory) }}

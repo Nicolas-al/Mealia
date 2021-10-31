@@ -17,19 +17,27 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('oneFile', FileType::class, [
-                'required' => 'false'
+            ->add('oneFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'asset_helper' => true,
             ])
-            ->add('twoFile', FileType::class, [
-                'required' => 'false'
+            ->add('twoFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'asset_helper' => true,
             ])
-            ->add('threeFile', FileType::class, [
-                'required' => 'false'
-            ])
-            ->add('fourFile', FileType::class, [
-                'required' => 'false'
-            ])
-        ;
+            ->add('threeFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'asset_helper' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -1,0 +1,359 @@
+/* Nav compte utilisateur */
+
+#aside_user_account{
+    height: 100%;
+    width: 25%;
+    padding-top: 6%
+}
+#aside_user_account > div{
+    height: 100%;
+    width: 80%;
+}
+#aside_user_account > div > div:first-child{
+    margin: auto;
+    width: inherit;
+}
+#aside_user_account i{
+    font-size: 1.5em;
+    margin-right: 3%;
+}
+#nav_block_user_account > div:nth-child(2){
+    margin-top: 15%;
+}
+#nav_block_user_account > div li{
+    list-style: none;
+}
+#nav_block_user_account > nav{
+    padding-top: 0;
+}
+#nav_block_user_account > div p{
+    display: block;
+    margin-block-start: 1em;
+    padding-inline-start: 40px;
+    margin-bottom: 0px;
+    color: #ff9593;
+}
+#nav_block_user_account > div nav a:hover{
+    color: black;
+}
+.style{
+    color: black;
+}
+.current{
+    text-decoration: underline;
+}
+
+
+/* informations compte utilisateur */
+
+#block_user_account{
+    padding-top: 7%;
+}
+
+.btn-details-order{
+    margin-left: 6%;
+    border: none;
+    background: white;
+}
+.btn-details-order:focus{
+    outline: none;
+}
+.btn-details-order-hide{
+    display: none;
+    margin-left: 6%;
+    border: none;
+    background: white;
+}
+.btn-details-order-hide:focus{
+    outline: none;
+}
+.details-order{
+    display: none;
+    margin: auto;
+    width: 90%;
+    margin-bottom: 5%;
+}
+.details-order .info-supp{
+    width: 30%;
+    text-align: end;
+    margin-left: 53%;
+}.details-order hr{
+    background: #cccaca;
+    height: 1px;
+}
+
+/* suivi de commande */
+
+#body_order_tracking{
+    margin-top: 5%;
+}
+#block_order_tracking table tbody{
+    border-top: 1px dashed #85888b;
+    border-bottom: 1px dashed #85888b;
+}
+
+#block_order_tracking table tbody tr td{
+    border-top: none;
+    border-bottom: none;
+}
+.download-order{
+    color: #ff9593;
+}
+.download-order:hover{
+    color: #ff9593;
+}
+
+#body_order_tracking > div:first-child{
+    width: 78%;
+    margin: auto;
+    height: 3%;
+}
+#body_order_tracking > hr{
+    width: 69%;
+    margin-left: 11%;
+    margin-bottom: 4%;
+}
+
+#block_order_tracking{
+    width: 60%;
+    margin: auto;
+}
+#table_one tr th:first-child{
+    width: 23%;
+}
+#table_one tr th:nth-child(2){
+    width: 12%
+}
+#table_one tr th:nth-child(3){
+    width: 19%
+}
+#table_one tr th:nth-child(4){
+    width: 13%
+}
+#table_one tr th:nth-child(5){
+    width: 18%
+}
+#table_two tr td:first-child{
+    width: 20%;
+}
+#table_two tr td:nth-child(3){
+    width: 14%
+}
+
+
+/* informations personnelles */
+
+#body_info_perso {
+    margin-top: 4%;
+}
+
+#body_info_perso div:nth-child(1){
+    width: 60%;
+    margin: auto;
+}
+
+#body_info_perso > div:first-child {
+    width: 78%;
+    margin: auto;
+    height: 3%;
+}
+
+#body_info_perso hr{
+    width: 69%;
+    margin-left: 11%;
+    margin-bottom: 4%;
+}
+
+#block_info_perso{
+    width: 60%;
+    margin: auto;
+    border: 1px dashed;
+    padding: 40px 2px;
+}
+
+
+#block_info_perso div:nth-child(2){
+    width: 40%;
+    margin: auto;
+    text-align: center;
+}
+#block_info_perso > div > h5{
+    margin-top: -55px;
+    width: 107px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background: white;
+}
+#block_info_perso button a {
+    color: white;
+}
+#block_info_perso button a:hover{
+    text-decoration: none;
+}
+
+#block_adress_perso{
+    width: 60%;
+    margin: auto;
+    border: 1px dashed;
+    padding: 40px 2px;
+    margin-top: 50px;
+}
+
+#block_adress_perso > div h5{
+    margin-top: -54px;
+    width: 107px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background: white;
+}
+#block_adress_perso > div > div:nth-child(2){
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+}
+#block_adress_perso > div > div:nth-child(3){
+    margin: auto;
+    width: fit-content;
+}
+
+
+#block_adress_perso button a {
+    color: white;
+}
+
+
+
+
+/* modifier Informations-personnelles */
+
+.body_update_info_perso{
+    margin-top: 5%;
+}
+.body_update_info_perso > div:nth-child(3){
+    width: 60%;
+    margin: auto;
+    border: 1px dashed;
+    padding: 40px 2px;
+}
+.body_update_info_perso > div:first-child{
+    width: 78%;
+    margin: auto;
+    height: 3%;
+}
+
+.body_update_info_perso hr{
+    width: 69%;
+    margin-left: 11%;
+    margin-bottom: 4%;
+}
+.block_update_info_perso > div > h5{
+    margin-top: -54px;
+    width: 107px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background: white;
+}
+.block_update_info_perso .form-size input{
+    border-color: rgb(119, 118, 118);
+}
+#block_update_info_perso .form-size #registration_dateOfBirth{
+    border-color: rgb(119, 118, 118);
+}
+#block_update_info_perso .form-size select{
+    border-color: rgb(119, 118, 118);
+}
+.label-update{
+    display: none;
+}
+
+/* Newslatter */
+
+#body_newsletter > div:first-child{
+    width: 78%;
+    margin: auto;
+    height: 3%;
+}
+#body_newsletter hr{
+    width: 69%;
+    margin-left: 11%;
+    margin-bottom: 4%;
+}
+
+
+#block_newsletter{
+    width: 60%;
+    margin: auto;
+}
+
+#block_newsletter > div:nth-child(2) a{
+    color: #ff9593;
+}
+
+.subscribe{
+    background: #ffc0bf;
+    font-size: 0.8em;
+    padding: 2px;
+    color: white;
+}
+.subscribe:hover{
+    color: white;
+}
+
+/* data perso form */
+
+#body_update_data{
+    margin-top: 5%;
+}
+
+#body_update_data > div:first-child{
+    width: 78%;
+    margin: auto;
+    height: 3%;
+}
+#body_update_data hr{
+    width: 69%;
+    margin-left: 11%;
+    margin-bottom: 4%;
+}
+
+#block_update_data{
+    width: 60%;
+    margin: auto;
+}
+
+/* Avis */
+#body_notice{
+    margin-top: 5%;
+}
+
+#body_notice > div:first-child{
+    width: 78%;
+    margin: auto;
+    height: 3%;
+}
+#body_notice hr{
+    width: 69%;
+    margin-left: 11%;
+    margin-bottom: 4%;
+}
+#block_notice{
+    width: 71%;
+    margin-left: 10%;
+}
+
+/* page Deconnexion */
+
+#body_logout{
+    margin-top: 10%;
+}
+#body_logout > div:first-child{
+    width: 60%;
+    margin: auto;
+    justify-content: center;
+}
+#body_logout hr{
+    width: 78%;
+}

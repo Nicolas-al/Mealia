@@ -7,3 +7,37 @@
 #block_cart h1{
     margin-bottom: 100px;
 }
+
+.fa-trash{
+    background: white;
+    color: #fe9391;
+    border: none;
+}
+
+.line{
+    height: 2px;
+    width: 100%;
+    background: rgb(163, 163, 163);
+    margin-bottom: 30px;
+}
+.button{
+    color: #fd9391;
+    text-decoration: none;
+    border: 1px dashed #fd9391;
+    border-radius: 7px;
+    padding: 8px 12px;
+}
+
+.button:hover{
+    color: white;
+    text-decoration: none;
+}
+.active{
+    background-color:  #fd9391;
+    color: white;
+}
+.disabled{
+    background-color: white;
+    color : #fd9391;
+}
+

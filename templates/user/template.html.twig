@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<div class="" id="aside_user_account">
+    <div class="m-auto">
+        <div class="d-flex">
+            <i class="far fa-user"></i>
+            <h4 class="text-center">MON COMPTE</h4>
+        </div>
+        <div id="nav_block_user_account">
+            <div>
+                <p class="">MES COMMANDES</p>
+                <nav id="menu_order">
+                    <ul>
+                        <li><a class="style" href="{{path('order_tracking')}}"> Suivi de commandes </a></li>
+                        {# <li><a class="style" href="{{path('')}}">  Avoirs </a></li>
+                        <li><a class="style" href="{{path('')}}">  Paniers sauvegardés </a></li> #}
+                    </ul>
+                </nav>
+            </div>
+            <div>
+                <p class="">MES INFORMATIONS</p>
+                <nav id="menu_info">
+                    <ul>
+                        <li><a class="style" href="{{path('account_info_perso')}}">  Informations personnelles </a></li>
+                        <li><a class="style" href="{{path('account_newsletter')}}">  Newsletter et données personnelles</a></li>
+                        <li><a class="style" href="{{path('account_notice')}}"> Avis</a> </li>
+                        <li><a class="style" href="{{path('account_logout')}}"> Déconnexion</a> </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

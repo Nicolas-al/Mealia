@@ -3,13 +3,22 @@
 
 {% block body %}
 {% include('template.html.twig') %}
-<div class="container">
-        {{ include('collection/form.html.twig', {form: formCollection, button : 'Modifier'}) }}
-        <form method="post" action="{{ path('remove_collection', {id: collection.id})}}" id="form_delete_collection" style="display:inline-block">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ collection.id) }}">
-            <button class="btn btn-danger">Supprimer</button>
-        </form>
+<div class="d-flex">
+    {% include('admin/template.html.twig')%}
+    <div class="container">
+            <h3 class="text-center">Modifier la collection</h3>
+            {{ include('collection/form.html.twig', {form: formCollection, button : 'Modifier'}) }}
+                    
+            {% if app.request.get('_route') == 'remove_collection' %}
+
+            <form method="post" action="{{ path('remove_collection', {id: collection.id})}}" id="form_delete_collection" style="display:inline-block">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ collection.id) }}">
+                <button class="btn btn-danger">Supprimer</button>
+            </form>
+            {% endif %}
+    </div>
 </div>
+{{ include('footer.html.twig') }}
 
 {% endblock %}

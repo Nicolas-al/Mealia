@@ -6,34 +6,42 @@
 {{ include('template.html.twig') }}
 
 <div class="container">
-    <div class="row">
-        <div class="col-lg-6"></div>
-        <div class="col-lg-6"></div>
-    </div>
-        <div class="row">
-        <div class="col-lg-6">
-            <div class="row d-flex flex-column">
-                <div class="col cercle w-auto mx-auto mb-5">
-                    <img src="{{ asset('images/Fabrication-artisanale.png') }}" alt="">
+        <div class="row" id="banner">
+            <div class="col">
+                <figure>
+                    <img src="{{ asset('images/Haut.png') }}" alt="">
+                        <p><strong>Créations textiles artisanales et petite papeterie</strong></p>
+                    <img src="{{ asset('images/Bas.png') }}" alt="">
+                    <figcaption></figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-6">
+                <div class="row d-flex flex-column">
+                    <div class="col cercle w-auto mx-auto mb-5">
+                        <img src="{{ asset('images/Fabrication-artisanale.jpg') }}" alt="">
+                    </div>
+                    <div class="col text-center">
+                        <h2>FABRICATION ARTISANALE</h2>
+                        <p>Créations rennaises, confectionnées à la main et en petite série dans l'atelier de Marine.</p>
+                    </div>
                 </div>
-                <div class="col text-center">
-                    <h2>FABRICATION ARTISANALE</h2>
-                    <p>Créations rennaises, confectionnées dans l'atelier de Marine.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="row d-flex flex-column">
+                    <div class="col cercle w-auto mx-auto mb-5">
+                        <img src="{{ asset('images/Eco-responsable.jpg') }}" alt="">
+                    </div>
+                    <div class="col text-center">
+                    <h2>DÉMARCHE ÉCO-RESPONSABLE</h2>
+                    <p>La plupart des tissus utilisés respectent l'environnement et la santé, avec des certifcations comme OEKO-TEX ou GOTS.</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="row d-flex flex-column">
-                <div class="col cercle w-auto mx-auto mb-5">
-                    <img src="{{ asset('images/Eco-responsable.png') }}" alt="">
-                </div>
-                <div class="col text-center">
-                <h2>DÉMARCHE ÉCO-RESPONSABLE</h2>
-                <p>La plupart des tissus utilisés respectent l'environnement et la santé, avec des certifcations comme OEKO-TEX ou GOTS.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+{{ include('footer.html.twig') }}
 
 {% endblock %}

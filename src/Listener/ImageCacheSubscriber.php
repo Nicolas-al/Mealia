@@ -42,7 +42,6 @@ class ImageCacheSubscriber implements EventSubscriber
             $this->cacheManager->remove($this->uploaderHelper->asset($entity, 'oneFile')); 
             $this->cacheManager->remove($this->uploaderHelper->asset($entity, 'twoFile')); 
             $this->cacheManager->remove($this->uploaderHelper->asset($entity, 'threeFile')); 
-            $this->cacheManager->remove($this->uploaderHelper->asset($entity, 'fourFile')); 
 
         }
         // if ($entity instanceof Portfolio){
@@ -61,8 +60,6 @@ class ImageCacheSubscriber implements EventSubscriber
                 $this->cacheManager->remove($this->uploaderHelper->asset($entity, 'oneFile'));
                 $this->cacheManager->remove($this->uploaderHelper->asset($entity, 'twoFile'));
                 $this->cacheManager->remove($this->uploaderHelper->asset($entity, 'threeFile'));
-                $this->cacheManager->remove($this->uploaderHelper->asset($entity, 'fourFile'));
-
             }
         }
         // if ($entity instanceof Portfolio){

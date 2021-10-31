@@ -15,7 +15,7 @@ class CollectionController extends AbstractController
         $this->em = $em;
     }
     /**
-     * @Route("/collection", name="collection")
+     * @Route("/boutique/collection", name="collection")
      */
     public function index(CollectionRepository $repoCollection): Response
     {
@@ -23,6 +23,21 @@ class CollectionController extends AbstractController
 
         return $this->render('collection/index.html.twig', [
             'controller_name' => 'CollectionController',
+            'collections' => $collections
+        ]);
+    }
+
+    /**
+     * @Route("/boutique/créations-textiles/collections", name="textil_collections")
+     */
+    public function textilCategories(CollectionRepository $repoCollection): Response
+    {
+
+        $collections = $repoCollection->findBy(['type' => '2']);
+
+      
+        return $this->render('collection/index.html.twig', [
+            'controller_name' => 'CategoryController',
             'collections' => $collections
         ]);
     }

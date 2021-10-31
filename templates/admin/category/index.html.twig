@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<div class="d-flex">
+    {% include('admin/template.html.twig')%}
+    <div class="container">
+    <button class="btn button-form" id="btn_add_category"><a class="text-white" href="{{path('add_category')}}"> Ajouter une Categorie</a></button>
+        <ul class="mt-3">
+        {% for category in categories %}
+        
+            <li class="li-category mb-2"><span>-</span><a href="{{path('update_category',  { 'id' : category.id} )}}"> {{ category.name }}</a></li>
+
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% block body %}
+
+<div>
+    {% include('template.html.twig') %}
+    <div class="d-flex">
+        {{ include('user/template.html.twig') }}
+        <div class="w-100 mt-5" id="body_newsletter">
+            <div class="row">
+                <h5>Newsletter et données personnelles</h5>
+            </div>
+            <hr>
+            {% set user = app.user %}
+            <div class="row d-flex flex-column" id="block_newsletter">
+                <div class="col">
+                    <p class="mb-1">Inscriptions à la newsletter : <i>bons plans, offres</i></p>
+                    {% if user.newsletter == true %}
+                    {{ form_start(form)}}
+                        <div class="form-row w-25">     
+                            <button type="submit" class="btn button-form ml-0">Se désabonner</button>
+                        </div>
+                    {{ form_end(form)}}
+                    {% else %}
+                    {{ form_start(form)}}
+                        <div class="form-row">      
+                            <button type="submit" class="btn button-form ml-0">S'abonner</button>      
+                        </div>
+                    {{ form_end(form)}}
+                    {% endif %}
+                </div>
+                <div class="col mb-4 mt-5">
+                    <h5>Demande de rectifcation ou de suppression :</h5>
+                    <p>Vous pouvez modifer ou supprimer toute les informations personnelles fgurant sur la page « Mon compte » sans intervention de notre part. Pour toute suppression défnitive, veuillez nous contacter via ce <a href="{{ path('form_update_data')}}">formulaire</a>. Nous examinerons votre demande et vous répondrons dans les plus brefs délais.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="row" id="template_order">
+        <div class="col-lg-8 offset-lg-2 d-flex m-auto">
+            <div class="circle-order" data-number="1">
+            <p>1</p>
+                {# <p>Mon panier</p> #}
+            </div>
+            <div class="line-order" data-number="1">
+            </div>
+            <div class="circle-order" data-number="2">
+            <p>2</p>
+                {# <p>Mon adresse</p> #}
+            </div>
+            <div class="line-order" data-number="2">
+            </div>
+            <div class="circle-order" data-number="3">
+            <p>3</p>
+                {# <p>Paiement</p> #}
+            </div>
+            <div class="line-order" data-number="3">
+            </div>
+            <div class="circle-order" data-number="4">
+            <p>4</p>
+
+                {# <p>Confirmation</p> #}
+            </div>
+        </div>
+        <div class="col-lg-9 offset-lg-2 d-flex m-auto">
+            <p class="text-circle" data-number="1">Mon panier</p>
+            <div class="space"></div>
+            <p class="text-circle" data-number="2">Mon adresse</p>
+            <div class="space"></div>
+            <p class="text-circle" data-number="3">Paiement</p>
+            <div class="space"></div>
+            <p class="text-circle" data-number="4">Confirmation</p>
+        </div>
+        
+    </div>
+
+{% endblock %}

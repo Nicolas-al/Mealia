@@ -10,19 +10,18 @@
             {% endfor %}
 {% include('template.html.twig') %}
 <div class="addCart-msg">
-  <p> La selection à bien été ajouter au panier </p>
+  <p> La sélection a bien été ajoutée au panier </p>
 </div>
 <div class="container mt-5" id="product_container">
 <!--Section: Block Content-->
 <section class="mb-5">
 
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-md-7 mb-4 mb-md-0">
 
       <div class="mdb-lightbox">
 
         <div class="product-gallery mx-1 d-flex">
-
           <div class="col-9 mb-0">
                 <figure class="product-L">
                 <a href="{{ vich_uploader_asset( product.image , 'oneFile') | imagine_filter('large_thumb')}}"
@@ -34,50 +33,69 @@
            
            
                 <figure class="product-L">
-                <a href="{{vich_uploader_asset( product.image , 'twoFile') | imagine_filter('large_thumb')}}"
+                 
+                <a href="{{vich_uploader_asset( product.image , 'oneFile') | imagine_filter('large_thumb')}}"
                     >
-                    <img src="{{vich_uploader_asset( product.image , 'twoFile') | imagine_filter('large_thumb')}}"
+                    <img src="{{vich_uploader_asset( product.image , 'oneFile') | imagine_filter('large_thumb')}}"
                     class="img-fluid z-depth-1">
                 </a>
+                
                 </figure>
                 <figure class="product-L">
+                {% if product.image.two == "" %}
+                 
+                {% else %}
+                <a href="{{ vich_uploader_asset( product.image , 'twoFile') | imagine_filter('large_thumb')}}">
+                    <img src="{{ vich_uploader_asset( product.image , 'twoFile') | imagine_filter('large_thumb')}}"
+                    class="img-fluid z-depth-1">
+                </a>
+                {% endif %}
+                </figure>
+                <figure class="product-L">
+                {% if product.image.three == "" %}
+                  
+                {% else %}
                 <a href="{{ vich_uploader_asset( product.image , 'threeFile') | imagine_filter('large_thumb')}}"
                     >
                     <img src="{{ vich_uploader_asset( product.image , 'threeFile') | imagine_filter('large_thumb')}}"
                     class="img-fluid z-depth-1">
                 </a>
-                </figure>
-                <figure class="product-L">
-                <a href="{{ vich_uploader_asset( product.image , 'fourFile') | imagine_filter('large_thumb')}}"
-                    >
-                    <img src="{{ vich_uploader_asset( product.image , 'fourFile') | imagine_filter('large_thumb')}}"
-                    class="img-fluid z-depth-1">
-                </a>
+                {% endif %}
                 </figure>
             
           </div>
           <div class="col-3 d-flex">
             <div class="row">
               <div class="col-12 mb-1 product-small">
+                
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src="{{ vich_uploader_asset( product.image , 'oneFile') | imagine_filter('large_thumb')}}"
+                    class="img-fluid">
+                  <div class="d-none mask rgba-white-slight"></div>
+                </div>
+                
+              </div>
+              <div class="col-12 mb-1 product-small">
+                {% if product.image.two == "" %}
+                  
+                {% else %}
                 <div class="view overlay rounded z-depth-1 gallery-item">
                   <img src="{{ vich_uploader_asset( product.image , 'twoFile') | imagine_filter('large_thumb')}}"
                     class="img-fluid">
                   <div class="d-none mask rgba-white-slight"></div>
                 </div>
+                {% endif %}
               </div>
               <div class="col-12 mb-1 product-small">
+                {% if product.image.three == "" %}
+                  
+                {% else %}
                 <div class="view overlay rounded z-depth-1 gallery-item">
                   <img src="{{ vich_uploader_asset( product.image , 'threeFile') | imagine_filter('large_thumb')}}"
                     class="img-fluid">
                   <div class="d-none mask rgba-white-slight"></div>
                 </div>
-              </div>
-              <div class="col-12 mb-1 product-small">
-                <div class="view overlay rounded z-depth-1 gallery-item">
-                  <img src="{{ vich_uploader_asset( product.image , 'fourFile') | imagine_filter('large_thumb')}}"
-                    class="img-fluid">
-                  <div class="d-none mask rgba-white-slight"></div>
-                </div>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -88,60 +106,101 @@
     </div>
     <div class="col-md-5">
   
-      <h5>{{ product.category.name }}</h5>
-      <p><span class="mr-1"><strong>{{ product.price.TTC }}€</strong></span></p>
-      <p class="pt-1">{{ product.description }}</p>
-      <div class="table-responsive">
-        <table class="table table-sm table-borderless mb-0">
-          <tbody>
-            <tr>
-              <th class="pl-0 w-25" scope="row"><strong>Collection</strong></th>
-              <td>{{ product.collection.name }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <h5 class="text-center title-one-product mb-5">{{ product.category.name }} - {{ product.collection.name }}</h5>
+      
+      <p class="mb-4">{{ product.text }}</p>
+   
       <hr>
+      <div class="d-flex align-items-baseline">
+        <p class="mr-2">À partir de </p>
+        <p class="mt-4 price"><strong class="price-style" id="priceSizeOne">{{ product.size.priceSizeOne }},00€</strong>
+        <strong class="price-style" id="priceSizeTwo">{{ product.size.priceSizeTwo }},00€</strong>
+        <strong class="price-style" id="priceSizeThree">{{ product.size.priceSizeThree }},00€</strong></p>
+      </div>
       {% if is_granted('ROLE_ADMIN') %}
       {% else %}
-      <div class="table-responsive mb-2">
-        <table class="table table-sm table-borderless">
-          <tbody>
-            <tr>
-              <td class="pl-0 pb-0 w-25">Stock</td>
-            </tr>
-            <tr>
-              <td class="pl-0">
-                <div class="def-number-input number-input safari_only mb-0" id="block_stock">
-                  <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                    ><i class="fas fa-minus"></i></button>
-                  <input class="nb-products" name="stock" value="1" type="number">
-                  <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                    ><i class="fas fa-plus"></i></button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div id="sizes" class="d-flex">
+        {% if product.size.sizeOne %}
+        <div class="size_block" data-action="btn_add_cart_sizeOne" data-size="stockSizeOne">
+          <p>{{ product.size.sizeOne }}</p>
+        </div>
+        {% endif %}
+        {% if product.size.sizeTwo %}
+        <div class="size_block" data-action="btn_add_cart_sizeTwo" data-size="stockSizeTwo">
+          <p>{{ product.size.sizeTwo }}</p>
+        </div>
+        {% endif %}
+        {% if product.size.sizeThree %}
+        <div class="size_block" data-action="btn_add_cart_sizeThree" data-size="stockSizeThree">
+          <p>{{ product.size.sizeThree }}</p>
+        </div>
+        {% endif %}
       </div>
-      <button onclick="addCart({{ product.id }})"class="btn btn-primary btn-md mr-1 mb-2"> Ajouter au panier </a> 
+      <div id="" class="position-absolute w-100 fixed-bottom">
+        <p class="msg-insuffiant-stock" id="msg_insuffisant">la quantité souhaité est supérieur au stock disponible, stock restant : <span></span></p>
+        
+        <div class="d-flex w-50 justify-content-around" id="block_cart_button">
+      
+                  <div class="def-number-input number-input safari_only mb-0" id="block_stock">
+                
+                    <input id="nb-products" data-product-id="{{ product.id }}" data-size="0" name="stock" value="1" type="number">
+                    
+                  </div>
+                  <div id="load_button">
+                    <button class="btn button-form btn-display btn_add_cart" id="btn_add_cart"> Ajouter au panier </button>
+                    <button onclick="addCart({{ product.id }})"class="btn button-form btn_add_cart" id="btn_add_cart_sizeOne" {% if product.size.stockSizeOne < 1 %} disabled  {% endif %}> Ajouter au panier </button>
+                    <button onclick="addCart({{ product.id }})"class="btn button-form btn_add_cart" id="btn_add_cart_sizeTwo" {% if product.size.stockSizeTwo < 1 %} disabled  {% endif %}> Ajouter au panier </button>
+                    <button onclick="addCart({{ product.id }})"class="btn button-form btn_add_cart" id="btn_add_cart_sizeThree" {% if product.size.stockSizeThree < 1 %} disabled  {% endif %}> Ajouter au panier </button>
+                  </div> 
+        </div>
+        <div id="load_block">
+          {% if product.size.stockSizeOne < 1 and product.size.stockSizeTwo < 1 and product.size.stockSizeThree < 1 %}
+          <p class="red-stock" id="no-stock">Ce produit n'est plus en stock</p>
+          <div class="d-flex flex-column">
+            <input type="email" name="email" id="zero_stock_mail" placeholder="email@exemple.com" class="w-50 m-auto text-center" required>
+            <p id="zero_stock_msg_error"><i class="fas fa-exclamation mr-2"></i>Veuillez inscire une adresse email valide</p>
+            <button id="btn_stock_mail" data-id="{{product.id}}" class="btn" type="submit"> Me prévenir quand le produit est disponible</button>
+            <p id="zero_stock_msg_ok"><i class="far fa-check-circle mr-2"></i>Votre demande a bien été envoyée</p>
+          </div>
+          {% endif %}
+          <p class="green-stock" id="good_stock">En stock</p>
+          {# {% elseif product.size.stockSizeOne < 1  %} #}
+            <p class="red-stock" id="no_stock">La taille n'est plus en stock</p>
+          {# {% elseif product.size.stockSizeOne == 1  %} #}
+            <p class="red-stock" id="low_stock">Stock Faible</p>
+          
+          
+        </div>
+      </div>
     </div>
     {% endif %}
+  </div>
+  <div id="block_descrpt_avis">
+    <div class="d-flex w-75" id="title_descrpt_avis">
+    {# <div class="line-description title-one-product"></div> #}
+      <h4 id="description_title" class="title-one-product mr-5 black">Description</h4>
+      <h4 id="avis" class="grey">Avis</h4>
+    {# <div class="line-description title-one-product"></div> #}
+    </div>
+    <div>
+      <p class="mb-3" id="p_description"> {{ product.description|nl2br }}</p>
+      <p class="mb-5" id="p_dimensions">Dimensions : {{ product.dimensions }}</p>
+    </div>
   </div>
 
 </section>
 <section id="Avis">
-    {% if is_granted('ROLE_USER') %}
-    <div class="container">
-                {{ form_start(form) }} 
-              
-            <div class="form-row">
+    <div class="container mt-5">
+            {% if is_granted('ROLE_USER') %}
+            <div class="container">
+                {{ form_start(form) }}   
+                <div class="form-row">
                     <div class="col-md-6">
-                        {{ form_row(form.content, {'label' : 'Laisser un avis'}) }}
+                            {{ form_row(form.content, {'label' : 'Laisser un avis'}) }}
                     </div>
-                    <div class="col-md-6">
-                        <input class="" type="number" name="rating" id="rating-input" min="1" max="5" />
-                        <div class="rating" role="optgroup">
+                    <div class="col-md-5 ml-5">
+                        <input class="number-rating" type="number" name="rating" id="rating-input" min="1" max="5" required/>
+                        <div class="rating mb-1" role="optgroup">
                         <!-- in Rails just use 1.upto(5) -->  
                         <i class="far fa-star rating-star" id="rating-1" data-rating="1" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
                         <i class="far fa-star rating-star" id="rating-2" data-rating="2" tabindex="0" aria-label="Rate as two out of 5 stars" role="radio"></i>
@@ -149,48 +208,86 @@
                         <i class="far fa-star rating-star" id="rating-4" data-rating="4" tabindex="0" aria-label="Rate as four out of 5 stars" role="radio"></i>
                         <i class="far fa-star rating-star" id="rating-5" data-rating="5" tabindex="0" aria-label="Rate as five out of 5 stars" role="radio"></i>
                         </div>
+                        <p id="msg_avis_required"><i class="fas fa-exclamation-circle mr-2"></i>veuillez remplir la notation en étoile</p>
                     </div>
-            </div> 
-                    <button type="submit" class="btn btn-primary">commenter</button>
-
+                </div> 
+                <button id="avis_btn" type="submit" class="btn button-form">Commenter</button>
                 {{ form_end(form) }}
-    </div>
-    {% else %}
-    <p>veuillez vous connecter ou creer un compte pour laisser un commentaire</p>
-    <a href="{{ path('app_login')}}">connexion</a>
-    <a href="{{ path('registration')}}">Creer un compte</a>
-
-    {% endif %}
-    <div class="container mt-5 border border-dark">
-        <h1 class="text-center mb-5">Avis</h1>
-        <div class="row">
-            <p class="col-lg-2"><strong>Avis des clients :</strong></p>
-            {% for rate in rates %}
-            <input type="number" name="Average_rating" class="d-none" id="average_number" value="{{rate}}">
-            <div class="col-lg-2 rating" role="optgroup">
-                <!-- in Rails just use 1.upto(5) -->  
-                <i class="far fa-star average-rating-star" id="average-rating-1" data-rating="1" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
-                <i class="far fa-star average-rating-star" id="average-rating-2" data-rating="2" tabindex="0" aria-label="Rate as two out of 5 stars" role="radio"></i>
-                <i class="far fa-star average-rating-star" id="average-rating-3" data-rating="3" tabindex="0" aria-label="Rate as three out of 5 stars" role="radio"></i>
-                <i class="far fa-star average-rating-star" id="average-rating-4" data-rating="4" tabindex="0" aria-label="Rate as four out of 5 stars" role="radio"></i>
-                <i class="far fa-star average-rating-star" id="average-rating-5" data-rating="5" tabindex="0" aria-label="Rate as five out of 5 stars" role="radio"></i>
-                </div>
+            </div>
+            {% else %}
+            <p>veuillez vous connecter ou creer un compte pour laisser un commentaire</p>
+            <a href="{{ path('app_login')}}">connexion</a>
+            <a href="{{ path('registration')}}">Creer un compte</a>
+            {% endif %}
+            <div class="d-flex mt-5">
+              <p class="mr-2"><strong>Avis des clients </strong></p>
+              <p class="mr-5">({{ avis|length }})</p>
+              {% for rate in rates %}
+              <input type="number" name="Average_rating" class="d-none" id="average_number" value="{{rate|number_format(1) }}">
+              <div class="rating mr-2" role="optgroup">
+                  <!-- in Rails just use 1.upto(5) -->  
+                  <i class="far fa-star average-rating-star" id="average-rating-1" data-rating="1" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
+                  <i class="far fa-star average-rating-star" id="average-rating-2" data-rating="2" tabindex="0" aria-label="Rate as two out of 5 stars" role="radio"></i>
+                  <i class="far fa-star average-rating-star" id="average-rating-3" data-rating="3" tabindex="0" aria-label="Rate as three out of 5 stars" role="radio"></i>
+                  <i class="far fa-star average-rating-star" id="average-rating-4" data-rating="4" tabindex="0" aria-label="Rate as four out of 5 stars" role="radio"></i>
+                  <i class="far fa-star average-rating-star" id="average-rating-5" data-rating="5" tabindex="0" aria-label="Rate as five out of 5 stars" role="radio"></i>
+              </div>
+              {% if rate|number_format(1) == 0.0 %}
+              <p>0</p>
+              {% else %}
+              <p>{{rate|number_format(1)}}</p>
+              {% endif %}
+              {% endfor %}
+            </div>
+            <hr>
+            {% for one in avis %}
+            <div class="avis" class="row">
+              <div class=" d-flex justify-content-between"> 
+                  <input type="number" name="Avis_rating" class="d-none avis-number" value="{{ one.note }}">
+                  <div class="p-2 ml-2 rating" role="optgroup">
+                      <!-- in Rails just use 1.upto(5) -->  
+                      <i class="far fa-star avis-rating-star avis-rating-1" data-rating="1" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
+                      <i class="far fa-star avis-rating-star avis-rating-2" data-rating="2" tabindex="0" aria-label="Rate as two out of 5 stars" role="radio"></i>
+                      <i class="far fa-star avis-rating-star avis-rating-3" data-rating="3" tabindex="0" aria-label="Rate as three out of 5 stars" role="radio"></i>
+                      <i class="far fa-star avis-rating-star avis-rating-4" data-rating="4" tabindex="0" aria-label="Rate as four out of 5 stars" role="radio"></i>
+                      <i class="far fa-star avis-rating-star avis-rating-5" data-rating="5" tabindex="0" aria-label="Rate as five out of 5 stars" role="radio"></i>
+                  </div>
+                  <p class="p-2 mr-2">De <strong>{{ one.user.firstname }}</strong> le {{ one.createdAt|date('d-m-Y') }}</p>
+              </div>
+              <div class="p-3">
+                  <p class="">{{ one.content }}</p>
+              </div>
+            </div>
             {% endfor %}
-        </div>
-        <hr>
-        {% for one in avis %}
-        <div id="avis" class="row">
-            <div class="col-lg-12">{{ one.note }}</div>
-            <div class="col-lg-12">
-                <h5>{{ one.user.firstname }}</h5>
-            </div>
-            <div class="col-lg-12">
-                <p>{{ one.content }}</p>
-            </div>
-        </div>
-        {% endfor %}
     </div>
 
 </section>
+<hr class="mb-5">
+<section class="mb-5" id="products_complements">
+  
+  <h4 class="mb-5 text-center">Pour compléter votre séléction</h4>
+  <div class="slide">
+      {% for oneProduct in products %}
+        {% if product.id != oneProduct.id %}
+        <div class="">
+            <a href="{{ path('show_product' ,  { 'id' : oneProduct.id})}}" class="">
+              <div class="product_block">
+              {# {% set img = 'uploads/images/'~ product.image %}  #}
+                  <img  class="product_img" src="{{ vich_uploader_asset( oneProduct.image , 'oneFile') | imagine_filter('medium_thumb')}}" alt="produit Méalia">
+              </div>
+            </a>
+            <div class="product_description">
+                    <p class="mb-0">{{ oneProduct.category.name }} - {{ oneProduct.collection.name }}</p>
+                    <p class="mt-2 price"><strong class="price-style" id="priceSizeOne">{{ product.size.priceSizeOne }},00€</strong></p>
+            </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+  </div>
+  <hr class="mt-5">
+</section>
+
 </div>
+{{ include('footer.html.twig') }}
+
 {% endblock %}

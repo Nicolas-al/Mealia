@@ -1,0 +1,84 @@
+<html>
+<head>
+        <link href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('css/pdf/invoice.css') }}" rel="stylesheet"/>
+
+</head>
+<body>
+    <div class="head-invoice">
+        <img id="img_invoice" src="{{ absolute_url(asset('images/Logo-couleur-vectorisé.png')) }}" alt="logo">
+        <div>
+            <h2>Facture n° {{ order.invoiceNumber }}</h2>
+            <p>Date de création : {{ order.createdAt|date('d/m/Y') }}</p>
+        </div>
+    </div>
+    <div class="w-100">
+        <div class="adress_invoice">
+            <div>
+                <p><strong> Méalia </strong></p>
+                <p>35200</p>
+                <p>SIREN : 891120321</p>
+            </div>
+            <div>
+                <p><strong> {{ order.clientName }} {{ order.clientFirstName}} </strong></p>
+                <p>{{ order.adress.street }}</p>
+                <p>{{ order.adress.zipCode}}, {{ order.adress.city }}</p>
+            </div>
+        </div>
+        <div class="order_invoice">
+            <p>Commande n°{{ order.orderNumber }} du {{ order.createdAt|date('d/m/Y') }}</p>
+            <table class="">
+
+                    <thead class="line-thead">
+                        
+                            <th> Produit(s)</th>
+                            <th> Taille</th>
+                            <th > Quantité </th>
+                            <th > Prix Unitaire </th>
+                            <th> total HT </th>
+                        
+                    </thead>
+             
+                
+                {% for product in productsOrdered %}
+                <div>
+                <tbody class="line-thead">
+                    
+                        <td class="text-center"> {{ product.name }} </td>
+                        <td>{% if product.sizeOne is defined %}{{ product.sizeOne }}{% endif %}{% if product.sizeTwo is defined %}{{ product.sizeTwo }}{% endif %}{% if product.sizeThree is defined %}{{ product.sizeThree }}{% endif %}</td>
+                        <td class="text-center"> {{ product.quantity }}</td>
+                        <td class="text-center"> {{ product.price }} €</td>
+                        <td class="text-center"> {{ product.totalPrice }} €</td>
+                    
+                </tbody>
+                </div>
+                {% endfor %}
+                <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td class="text-center">  <strong> Total :</strong></td>
+                            <td class="text-center"> {{ order.price }} €</td>
+                        </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div id="block_total_invoice">
+            <p><strong> Règlement : </strong> {{ order.price }} €</p>
+            <p>Mode de règlement : {{ order.paymentType }}</p>
+        </div>
+        
+    </div>
+</body>
+<footer>
+    <div>
+        <p>N°001</p> 
+        <p>Page 1 / 1</p>  
+    </div> 
+    <div>
+        <p>Méalia, 35200 Rennes</p>
+        <p>NAF : 1419Z, RM : 891 120 321, TVA non applicable, art. 293B du CGI.</p>
+    </div>
+</footer>
+
+
+</html>

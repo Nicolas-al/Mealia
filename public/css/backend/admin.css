@@ -1,0 +1,471 @@
+#aside_admin_account{
+    height: 100%;
+    width: 25%;
+    padding-top: 3%;
+}
+#nav_block_admin_account li{
+    list-style: none;
+}
+#nav_block_admin_account > p{
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    color: #ff9593;
+}
+#nav_block_admin_account nav a:hover{
+    color: black;
+}
+
+#welcome_admin{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+#body_admin{
+    padding: 10%;
+    height: 100%;
+    width: 75%;
+}
+
+#block_bord_table > div{
+    width: 46%;
+}
+
+#btn_search{
+    cursor: pointer;
+}
+/* Page Category et Collection */
+
+#btn_add_category{
+    margin-top: 12%;
+}
+.li-category{
+    list-style-type: none;
+}
+.li-category a{
+    color: black;
+}
+.li-category span{
+    margin-left: -4%;
+    margin-right: 4%;
+}
+#btn_add_collection{
+    margin-top: 12%;
+}
+.li-collection{
+    list-style-type: none;
+}
+.li-collection a{
+    color: black;
+}
+.li-collection span{
+    margin-left: -4%;
+    margin-right: 4%;
+}
+
+/* block Recherche */
+
+#block_search{
+    display: none;
+    position: fixed;
+    background: white;
+    box-shadow: 0px 0px 5px;
+    width: 40%;
+    left: 30%;
+    right: 30%;
+    top: 6%;
+    z-index: 10;
+}
+.fa-search{
+    color: #ff9593
+}
+#search_path{
+    display: flex;
+    align-items: center;
+    width: 7%;
+}
+#close_block{
+    width: 95%;
+    text-align: end;
+    margin: auto;
+    margin-top: -18px;
+}
+#search:focus{
+    border: none;
+    box-shadow: none;
+}
+.fa-times{
+    border: 1px solid black;
+    padding: 1px 3px;
+    color: #403939;
+    font-size: 0.8em;
+    padding-top: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.sidebar-search div{
+    box-shadow: 0px 0px 4px 0px #8e8c8c;
+}
+.sidebar-search a{
+    box-shadow: 1px 0px 4px 0px #8e8c8c;
+    cursor: pointer;
+}
+
+#side_menu{ 
+    border-right: 1px solid #ced4d9;
+    border-bottom: 1px solid #ced4d9;
+    border-left: 1px solid #ced4d9;
+    box-shadow: 0px 0px 5px #8e8c8c;
+}
+
+.result{
+    padding: 3px 12px;
+    cursor: pointer;
+}
+/* page fiches produits */
+
+#body_sheets{
+    padding-top: 10%;
+    height: 100%;
+    width: 75%;
+}
+
+#body_sheets > div:first-child{
+    justify-content: space-around;
+    width: 47%;
+    margin: auto;
+}
+
+#body_sheets > div:first-child input{
+    width: 45%;
+    border-radius: 3px;
+    border: 1px solid rgb(214, 208, 208);
+}
+#body_sheets > div:first-child input:focus-visible {
+    outline: none;
+}
+
+#body_sheets > div:first-child button{
+    width: 45%;
+    
+}
+#body_sheets > div:first-child button a{
+    color: white;
+}
+#body_sheets > div:first-child button a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+#body_sheets form > div:nth-child(1){
+    width: 50%;
+}
+#body_sheets form > div:nth-child(1) button{
+width: 29%;
+}
+#body_sheets form > div:nth-child(1) button:hover{
+    color: white;
+}
+
+#body_sheets form > div:nth-child(2) > .product-sheet > img{
+    height: 60%;
+    display: block;
+    margin: auto;
+    margin-top: 2%;
+    width: 96%;
+}
+
+#body_sheets form > div:nth-child(2) > .product-sheet > p{
+    text-align: center;
+    margin: auto;
+}
+
+.not-online-opacity{
+    position: absolute;
+    background: black;
+    width: 12%;
+    opacity: 0.4;
+    height: 240px;
+}
+.zero-stock-opacity{
+    position: absolute;
+    background: rgb(212 35 31);
+    width: 12%;
+    opacity: 0.4;
+    height: 240px;
+}
+.product-sheet{
+    width: 16%;
+    padding-bottom: 7px;
+    height: 240px;
+    margin-bottom: 4%;
+}
+
+.product-sheet a{
+    color: black;
+}
+.product-sheet a:hover{
+    color: black;
+    text-decoration: none;
+}
+.product-sheet .checkbox{
+    position: absolute;
+    margin-top: 5px;
+}
+
+/* commandes */
+.color-grey{
+    color:  rgb(183 178 178);
+}
+.order-block{
+    width: 60%;
+    border: 1px solid rgb(214, 208, 208);
+    margin: auto;
+    margin-bottom: 5%;
+}
+.order-top{
+    background: #d0cdcd57;
+    padding-top: 2%;
+    padding-bottom: 1%;
+}
+.order-block > div:nth-child(2) > div:nth-child(1){
+    width: 45%;
+    margin: auto;
+    padding-top: 4%;
+    padding-left: 1%;
+}
+.order-block > div:first-child a{
+    color: black;
+} 
+.order-block > div:nth-child(2) > div:nth-child(2){
+    width: 45%;
+    padding-top: 4%;
+}
+.order-block > div:nth-child(2) > div:nth-child(2) > div:nth-child(3){
+    border: 1px solid #ff9e9d;
+    width: fit-content;
+    margin: auto;
+    box-shadow: 0px 0px 10px #222222;
+    padding: 16px 10px;
+}
+
+.three-points-not-active{
+    right: 19%;
+    position: absolute;
+    cursor: pointer;
+    width: 1.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.block_three_points{
+    border: 1px solid;
+    position: absolute;
+    padding: 15px 20px;
+    right: 86px;
+    margin-top: -1.1%;
+    background: white;
+    display: none;
+}
+.block_three_points p{
+    text-align: initial;
+    cursor: pointer;
+}
+.block_three_points div:last-child p:hover{
+    color: #ffa19e;
+}
+.three-points{
+    margin-bottom: 13px;
+    cursor: pointer;
+}
+
+.point{
+    background: black;
+    width: 3px;
+    height: 3px;
+    margin-bottom: 2px;
+    border-radius: 50%;
+}
+.order-info{
+    border: 2px solid #000000ad;
+    box-shadow: 0px 0px 3px;
+    width: 22%;
+    padding: 2px 36px;
+    position: absolute;
+    text-align: center;
+    margin-top: 2%;
+    background: white;
+    z-index: 23;
+    display: none;
+}
+.order-caret-down{
+    display: none;
+    cursor: pointer;
+}
+.order-caret-down-hide{
+    cursor: pointer;
+}
+
+
+
+.fa-angle-down{
+    vertical-align: text-bottom
+}
+.gift-block{
+    width: 79%;
+    margin-left: auto;
+    display: flex;
+    margin-bottom: 5%;
+}
+.fa-gift{
+    cursor: pointer;
+    color: #fdad66;
+    margin-left: -22px;
+    margin-top: 3px;
+}
+.comment-gift{
+    display: none;
+    width: 30%;
+    background: white;
+    padding: 10px 10px;
+    position: absolute;
+    box-shadow: 0px 0px 4px #fdad66;
+    min-height: 48px;
+}
+
+.order-top p{
+    width: 40%;
+}
+.order-top a{
+    display: block;
+    width: 40%;
+}
+
+#form_order_expedition{
+    display: none;
+}
+
+/* Création d'un produit (formulaire) */
+#product_form{
+    width: 75%;
+    margin: auto;
+    border: 1px solid #9fa3a88c;
+    padding: 2%;
+    text-transform: uppercase;
+}
+#product_form > div:first-child{
+    justify-content: center;
+}
+#product_form > div:first-child > div{
+    height: 200px;
+}
+.size{
+    display: none;
+}
+.display-size{
+    display: block;
+}
+
+.vich-image label{
+    height: 165px;
+    width: 152px;
+   
+}
+.vich-image label::after{
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    text-align: center;
+    background: #ffdada;
+}
+
+.vich-image > a{
+    position: absolute;
+    height: 75%;
+    top: 38%;
+    left: 3.5%;
+    z-index: 1;
+
+}
+.vich-image > a img{
+    
+    height: 100%;
+}
+
+/* Collection Modifier/Ajouter/Supprimer */
+
+#product_type{
+    width: 60%;
+    margin: auto;
+    border: 1px solid #9fa3a88c;
+}
+#product_category{
+    width: 60%;
+    margin: auto;
+}
+#product_collection{
+    width: 60%;
+    margin: auto;
+}
+#product_collection #zero_waste{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#product_collection > div{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Gestion des Stocks */
+
+#stock_table{
+    width: 90%;
+}
+#stock_table td{
+    vertical-align: middle;
+}
+
+.btn-stock{
+    /* border: 1px solid #b5b4b4a6; */
+    box-shadow: 0px 0px 10px white;
+    border-radius: 3px;
+    color: white;
+    background: #ffcdcc;
+    /* font-weight: bold; */
+    color: white;
+    border: 1px solid #e68d8b;
+}
+.btn-stock:hover{
+    background: #343a3f;
+}
+.products_stock{
+    background: #f5f4f4;
+}
+.stock{
+    width: 75%;
+}
+.td-size-stock{
+    width: 13%;
+}
+.size-stock{
+    width: 30%;
+}
+
+
+/* Ajouter un Type de produit */
+
+#form_type{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+}
+#form_type .form-row{
+    justify-content: center;
+}

@@ -11,39 +11,41 @@
             <div class="contact-line"></div>
         </div>
         <div class="d-flex mt-5">
-            <div class="container">
+            <div class="" id="text_contact">
                 <p>Vous souhaitez des précisions sur un produit ? Vous avez besoin
                 d'informations complémentaires ?</p>
                 <p>Ce formulaire à votre disposition.</p>
                 <p>Nous vous répondrons dans les meilleurs délais</p>
                 <address>
                     <p>Vous pouvez également nous contacter via l'adresse mail suivante : </p>
-                    <a href="mailto:mealia.thelittleshop@gmail.com">mealia.thelittleshop@gmail.com</a><br>
+                    <a href="mailto:contact@mealia.fr">contact@mealia.fr</a><br>
                 </address>
 
             </div>
-            <div class="container">
-                <form action="">
+            <div class="" id="block_contact_form">
+                <form action="{{ path('contact')}}" method="post">
                     <div class="form-group">
                         <label for="name-contact">Nom</label>
-                        <input type="text" class="form-control" id="name-contact" placeholder="Nom">
+                        <input type="text" class="form-control" id="name-contact" name="name-contact" placeholder="Nom" required>
                     </div>
                     <div class="form-group">
                         <label for="email-contact">Email</label>
-                        <input type="email" class="form-control" id="email-contact" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="email-contact" name="email-contact" placeholder="nom@exemple.com" required>
                     </div>
                     <div class="form-group">
                         <label for="object-contact">Objet</label>
-                        <input type="text" class="form-control" id="object-contact" placeholder="">
+                        <input type="text" class="form-control" id="object-contact" name="object-contact" placeholder="Veuillez écrire l'objet du message.." required>
                     </div>
                     <div class="form-group">
                         <label for="message-contact">Message</label>
-                        <textarea class="form-control" id="message-contact" rows="3"></textarea>
+                        <textarea class="form-control" id="message-contact" name="message-contact" rows="3" required></textarea>
                     </div>
-                    <button type="submit"> Envoyer</button>
+                    <button type="submit" class="m-auto btn button-form"> Envoyer</button>
                 </form>
             </div>
         </div>
     </div>
+    {{ include('footer.html.twig') }}
+
 {% endblock %}
 

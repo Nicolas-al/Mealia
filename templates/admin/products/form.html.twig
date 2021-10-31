@@ -1,0 +1,70 @@
+{{ form_start(form) }}
+
+    <div class="form-row m-auto mb-5">
+        <div class="col-md-3">   
+            {{ form_row(form.image.oneFile, {'label': 'Image 1', 'label_attr' : { 'class' : 'img-size'}}) }}
+        </div>
+        <div class="col-md-3">  
+            {{ form_row(form.image.twoFile, {'label': 'Image 2'}) }}
+        </div>
+        <div class="col-md-3">  
+            {{ form_row(form.image.threeFile, {'label': 'Image 3'}) }} 
+        </div>
+    </div>
+    <div class="form-row mt-5 text-center">
+        <div class="col">
+        {{ form_row(form.text, {'label': 'Texte'}) }}
+        </div>
+    </div>
+    <div class="form-row text-center"> 
+        <div class="col">    
+            {{ form_row(form.type, {'label': 'Type'}) }}   
+        </div>
+    </div>
+    <div class="form-row text-center"> 
+        <div class="col">    
+            {{ form_row(form.category, {'label': 'Catégorie'}) }}   
+        </div>
+    </div>
+    <div class="form-row text-center">
+        <div class="col">
+            {{ form_row(form.collection, {'label': 'Collection'}) }}
+        </div>
+    </div>
+    <button type="button" class="btn button-form" id="add_size">Ajouter une taille</button>
+    <div class="d-flex" id="form_size_block">
+        <div class="form-size mr-4" id="sizeOne">
+         
+                {{ form_row(form.size.sizeOne, {'label': 'Taille 1', 'row_attr' : { 'class' : ''}}) }}
+                {{ form_row(form.size.priceSizeOne, {'label': 'Prix', 'row_attr' : { 'class' : ''}}) }}
+                {{ form_row(form.size.stockSizeOne, {'label': 'Qté', 'row_attr' : { 'class' : ''}}) }}
+        </div>
+        <div class="form-size mr-4" id="sizeTwo">
+         
+                {{ form_row(form.size.sizeTwo, {'label': 'Taille 2', 'row_attr' : { 'class' : ''}}) }}
+                {{ form_row(form.size.priceSizeTwo, {'label': 'Prix', 'row_attr' : { 'class' : ''}}) }}
+                {{ form_row(form.size.stockSizeTwo, {'label': 'Qté', 'row_attr' : { 'class' : ''}}) }}
+        </div>
+        <div class="form-size mr-4" id="sizeThree"> 
+                {{ form_row(form.size.sizeThree, {'label': 'Taille 3', 'row_attr' : { 'class' : ''}}) }}
+                {{ form_row(form.size.priceSizeThree, {'label': 'Prix', 'row_attr' : { 'class' : ''}}) }}
+                {{ form_row(form.size.stockSizeThree, {'label': 'Qté', 'row_attr' : { 'class' : ''}}) }}
+        </div>
+    </div>
+    <div class="form-row text-center">
+        <div class="col">
+        {{ form_row(form.description, {'label': 'Description'}) }}
+        </div>
+    </div>
+    <div class="form-row text-center">
+        <div class="col">
+        {{ form_row(form.dimensions, {'label': 'Dimensions'}) }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col">
+            {{ form_row(form.online, {'label': 'En ligne'}) }}
+        </div>
+    </div>
+    <button type="submit" class="btn button-form d-flex">{{ button|default('Enregistrer')}}</button>
+{{ form_end(form) }}            

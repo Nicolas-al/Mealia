@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ include('template.html.twig') }}
+
+<div class="container" id="confirm_order">
+    {{ include('order/template-steps.html.twig')}}
+
+    <div class="row mt-5" id="confirm_block">
+        <p>Votre commande n•{{ order_number }} a bien été prise en compte. Vous recevrez un récapitulatif de commande par mail</p>
+    </div>
+
+</div>
+
+{{ include('footer.html.twig') }}
+
+{% endblock %}

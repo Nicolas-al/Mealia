@@ -2,12 +2,14 @@
 
 namespace App\Form;
 
+use App\Entity\Type;
 use App\Entity\ProductCollection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 class ProductCollectionType extends AbstractType
 {
@@ -17,8 +19,12 @@ class ProductCollectionType extends AbstractType
             ->add('name')
             ->add('zeroWaste')
             ->add('imageFile', FileType::class, [
-                'required' => 'false'
+                'required' => false,
             ])
+            ->add('type', EntityType::class, [
+                'class' => Type::class
+            ])
+           
         ;
     }
 
@@ -26,6 +32,7 @@ class ProductCollectionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ProductCollection::class,
+            'attr' => ['id' => 'product_collection']
         ]);
     }
 }

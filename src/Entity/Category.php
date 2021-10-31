@@ -47,11 +47,27 @@ class Category
      */
     private $imageFile;
 
+     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $imageTwo;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="imageTwo")
+     * @var File
+     */
+    private $imageFileTwo;
+
     /**
      * @ORM\Column(type="datetime")
      * @var \DateTime
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="categories")
+     */
+    private $type;
 
     public function __construct()
     {
@@ -134,5 +150,43 @@ class Category
     public function getImageFile()
     {
         return $this->imageFile;
+    }
+    
+    public function getImageTwo()
+    {
+        return $this->imageTwo;
+    }
+
+    
+    public function setImageTwo($imageTwo)
+    {
+        $this->imageTwo = $imageTwo;
+
+        return $this;
+    }
+
+    public function getImageFileTwo()
+    {
+        return $this->imageFileTwo;
+    }
+
+    public function setImageFileTwo(File $imageTwo = null)
+    {
+        $this->imageFileTwo = $imageTwo;
+        if ($imageTwo) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }

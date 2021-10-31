@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdvantageCodeController!{% endblock %}
+
+{% block body %}
+{% include('template.html.twig') %}
+
+<div class="container" id="giftCard_container">
+    <div>
+        <h1>Bientôt en ligne</h1>
+        <p>Les cartes cadeaux seront disponibles prochainement !</p>
+        <img src="{{ asset('images/carte-cadeau.jpg')}}" alt="">
+    </div>
+    {# <div class="d-flex pt-4">
+        <div id="div_img">
+            <img src="{{asset('images/Carte-Cadeau.png')}}" alt="carte cadeau">
+        </div>
+        <div id="div_text">
+            <h4 class="text-center mb-4">Carte Cadeau</h4>
+            <p class="mt-4 w-75 m-auto">Faites plaisir à vos proches !</p>
+            <div class="d-flex justify-content-center mt-5 mb-4">
+                <div class="text-center d-flex flex-column block-logo">
+                    <img src="{{asset('images/icons8-cadeau-50.png')}}" alt="">
+                    <p class="mt-2">Choisissez votre montant</p>    
+                </div>
+                <div class="text-center d-flex flex-column block-logo">
+                    <img src="{{asset('images/icons8-courrier-marqué-50.png')}}" alt="">
+                    <p class="mt-2">Recevez un code cadeau par e-mail</p>    
+                </div>
+                <div class="text-center d-flex flex-column block-logo">
+                    <img src="{{asset('images/icons8-file-64.png')}}" alt="">
+                    <p class="mt-2">Si vous le souhaitez, télécharger et imprimez la carte cadeau</p>           
+                </div>
+            </div>
+            <p class="w-75 ml-auto mr-auto mb-3">Valable 1 an à compter de la date d'achat.</p>
+            <p class="w-75 ml-auto mr-auto mb-4">Sélectionner un montant :</p>
+            <form id="form_giftCard" method="post">
+                <div id="block_circles">
+                <div class="block-circle">
+                    <input class="input-circle-giftCard" type="radio" name="amount-giftCard" value="">
+                    <div class="circle-giftCard"></div>
+                    <p class="text-white" data-value="10">10€</p>
+                </div>
+                <div class="block-circle">
+                    <input class="input-circle-giftCard" type="radio" name="amount-giftCard" value="">
+                    <div class="circle-giftCard"></div>
+                    <p class="text-white" data-value="25">25€</p>
+                </div>
+                <div class="block-circle">
+                    <input class="input-circle-giftCard" type="radio" name="amount-giftCard" value="">
+                    <div class="circle-giftCard"></div>
+                    <p class="text-white" data-value="50">50€</p>
+                </div>
+                <div class="block-circle"> 
+                    <input class="input-circle-giftCard" type="radio" name="amount-giftCard" value="">
+                    <div class="circle-giftCard"></div>
+                    <p class="text-white" data-value="100">100€</p>
+                </div>
+                </div>
+            
+                <div class="d-flex w-75 m-auto justify-content-around mb-2">
+        
+                    <div class="def-number-input number-input safari_only mb-0" id="block_stock">
+                    
+                        <input class="nb-giftCard"  name="nb-giftCard" value="1" type="number">
+                        
+                    </div>
+                    <div id="block_btn_add_giftCard">
+                        <button type="submit" class="btn button-form" id="btn_add_giftCard"> Ajouter au panier </button>
+                    </div>
+                
+                </div>
+            </form>
+            
+
+        </div>
+    </div> #}
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

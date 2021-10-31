@@ -1,0 +1,17 @@
+{% block body %}
+
+<div>
+    {% include('template.html.twig') %}
+    <div class="d-flex">
+        {{ include('user/template.html.twig') }}
+        <div class="w-100" id="body_logout">
+            <div class="row">
+                <p>Vous êtes déconnecté(e). Vous allez être redirigé(e) vers la page d'accueil.</p>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

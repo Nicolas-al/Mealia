@@ -4,17 +4,42 @@
 <div class="container mb-5">
     <div class="row text-center mt-5" id="logo">
         <div class="col">
-            <img src="{{ asset('images/Logo-couleur-vectorisé.png') }}" alt="logo">
+            <a href="{{path('main')}}"><img src="{{ asset('images/Logo-couleur-vectorisé.png') }}" alt="logo"></a>
         </div>
     </div>
     <div class="naviguation">
     <div class="row justify-content-center mt-5">
         <ul class="nav" id="nav">
             <li class="nav-item">
-                <a class="nav-link black-item" id="home" href="/accueil"><i class="fas fa-home"></i></a>
+                <a class="nav-link black-item" id="home" href="{{ path("main")}}"><i class="fas fa-home"></i></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link black-item boutique" id="boutique"href="{{ path("category") }}">BOUTIQUE<i class="fas fa-angle-down boutique"></i></a>
+                <div id="block_boutique">
+                    <ul id="block_next_boutique">
+                        <li class="hover-nav" id ="all_products"><p><a href="{{ path('show_products')}}">Tous les produits </a> </p></li>
+                        <li class="hover-nav" id="create_textil"><p>Créations textiles</p><img id="img_creatTextile" src="{{ asset('images/icons8-chevron-droit-30.png') }}" alt="">
+                           
+                        </li>
+                        <li id="small_papeterie" class="hover-nav"><p>Petite papeterie</p>     
+                        <img id="img_petitePapeterie" src="{{ asset('images/icons8-chevron-droit-30.png') }}" alt="">
+                            
+                        </li>
+                        <li class="hover-nav" id="gift_card_nav"><p><a href="{{ path('advantage_code')}}">Carte cadeau </a></p></li>
+                    </ul>
+                    <ul id="block_next_textil">
+                        <li> </li>
+                        <li id="categories" class="hover-nav"><p> <a href="{{ path('textil_categories')}}"> Catégories</a></p></li>
+                        <li id="collections" class="hover-nav"><p> <a href="{{ path('textil_collections')}}"> Collections</a></p></li>
+                        <li></li>
+                    </ul>
+                    <ul id="block_next_papeterie">
+                        <li> </li>
+                        <li> </li>
+                        <li class="hover-nav"><p><a href="{{ path('papeterie_categories')}}">Categories</a></p></li>
+                        <li></li>
+                    </ul>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link black-item" id="apropos" href="{{path('a_propos')}}">A PROPOS</a>
@@ -25,19 +50,33 @@
              <li class="nav-item">
                 <a class="nav-link black-item" id="contact" href="{{path('contact')}}">CONTACT</a>
             </li>
-        </ul>
-    </div>
-    <div class="row justify-content-center mt-5">
-        <ul class="nav">
-            <li class="nav-item">
-                <i class="fas fa-search"></i>
+
+            <li class="nav-item" id="li_user">
+                <a href="{{path('user')}}"><i class="far fa-user"></i></a>
             </li>
-            <li class="nav-item"><img src="{{ asset('images/icons8-panier-préféré-80.png') }}" alt=""></li>
+            <li class="nav-item" id="li_search_cart">
+                 {% set cartProducts = app.session.get('panier') %}
+                 {% set cartGiftCard = app.session.get('panierGiftCard') %}
+                 {% set quantity = app.session.get('quantity') %}
+                 
+                <div class="notification">
+                {# {% for keyGiftCard in cartGiftCard %}
+                    {{ keyGiftCard }}
+                 {% endfor %} #}
+                    {# {% if cartGiftCard %}
+                        {{ cartGiftCard }} #}
+                        {# {% set cart = cartProducts|merge(cartGiftCard)  %} #}
+                        {# {{ cart }} #}
+                    {# {% endif %} #}
+                    <p id="nb_notif" data-number="{% for key in cartProducts|keys %} {{ key }} {% endfor %}">{% if (quantity) %}{{ quantity }}{% else %} 0 {% endif %}</p>
+                    <input type="hidden" value="{{ quantity }}">
+                </div>
+                <a href="{{ path('cart') }}"><img id="cart_logo" src="{{ asset('images/icons8-panier-préféré-80.png') }}" alt=""></a>
+            </li>
         </ul>
     </div>
     </div>
 
 </div>
  <hr>
-
 {% endblock %}

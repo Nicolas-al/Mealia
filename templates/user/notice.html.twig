@@ -1,0 +1,45 @@
+{% block body %}
+
+<div>
+    {% include('template.html.twig') %}
+    <div class="d-flex">
+        {{ include('user/template.html.twig') }}
+        <div class="w-100" id="body_notice">
+            <div class="row">
+                <h5>Avis</h5>
+            </div>
+            <hr>
+            <div class="row d-flex flex-column" id="block_notice">
+            {% set user = app.user %}
+                <div class="col">
+                    {% if user.avis|length > 0 %}
+                    {% for one in user.avis %}
+                        <div class="avis" class="row">
+                            <div class=" d-flex justify-content-between"> 
+                                <input type="number" name="Avis_rating" class="d-none avis-number" value="{{ one.note }}">
+                                <div class="p-2 ml-2 rating" role="optgroup">
+                                    <!-- in Rails just use 1.upto(5) -->  
+                                    <i class="far fa-star avis-rating-star avis-rating-1" data-rating="1" tabindex="0" aria-label="Rate as one out of 5 stars" role="radio"></i>
+                                    <i class="far fa-star avis-rating-star avis-rating-2" data-rating="2" tabindex="0" aria-label="Rate as two out of 5 stars" role="radio"></i>
+                                    <i class="far fa-star avis-rating-star avis-rating-3" data-rating="3" tabindex="0" aria-label="Rate as three out of 5 stars" role="radio"></i>
+                                    <i class="far fa-star avis-rating-star avis-rating-4" data-rating="4" tabindex="0" aria-label="Rate as four out of 5 stars" role="radio"></i>
+                                    <i class="far fa-star avis-rating-star avis-rating-5" data-rating="5" tabindex="0" aria-label="Rate as five out of 5 stars" role="radio"></i>
+                                </div>
+                                <p class="p-2 mr-2">De <strong>{{ one.user.firstname }}</strong> le {{ one.createdAt|date('d-m-Y') }}</p>
+                            </div>
+                            <div class="p-3">
+                                <p class="">{{ one.content }}</p>
+                            </div>
+                         </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>Vous n'avez laissé aucun avis</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

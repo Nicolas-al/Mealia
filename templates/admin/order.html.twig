@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<div class="d-flex">
+    {% include('admin/template.html.twig')%}
+    <div class="container pt-5">
+        {% for order in orders %}
+        <div class="d-flex" id="order_big_block">
+            <div class="order-block">
+                <div class="d-flex w-100 justify-content-between text-center order-top" >
+                    <p>Efféctué le {{ order.createdAt|date('d/m/Y') }}</p>
+                    <a href="{{ path('invoice_pdf', {'order_number' : order.orderNumber }) }}">Télécharger</a>
+                </div>
+                <div class="d-flex justify-content-between text-center">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex flex-column text-justify"> 
+                                <div class="d-flex">
+                                    <p class="text-uppercase mb-0 mr-3">{{ order.clientFirstName}} {{order.clientName}}</p>
+                                    <div class="order-caret-down-hide" id="{{order.id}}">
+                                        <i class="fas fa-caret-down d-flex align-items-center"></i>
+                                    </div>
+                                    <div class="order-caret-down" id="{{order.id}}">
+                                        <i class="fas fa-caret-down d-flex align-items-center"></i>
+                                    </div>
+                                    <div class="order-info" id="order_info{{order.id}}">
+                                        <p>Email : {{ order.clientEmail }}</p>
+                                        {% if order.user != NULL %}
+                                        <p>Tel :{{ order.user.phone }}</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="d-flex color-grey">
+                                    <p class="mr-3">N° {{ order.orderNumber}}</p>
+                                    <p>{{ order.price }}€</p>
+                                </div>
+                        </div>
+                        <div>
+                        {% for productOrdered in order.productsOrdereds %}
+                            <div class="d-flex mb-3">
+                                <div class="mr-3">
+                                    <img src="{{ vich_uploader_asset( productOrdered , 'imageFile') | imagine_filter('xs_thumb')}}" class="img-fluid z-depth-1">
+                                </div>
+                                <div>
+                                    <p>{{ productOrdered.name}}</p>
+                                    <p class="text-left">Quantité : <strong>{{ productOrdered.quantity }} </strong></p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                        
+                    </div>
+                    <div class="">
+                        <div>
+                            <p class="mb-0">{{ order.delivery.status }}</p>
+                            
+                            <p class="color-grey">Commandé le {{ order.createdAt|date('d/m/Y')}}</p>
+                        </div>
+                        <div class="three-points-not-active">
+                                <div class="point"></div>
+                                <div class="point"></div>
+                                <div class="point"></div>
+                        </div>
+                        <div class="block_three_points">
+                            <div class="three-points">
+                                <div class="point"></div>
+                                <div class="point"></div>
+                                <div class="point"></div>
+                            </div>
+                            <div>
+                               <p>Expédier la commande</p>
+                               <div>
+                                    <form action="" method="post" id="form_order_expedition">
+                                        <input type="text" placeholder="N° de suivi" id="tracking-number" name="tracking-number">
+                                        <label for="tracking-number"></label>
+                                        <input name="id-order-tracking" type="hidden" value="{{ order.id }}">
+                                        <button type="submit" class="btn button-form">Valider</button>
+                                    </form>
+                               </div>
+                               <p>Annuler</p>
+                            </div>
+                        </div>
+                        <div class="mt-5 mb-3">
+                            <p>Envoi vers <i class="fas fa-angle-down"></i></p>
+                            <div id="adress_order_block">
+                                <p class="text-uppercase m-0">{{ order.adress.firstName }} {{ order.adress.name }}</p>
+                                <p class="m-0">{{ order.adress.street }}</p>
+                                <p class="text-uppercase">{{ order.adress.zipCode }} {{ order.adress.city }}</p>
+                            </div>
+                        </div>
+                        {% if order.giftCard > 0 %}
+                        <div class="gift-block">
+                            <i class="fas fa-gift on"></i>
+                            <i class="fas fa-gift off"></i>
+                            <p class="pl-3 pr-3 text-left">Contient un message accompagnant le cadeau</p>
+                            <p class="comment-gift">{{ order.commentGiftCard }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+        {# {% endfor %} #}
+        {% endfor %}
+    </div>
+</div> 
+{{ include('footer.html.twig') }}
+
+{% endblock %}

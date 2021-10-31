@@ -3,10 +3,25 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-{% include('template.html.twig') %}
-{% include('admin/nav.html.twig')%}
-<div class="container" id="body_admin">
-    <h1 class="text-center" id="welcome_admin">Bonjour {{admin.firstName}}</h1>
+<div class="d-flex">
+    {% include('admin/template.html.twig')%}
+    <div class="" id="body_admin">
+        <h2 class="text-center">VUE D'ENSEMBLE</h2>
+        <div class="d-flex w-75 m-auto justify-content-around" id="block_bord_table">
+            <div class="d-flex flex-column m-auto border">
+                <p class="text-center mt-2 mb-2">Commandes</p>
+                <hr class="w-100 m-0">
+                <p class="text-center mt-2">Nouvelle(s) commande(s) : {{ nbOrder }}</p>
+            </div>
+            <div class="d-flex flex-column m-auto border">
+                <p class="text-center mt-2 mb-2">Produit(s)</p>
+                <hr class="w-100 m-0">
+                <p class="text-center mt-2">Fiches produits : {{ nbProducts }}</p>
+            </div>
+        </div>
+    </div>
+    
 </div>
- 
+{{ include('footer.html.twig') }}
+
 {% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<div id="block_search" class="pt-4 pb-4">
+    <div id="close_block"><i class="fas fa-times"></i></div>
+    <h3 class="text-center">Rechercher</h3>
+    <div class="sidebar-search w-75 m-auto d-flex">
+        <div class="input-group custom-search-form">
+            <input type="text" id="search" class="form-control" placeholder="Rechercher.." autocomplete="off"/>
+        </div>
+        <a id="search_path" ><i class="fas fa-search m-auto"></i></a>
+        <!-- /input-group -->
+    </div>
+    <ul class="nav w-75 m-auto" id="side_menu">
+        <li class="w-100">
+            {# <a href="#"> Entities <span class="fa arrow"></span></a> #}
+            <ul class="nav d-flex flex-column" id="entitiesNav">
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="" id="aside_admin_account">
+    <div class="m-auto">
+      
+        <div id="nav_block_admin_account">
+            <p class="mb-4"><i class="fas fa-store"></i> MA BOUTIQUE</p>
+            <nav id="menu_order">
+                <ul>
+                    <li class="mb-2"><a class="style" href="{{path('admin')}}"> Tableau de bord </a></li>
+                    <li class="mb-2"><a class="style" href="{{path('admin_category')}}"> Categories </a></li>
+                    <li class="mb-2"><a class="style" href="{{path('admin_collection')}}"> Collections </a></li>
+                    <li class="mb-2"><a class="style" href="{{path('admin_types')}}"> Types </a></li>
+                    <li class="mb-2"><a class="style" href="{{path('products_sheets')}}"> Fiches produits </a></li>
+                    <li class="mb-2"><a class="style" href="{{path('order_admin')}}"> Commandes </a></li>
+                    <li class="mb-2"><a class="style" href="{{path('stock')}}"> Stock </a></li>
+                    <li class="mb-2"><a class="style" href="{{path('')}}"> Paramètres </a></li>
+                    <li class="mb-2"><p id="btn_search"> Rechercher </p></li>
+                    <li class="mb-2"><a class="style" href="{{path('app_logout')}}"> Deconnexion </a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

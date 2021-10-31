@@ -3,29 +3,38 @@
 {% block body %}
 
 {% include('template.html.twig') %}
-
 <div class="container mt-5" id="apropos">
-    <div class="row">
-        <div class="offset-lg-2 col-lg-8  text-justify">
-            <p>
-            Méalia est une marque d'accessoires textiles, confectionnés à partir de tissus responsables, choisis avec soin.</p>
-            <p>
-            Derrière cet univers il y a Marine, et Marine c'est moi ! Les activités manuelles sont un moyen de me laisser aller à des émotions positives et mon escapade créative se trouve dans la couture.
-            </p>
-            <p>
-            J'associe beaucoup de mes souvenirs d'enfance à une machine à coudre, car c'est ma maman qui me fabriquait mes déguisements lorsque j'étais enfant. Couturière aguerrie, elle a su me transmettre sa rigueur, sa précision et sa technique.
-            </p>
-            <p>
-            Au fil du temps, tous ces déguisements sont stockés dans une boîte appelée « la malle aux trésors ». C'est à partir de là que ma passion pour la couture est née.
-            </p>
-            <p>
-            En espérant vous retrouver nombreux dans cette aventure !
-            </p>
+    <h4 class="text-center">Mon histoire</h4>
+    <div class="row d-flex">
+        <div class="col-lg-6  text-justify" id="block_left">
+            <div id="block_text">
+                <p>
+                Méalia est une marque d'accessoires textiles, confectionnés en majorité à partir de tissus responsables, choisis avec soin.</p>
+                <p>
+                Derrière cet univers il y a Marine, et Marine c'est moi ! Les activités manuelles sont un moyen de me laisser aller à des émotions positives et mon escapade créative se trouve dans la couture mais aussi dans les loisirs créatifs en général.
+                </p>
+                <p>
+                J'associe beaucoup de mes souvenirs d'enfance à une machine à coudre, car c'est ma maman qui me fabriquait mes déguisements lorsque j'étais enfant. Couturière aguerrie, elle a su me transmettre sa rigueur, sa précision et sa technique.
+                </p>
+                <p>
+                Au fil du temps, tous ces déguisements sont stockés dans une boîte appelée « la malle aux trésors ». C'est à partir de là que ma passion pour la couture est née.
+                Il m'est donc devenu évident de me lancer à mon compte dans ce domaine.
+                </p>
+                <p>
+                En espérant vous retrouver nombreux dans cette aventure !
+                </p>
+                <div class="d-flex">
+                    <p class="mr-2">Marine</p>
+                    <img class="" src="{{ asset('images/fleur.png')}}" alt="">
+                </div>
+            </div>
         </div>
-        <div class="col-lg-5">
-            <img src="" alt="">
+        <div class="col-lg-6" id="block_right">
+            <img class="" src="{{ asset('images/marine.jpg')}}" alt="">
         </div>
+        
     </div>
 </div>
+{{ include('footer.html.twig') }}
 
 {% endblock %}

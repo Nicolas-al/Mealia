@@ -4,27 +4,21 @@
 {% include('template.html.twig') %}
 
 
-<div class="container mt-5">
+<div class="container mt-5" id="collections_show">
     <div class="row">
         {% for collection in collections %}
         <div class="card-select">
-                <figure class="figure">
-                    <img src="{{ vich_uploader_asset( collection , 'imageFile') | imagine_filter('medium_thumb')}}" alt="{{ collection.name }}">
-                    <div class="opacity-select"></div>
-                    <figcaption>{{ collection.name }}</figcaption>
-                    {% if is_granted('ROLE_ADMIN') %}
-                    <form action="{{path('admin_products_collection', { 'id' : collection.id })}}" method="get">
-                    {% else %}
-                    <form action="{{path('products_collection', { 'id' : collection.id })}}" method="get">
-                    {% endif %}
-                    <button type="submit">Découvrir</button>
-                    </form>
-                </figure>
-            {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('update_collection', { 'id': collection.id }) }}">Modifier</a>
-            {% endif %}
+                <a class="w-75 m-auto d-block" href="{{path('products_collection', { 'id' : collection.id })}}">
+                    <figure class="figure">
+                        <img src="{{ vich_uploader_asset( collection , 'imageFile') | imagine_filter('xs_thumb')}}" alt="{{ collection.name }}">
+                        <figcaption><p href="{{path('products_collection', { 'id' : collection.id })}}">{{ collection.name }}</p></figcaption>
+                    </figure>
+                </a>
         </div>
+    
         {% endfor %}
     </div>    
 </div>
+{{ include('footer.html.twig') }}
+
 {% endblock %}

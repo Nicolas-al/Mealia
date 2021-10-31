@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="d-flex">
+    {% include('admin/template.html.twig')%}
+        <div class="" id="body_sheets">
+            <div class="d-flex mb-5">
+                <input type="search" placeholder="chercher par titre ou référence">
+                <button class="btn button-form"><a class="" id="" href="{{ path('add_product')}}">Ajouter un produit</a></button>
+            </div>
+            {{ form_start(form) }}
+            <div class="d-flex justify-content-around mt-5">
+                <button type="submit" class="btn button-form" name="disable">Désactiver</button>
+                <button type="submit" class="btn button-form" name="renew">Renouveler</button>
+                <button type="submit" class="btn button-form" name="delete">Supprimer</button>
+            </div>
+            <div class="d-flex flex-row flex-wrap mt-5 mb-5">
+             {% for product in products %}            
+                
+                    <div class="product-sheet border mr-5">
+                        {% if product.online == 0 %}
+                        <a class="" href="{{ path('update_product' ,  { 'id' : product.id})}}">
+                            <div class="not-online-opacity">
+                            </div>
+                        </a>
+                        {% endif %}
+                        {% set stock = product.size.stockSizeOne + product.size.stockSizeTwo + product.size.stockSizeThree %}
+                        {% if stock == 0 %}
+                        <a class="" href="{{ path('update_product' ,  { 'id' : product.id})}}">
+                            <div class="zero-stock-opacity">
+                            </div>
+                        </a>
+                        {% endif %}
+                        <img src="{{ vich_uploader_asset(product.image , 'oneFile')|imagine_filter('large_thumb')}}" class="" alt="">
+                        {% set productName = product.category.name ~ ' - ' ~ product.collection.name %}           
+                         {% set productLetter = productName|split('') %}
+                            {% if productLetter|length >= 24 %}
+                            {% set productName =  productName|slice(0, 24) ~ '...' %}
+                            <a class="text-center" href="{{ path('update_product' ,  { 'id' : product.id})}}">
+                            <p class="mb-0">{{ productName }}</p>
+                            </a>
+                            {% else %}
+                            {% set productName = product.category.name ~ ' - ' ~ product.collection.name %}
+                            <p>{{ productName }}</p>
+                            
+                        {% endif %}
+                        {# <p>{{ product.stock }} en stock : {{ product.price }} €</p> #}
+                        <hr class="mb-0 mt-0">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                        <input type="checkbox" class="ml-2 checkbox" name="{{ product.id }}" id="{{ product.id }}">
+                        <p>{% if product.online == 0 %} <i class="fas fa-circle" style="color : grey"></i> pas en ligne {% else %}<i class="fas fa-circle" style="color : green"></i> en ligne {% endif %}</p>
+                    </div> 
+                    {% endfor %}
+        
+                
+            {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    {{ include('footer.html.twig') }}
+
+{% endblock %}

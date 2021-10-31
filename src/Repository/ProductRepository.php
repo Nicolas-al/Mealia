@@ -19,6 +19,33 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    public function findEntitiesByName($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p.name
+                FROM App\Entity\Product p
+                WHERE p.name
+                LIKE :nam'
+            )
+            ->setParameter('nam', '%'.$str.'%')
+            // ->setParameter('collectio', '%'.$str.'%')
+            ->getResult();
+    }
+
+    public function findEntitiesByCollection($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                FROM App\Entity\Product p
+                INNER JOIN p.collection c
+                WHERE c.name
+                LIKE :collectio'
+            )
+            ->setParameter('collectio', '%'.$str.'%')
+            // ->setParameter('collectio', '%'.$str.'%')
+            ->getResult();
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

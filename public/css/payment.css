@@ -1,0 +1,355 @@
+#block_promo_code > div{
+    display: flex;
+    border: 1px dashed #ff9593;
+    width: 35%;
+    flex-direction: column;
+}
+#block_promo_code > div > p{
+    color: #ff9593;
+}
+
+#form_code{
+    display: flex;
+    margin: auto;
+    width: 80%;
+}
+#promo_code{
+    width: inherit;
+    border: 1px solid #ff9593;
+}
+
+#form_code label{
+width: 15%;
+display: none;
+}
+#avantage_btn{
+    height: fit-content;
+    border: 1px solid #ff9593;
+    background: white;
+    color: #ff9593;
+    border-radius: 0px 4px 4px 0px;
+    border-left: 0px;
+}
+
+#block_choice_delivery > div{
+    width: 35%;
+    border: 1px dashed black;
+}
+
+
+
+/* Delivery */
+
+.line-order{
+    width: 33%;
+    height: 0.11em;
+    background: #f3b76a4f;
+    margin: auto;
+}
+.line-order-active{
+    background-color: #ff9593;
+}
+.line-order-not-active{
+    background-color: #ff95934f;
+}
+.circle-order{
+    height: 50px;
+    width: 65px;
+    border-radius: 50%;
+    background-color : #ff95934f;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.circle-order p{
+    margin-top: 23%;
+    color: white;
+}
+
+.circle-active{
+    background-color: #ff9593;
+}
+.circle-not-active{
+    background-color: #ff95934f;
+}
+
+.text-circle-active{
+   color : #ff9593;
+}
+.text-cirle-not-active{
+    color: #ff95934f;
+}
+
+.space{
+    width: 11%;
+}
+#block_choice_delivery form{
+    width: 35%;
+}
+
+#delivery-form-choice{
+    border: 1px dashed;
+    margin-bottom: 5%;
+}
+.delivery-form > div{
+    width: 90%;
+}
+.delivery-form  .form-flex{
+    width: 75%;
+    display: flex;
+    margin: auto;
+}
+
+
+#block_choice_delivery h3{
+    font-weight: 300;
+}
+#block_choice_delivery .form-size{
+    display: flex;
+}
+#block_choice_delivery .form-size > label{
+    margin: auto
+}
+#block_choice_delivery .form-size > select{
+    border-color:black;
+    color: #c1c0c0;
+    margin-left: 5%;
+}
+
+
+#block_price_order > div{
+    width: 100%;
+    border: 1px dashed black;
+    display: flex;
+}
+#block_price_order > div > div{
+    margin: auto;
+    padding: 5px;
+    display: flex;
+    width: inherit;
+}
+#block_order_validate{
+    display: flex;
+    justify-content: flex-end;
+
+}
+#block_order_validate > div{
+   width: 50%;
+    text-align: center;
+    margin: auto;
+}
+#block_order_validate button{
+    background: #ff9593;
+    border: none;
+    padding: 7px 30px;
+    color: white;
+    border-radius: 5px;
+}
+#template_order div:nth-child(2) p{
+    width: 17%;
+    text-align: center;
+}
+
+#form-delivery{
+    margin : auto;
+    width: 90%;
+}
+#form-delivery .form-flex{
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    margin: auto;
+}
+
+input[type="radio"].input-summary{
+    display: none;
+}
+input[type="radio"].input-summary + label{
+    position: relative;
+    padding-left: 20%;
+    margin: auto;
+    width: 70%;
+}
+input[type="radio"].input-summary + label::before,
+input[type="radio"].input-summary + label::after{
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 0;
+    left: 0;
+    content:'';
+    width: 1rem;
+    height: 1rem; 
+    border-radius: 1rem;
+}
+input[type="radio"].input-summary + label::before{
+    border: 1px solid black;
+    background-color: #eee;
+    margin-bottom: 1%;
+}
+input[type="radio"].input-summary:checked + label::after{
+    background-color: black;
+    margin-bottom: 1%;
+} 
+
+
+/* Adresse */
+
+
+#adress_client_block{
+    border: 1px dashed black;
+    width: 40%;
+    height: fit-content;
+}
+#adress_form{
+    width: 100%;
+    display: none;
+}
+#adress_client_block form label{
+    display: none;
+}
+.user{
+    width: fit-content;
+    margin: auto;
+}
+
+.checked-block{
+    color: black;
+}
+.not-checked-block{
+    color: grey;
+
+}
+#adress_client_choice{
+    margin: auto;
+    margin-left: -5%;
+}
+#adress_other_choice{
+    margin-left: -6%;
+    margin-top: 3%;
+}
+.checked{
+    background: black;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.not-checked{
+    background: white;
+    border: 1px solid black;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#order_info_supp_form{
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+}
+#order_info_supp_form button{
+    background: #ff9593;
+    border: none;
+    padding: 7px 30px;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Summary */
+ 
+#payment_method{
+    border: 1px dashed;
+    width: 52%; 
+}
+#payment_method h5{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 13%;
+    color: #5a5858;
+}
+#payment_method form{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    width: 95%;
+}
+
+#security_payment{
+    width: 90%;
+    flex-direction: column;
+    display: flex;
+    margin-left: 10%;
+}
+#security_payment p:first-child{
+    color : grey;
+}
+#security_payment:nth-child(2){
+    color: rgb(196, 194, 194);
+}
+#lock_block{
+    align-items: baseline;
+}
+#lock_block i{
+    color: #397d9e;
+}
+#lock_block p{
+    color: #397d9e;
+    font-weight: bold;
+    margin-left: 4%;
+    font-size: 0.8em;
+}
+#payment_method .form-group:nth-child(1){
+    margin-bottom: 0.2rem;
+}
+#cb{
+    width: 20px;
+}
+#mastercard{
+    width: 25px;
+}
+#CGV_block{
+    display: flex;
+}
+#CGV_block label{
+    font-size: 0.7em;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+#payment_method #button_block button{
+   background-color: #ff9593;
+   border: none;
+   font-weight: 300;
+}
+
+#recap{
+    border: 1px dashed;
+    width: 43%;
+    color: #ff9593;
+    height: fit-content;
+}
+.flex-block p{
+    margin-top: 1rem;
+}
+
+.dashed-top{
+    border-top: 1px dashed;
+}
+#recap_adress{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+/* Confirmation commande */
+
+#confirm_block p{
+margin: auto;
+width: 40%;
+text-align: center;
+}
+
+#confirm_block{
+    margin-bottom: 5%;
+    height: 200px;
+}

@@ -1,0 +1,25 @@
+<div class="logo-mail" style="position : absolute">
+    <img src="{{ absolute_url(asset('images/logo-mail1.png')) }}" style="width : 200px ;" alt="logo">
+</div>
+<div style="width : 60%; position : absolute; left: 20%; top : 18%; font-weight: lighter; font-family: 'Dosis', sans-serif">
+    <p style="color : #ff9593; text-align: center; font-size: 30px;">BONNE NOUVELLE</p>
+    <p style="color : #ff9593; text-align: center; color: #ff9593; text-align: center; font-family: 'Dancing Script', cursive; font-size: 2em;">votre commande a été expédiée !</p>
+
+    <p style="color : #ff9593; text-align: center;">Bonjour {{ order.clientFirstName}}.</p>
+
+    <p style="text-align : center; width : 70%; margin : auto">Votre commande n•{{order.orderNumber}} a été expédiée le {{ order.createdAt|date('d/m/Y') }}.
+    <p style="text-align : center;">Son numéro de suivi est le <a href="https://www.laposte.fr/outils/suivre-vos-envois" style="color: #ff9593;">{{ trackingNumber }}</a></p>
+    <p style="text-align : center;">Pour toute question concernant votre commande, vous pouvez nous contacter par mail : contact@mealia.fr</p>
+
+
+    <p style="text-align : center; width : 70%; margin : auto">Nous vous remercions pour votre commande et vous souhaitons une merveilleuse journée.</p>
+
+    <p style="color : #ff9593; text-align : center; margin-top: 40px">Votre commande sera envoyée à l'adresse suivante :</p>
+
+    <p style="text-align : center; text-transform: uppercase;">{{ order.adress.name}} {{ order.adress.firstName}}  <br>
+    {{ order.adress.street}} <br>
+    {{ order.adress.zipCode}} {{ order.adress.city}}</p>
+</div>
+<div class="logo-mail" style="position : absolute; right : 0; bottom : -23%">
+    <img src="{{ absolute_url(asset('images/logo-mail2.png')) }}" style="width: 136px; height: 275px;" alt="logo">
+</div>

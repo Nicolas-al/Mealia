@@ -3,22 +3,95 @@
 {% block title %}Hello RegistrationController!{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="row justify-content-center">
-        <h1 class="col-5">Inscription</h1>
+<div class="container pt-5" id="registration_container">
+    <div class="row justify-content-center mb-4">
+        <p>Connectez-vous à votre compte MÉALIA ou créez en un en quelques secondes</p>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-5">
-            {{ form_start(form) }}
-                {{ form_row(form.lastName) }}
-                {{ form_row(form.firstName) }}
-                {{ form_row(form.email) }}
-                {{ form_row(form.plainPassword.first) }}
-                {{ form_row(form.plainPassword.second) }}
+    <div class="row d-flex flex-column justify-content-center m-auto" id="border_registration">
+            <div class="col text-center">
+                <h4 class="mb-4 font-weight-light">Nouveau client</h4>
+                <p class="mb-4" >Créez votre compte en quelques secondes</p>
+                <p class="mb-3">* Champs requis</p>
+            </div>
+            <div class="col">
+                {{ form_start(form) }}
+                <div class="form-row mb-3">
+                    
+                    {{ form_row(form.email, {'label': 'Adresse mail*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                    {{ form_row(form.plainPassword.first, {'label': 'mot de passe*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                 <div class="form-row mb-3">
+                    
+                    {{ form_row(form.plainPassword.second, {'label': 'Confirmation*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                 <div class="form-row mb-3">
+                    
+                    {{ form_row(form.sex, {'label': 'Sexe', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'sex-label'} }) }}
+                
+                </div>
+                <div class="form-row mb-3">
+                    
+                    {{ form_row(form.lastName, {'label': 'Nom*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                    {{ form_row(form.firstName, {'label': 'Prénom*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                    {{ form_row(form.adress.street, {'label': 'Adresse*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                        {{ form_row(form.adress.adressSupplement, {'label': 'Complément d\'adresse', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                        {{ form_row(form.adress.zipCode, {'label': 'Code Postal*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                        {{ form_row(form.adress.city, {'label': 'Ville*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                        {{ form_row(form.adress.country, {'label': 'Pays*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                        {{ form_row(form.phone, {'label': 'Telephone', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                        {{ form_row(form.dateOfBirth, {'label': 'date de naissance', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3" id="block_button_registration">
+                    <p>En créant votre compte, vous acceptez notre politique de confidentialité et nos Conditions d'utilisation. 
+                    A tout moment, vous pouvez faire valoir vos droits d'accès, d'informations, d'ajout et de suppression de données 
+                    en vous connectant a votre compte ou en faisant la demande depuis la page de contact.</p>
+                   <button type="submit" class="btn btn-primary button-form">S'inscrire !</button>
+                </div>
 
-                <button type="submit" class="btn btn-primary">S'inscrire !</button>
-            {{ form_end(form) }}
-        </div>
+                 
+                {{ form_end(form) }}
+            </div>
     </div>
 </div>
+{{ include('footer.html.twig') }}
+
 {% endblock %}

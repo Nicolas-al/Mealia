@@ -1,0 +1,15 @@
+<div class="logo-mail" style="position : absolute">
+    <img src="{{ absolute_url(asset('images/logo-mail1.png')) }}" style="width : 200px ;" alt="logo">
+</div>
+<div style="width : 60%; position : absolute; left: 20%; top : 18%; font-weight: lighter; font-family: 'Dosis', sans-serif">
+    <p style="color : #ff9593; text-align: center; font-size: 30px;">BONNE NOUVELLE</p>
+    <p style="color: rgb(66 65 65); text-align: center; text-align: center; font-family: 'Dancing Script', cursive; font-size: 1.5em;">Le stock {{ category }} {{ collection }} a été réapprovisionné, ce produit est maintenant disponible.</p>
+    <p style="text-align : center;">Vous pouvez accéder au produit en cliquant sur le lien suivant :<a href="https://localhost:8000{{ path('show_product' ,  { 'id' : id})}}"> https://localhost:8000{{ path('show_product' ,  { 'id' : id})}}</a></p>
+    <p style="text-align : center;">Vous pouvez donc de nouveau commander ce produit depuis notre catalogue en ligne.</p>
+    <p style="text-align : center;">Nous vous rappelons que le réapprovisionnement reste tout de même limité, étant donné la nature artisanale de nos produits</p>
+    <p style="text-align : center; width : 70%; margin : auto">Nous vous remercions pour votre intérêt et vous souhaitons une merveilleuse journée.</p>
+
+</div>
+<div class="logo-mail" style="position : absolute; right : 0; bottom : -23%">
+        <img src="{{ absolute_url(asset('images/logo-mail2.png')) }}" style="width: 136px; height: 275px;" alt="logo">
+</div>

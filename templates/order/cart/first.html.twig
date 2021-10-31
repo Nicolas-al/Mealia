@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% include('template.html.twig') %}
+<div class="container" id="block_cart">
+    <h1 class="">Votre Panier</h1>
+
+{% if app.session.get('panier') != null %}
+    {% if items | length > 0 %}
+    <table class="table">
+        <thead>
+            <th>Produit(s)</th>
+            <th class="text-center">Prix</th>
+            <th class="text-center">Quantité</th>
+            <th class="text-center">Taille</th>
+            <th class="text-center">sous-total</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr class="tr-cart" data-product-id-size="{{item.product.id}}-{{item.size}}">
+                    <th>{{ item.product.category.name  }} - {{ item.product.collection }}</th>
+                    {% if item.size == "stockSizeOne" %}
+                    <th class="text-center">{{ item.product.size.priceSizeOne }} €</th>
+                    {% elseif item.size == "stockSizeTwo" %}
+                    <th class="text-center">{{ item.product.size.priceSizeTwo }} €</th>
+                    {% elseif item.size == "stockSizeThree" %}
+                    <th class="text-center">{{ item.product.size.priceSizeThree }} €</th>
+                    {% endif %}
+                    <th class="text-center quantity">{{ item.quantity }}</th>
+                    <th class="text-center" id="size_cart" data-size="{{ item.size }}">{% if item.size == 'stockSizeOne' %}{{ item.product.size.sizeOne }}{% elseif item.size == 'stockSizeTwo' %}{{ item.product.size.sizeTwo }}{% elseif item.size == 'stockSizeThree' %}{{ item.product.size.sizeThree }}{% endif %}</th>
+                    {% if item.size == "stockSizeOne" %}
+                    <th class="text-center">{{ item.product.size.priceSizeOne * item.quantity }} €</th>
+                    {% elseif item.size == "stockSizeTwo" %}
+                    <th class="text-center">{{ item.product.size.priceSizeTwo * item.quantity }} €</th>
+                    {% elseif item.size == "stockSizeThree" %}
+                    <th class="text-center">{{ item.product.size.priceSizeThree * item.quantity }} €</th>
+                    {% endif %}
+                    <th class="text-center">
+                        <button onclick="removeCart({{ item.product.id }},'{{item.size}}')" class="btn-small bg-white border-0">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </th>
+                </tr>
+            {% endfor %}
+            {# {% for itemGiftCard in itemsGiftCard %}
+                {% if itemGiftCard.giftCard  == 1 %}
+                    {% set price = 10 %}
+                {% elseif itemGiftCard.giftCard  == 2 %}
+                    {% set price = 25 %}
+                
+                {% elseif itemGiftCard.giftCard  == 3 %}
+                    {% set price = 50 %}
+                {% elseif itemGiftCard.giftCard  == 4 %}
+                    {% set price = 100 %}
+                {% endif %}
+            
+                <tr>
+                    <th class="tr-cart" data-giftCard-id="{{itemGiftCard.giftCard}}">Carte cadeau</th>   
+                    <th class="text-center">{{ price }} €</th> 
+                    <th class="text-center quantity">{{ itemGiftCard.quantity }}</th>
+                    <th class="text-center"> {{ price * itemGiftCard.quantity }} €</th>
+                    <th class="text-center">
+                        <button onclick="removeCart({{ itemGiftCard.giftCard }})" class="btn-small bg-white border-0">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </th> 
+                </tr>
+            {% endfor %} #}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total : </td>
+                <td class="text-center">{{ total }} €</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="line"></div>
+    <div class="row justify-content-end">
+        <div class="mr-5">
+            <a class="button disabled" id="btn_continue" href="{{ path('category')}}">continuer mes achats</a>
+        </div>
+        <div class="">
+            <a class="button active" id="btn_validateOrder" href="{{ path('order_user_account')}}">valider la commande</a>
+        </div>
+    
+    </div>
+    {% else %}
+        <p class="text-center">suprise, c'est vide !</p>
+    {% endif %}
+{% else %}
+    <p class="text-center">suprise, c'est vide !</p>
+{% endif %}
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

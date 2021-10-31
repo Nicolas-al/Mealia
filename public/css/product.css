@@ -1,6 +1,20 @@
 #product_container{
-
+    color : #666;
 }
+
+.title-one-product{
+    color: #333;
+}
+#priceSizeOne{
+    display: block;
+}
+.price-style{
+    font-size: 20px;
+    color: #ff9593;
+    font-weight: bold;
+    display: none;
+}
+
 .addCart-msg{
     width: 100%;
     display: none;
@@ -35,6 +49,7 @@
 .product-small div{
     width: 137px;
     height: 148px;
+    cursor: pointer;
 }
 .product-small img{
     width: 137px;
@@ -42,6 +57,22 @@
 }
 .product-L:nth-child(1n+2){
     display: none;
+}
+
+#sizes{
+    margin-top: 11%;
+    width: 75%;
+    margin-left: auto;
+}
+
+.size_block{
+    width: 8%;
+    border: 1px solid;
+    text-align: center;
+    margin-right: 2%;
+}
+.size_block p{
+    margin-bottom: 0;
 }
 
 #success{
@@ -61,8 +92,105 @@
     margin-right: -4px;
     background: white;
 }
+#block_cart_button{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 11%;
+}
 #block_stock input{
-    width: 35px;
+    width: 45px;
+    height: 44px;
+    text-align: center;
+}
+.btn_add_cart:nth-child(2), .btn_add_cart:nth-child(3), .btn_add_cart:nth-child(4){
+    display: none;
+}
+
+.btn_add_cart{
+    padding: 10px 31px;
+}
+
+#btn_add_cart:hover{
+    color: white;
+    text-decoration: none;
+}
+.red-stock{
+    color: #A61A2E;
+}
+.green-stock{
+    color: #77a464;
+}
+#no_stock{
+    width: 90%;
+    text-align: center;
+    margin-top: 3%;
+    display: none;
+    position: absolute;
+    margin-top: -9%;
+}
+#low_stock{
+    width: 67%;
+    text-align: center;
+    margin-top: 12px;
+    display: none;
+    position: absolute;
+    margin-top: -9%;
+}
+#good_stock{
+    width: 62%;
+    text-align: center;
+    margin-top: 12px;
+    display: none;
+    position: absolute;
+    margin-top: -9%;
+}
+
+
+#btn_stock_mail{
+    background: white;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 3%;
+}
+#btn_stock_mail:focus{
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+#zero_stock_msg_error{
+    display : none;
+    position: absolute;
+    margin-top: 6%;
+    border: 1px solid;
+    width: 60%;
+    text-align: center;
+    background: aliceblue;
+    margin-left: 20%;
+}
+#zero_stock_msg_ok{
+    display : none;
+    position: absolute;
+    margin-top: 20%;
+    border: 1px solid;
+    width: 60%;
+    padding: 6%;
+    text-align: center;
+    background: aliceblue;
+    margin-left: 20%;
+}
+#btn_stock_mail:hover{
+    color: #ff9593;
+}
+.fa-circle{
+    font-size: 9px;
+}
+.line-description{
+    height: 1px;
+    width: 45%;
+    margin: auto;
+    background: #333;
+    align-self: center;
+    display: flex;
 }
 .plus{
     border: 1px solid grey;
@@ -71,11 +199,138 @@
     background: white;
 }
 
+.msg-insuffiant-stock{
+    display: none;
+    color: #A61A2E;
+    position: absolute;
+    margin-top: 11%;
+}
+
+/* Caroussel produits categorie */
+
+#products_complements{
+    margin-top: 5%;
+}
+#products_complements h4{ 
+    color: #333;
+    font-weight: 300;
+}
+.slick-dots{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+    width: 25%;
+    margin: auto;
+}
+
+.slick-dots li button{
+        display: block;
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        
+        border: none;
+        border-radius: 100%;
+        background-color: rgb(189, 187, 183);
+        
+        text-indent: -9999px;
+    
+}
+li.slick-active button {
+    background-color: rgb(0, 0, 0);
+}
+.slick-arrow{
+    border: 1px solid #0000007a;
+    background: #3934615c;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    height: 72%;
+}
+.slick-arrow:focus{
+    outline: 1px dotted #0000007a;
+}
+
+.slick-prev{
+    left: 4%;
+}
+.slick-next{
+    right: 4%;
+}
+.fa-angle-right{
+    font-size: 35px;
+    color: white;
+}
+.fa-angle-left{
+    font-size: 35px;
+    color: white;
+}
+
 /* couleur changent une sur deux pour chaque avis */
-#avis:nth-of-type(2n){
-    background-color: #80808021;
+
+.avis{
+    box-shadow: 0px 0px 6px #fcaeac73;
+    background: white;
+    border-radius: 3px;
+    margin-bottom: 3%;
+}
+.avis div:first-child{
+    border-bottom: 1px dashed #fcaeac9c;
+    height: 43px;
+}
+
+
+#Avis .container form > div:first-child{
+    display: flex;
+    align-items: center;
+}
+
+#Avis{
+    display: none;
+}
+.number-rating{
+    display: none;
+}
+#msg_avis_required{
+    display: none;
+    border: 1px solid #fdcac87a;
+    padding: 3px 10px;
+    position: absolute;
+    width: fit-content;
+    background: #fdcac87a;
+}
+.fa-exclamation-circle{
+    color: #ff00008c;
+}
+
+#description_title{
+    cursor: pointer;
 }
 #avis{
-    box-shadow: 0px 4px 6px grey;
+    cursor: pointer;
+}
+#block_descrpt_avis{
+   
+    margin: auto;
+    margin-top: 5%;
+}
+#title_descrpt_avis{
+    margin-top: 5%;
+    margin-left: 12.5%;
+    justify-content: center;
+}
+#p_description{
+    margin-top: 2%;
+}
+#p_dimensions{
+}
+
+
+
+.black{
+    color: black;
+}
+.grey{
+    color: rgb(202, 198, 198);
 }
 

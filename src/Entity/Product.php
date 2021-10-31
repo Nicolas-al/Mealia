@@ -22,26 +22,21 @@ class Product
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products", cascade={"persist"})
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
 
     /**
-     * @ORM\OneToOne(targetEntity=Price::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $price;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $description;
 
-    /**
-     * @ORM\OneToOne(targetEntity=AddInformation::class, cascade={"persist", "remove"})
-     */
-    private $addInformation;
 
     /**
      * @ORM\ManyToOne(targetEntity=ProductCollection::class, inversedBy="products", cascade={"persist"})
@@ -66,9 +61,29 @@ class Product
     private $avis;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $stock;
+    private $text;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $online;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $dimensions;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Size::class, mappedBy="product", cascade={"persist", "remove"})
+     */
+    private $size;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="product")
+     */
+    private $type;
 
     public function __construct()
     {
@@ -80,6 +95,18 @@ class Product
         return $this->id;
     }
 
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -88,18 +115,6 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    public function getPrice(): ?Price
-    {
-        return $this->price;
-    }
-
-    public function setPrice(Price $price): self
-    {
-        $this->price = $price;
 
         return $this;
     }
@@ -193,17 +208,77 @@ class Product
         return $this;
     }
 
-    public function getStock(): ?int
+    public function getText(): ?string
     {
-        return $this->stock;
+        return $this->text;
     }
 
-    public function setStock(int $stock): self
+    public function setText(?string $text): self
     {
-        $this->stock = $stock;
+        $this->text = $text;
 
         return $this;
     }
+
+    public function getOnline(): ?bool
+    {
+        return $this->online;
+    }
+
+    public function setOnline(bool $online): self
+    {
+        $this->online = $online;
+
+        return $this;
+    }
+
+    public function getDimensions(): ?string
+    {
+        return $this->dimensions;
+    }
+
+    public function setDimensions(string $dimensions): self
+    {
+        $this->dimensions = $dimensions;
+
+        return $this;
+    }
+
+    public function getSize(): ?Size
+    {
+        return $this->size;
+    }
+
+    public function setSize(?Size $size): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($size === null && $this->size !== null) {
+            $this->size->setProduct(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($size !== null && $size->getProduct() !== $this) {
+            $size->setProduct($this);
+        }
+
+        $this->size = $size;
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    
 
 
 }

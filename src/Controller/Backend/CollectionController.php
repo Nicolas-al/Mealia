@@ -25,14 +25,14 @@ class CollectionController extends AbstractController
     {
         $collections = $repoCollection->findAll();
 
-        return $this->render('collection/index.html.twig', [
+        return $this->render('admin/collection/index.html.twig', [
             'controller_name' => 'CollectionController',
             'collections' => $collections
         ]);
     }
 
     /**
-     * @Route("/admin/collection/create", name="add_collection")
+     * @Route("/admin/collection/nouvelle", name="add_collection")
      */
     public function add(Request $request)
     {
@@ -54,7 +54,7 @@ class CollectionController extends AbstractController
     }
 
      /**
-     * @Route("/admin/collection/edit/{id}", name="update_collection", methods="GET|POST")
+     * @Route("/admin/collection/modifier/{id}", name="update_collection", methods="GET|POST")
      * @param ProductCollection $collection
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -66,7 +66,7 @@ class CollectionController extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
          $this->em->flush();
-         return $this->redirectToRoute('category');
+            return $this->redirectToRoute('collection');
         }
        return $this->render('collection/update.html.twig', [
         'collection' => $collection,

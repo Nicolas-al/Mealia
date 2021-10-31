@@ -1,0 +1,75 @@
+{% block body %}
+
+<div>
+    {% include('template.html.twig') %}
+    <div class="d-flex">
+        {{ include('user/template.html.twig') }}
+        <div class="w-100" id="body_info_perso">
+            <div class="row">
+                <h5>Informations personnelles</h5>
+            </div>
+            <hr>
+            {% set user = app.user %}
+            <div class="row d-flex flex-column" id="block_info_perso">
+                <div class="col d-flex flex-column">
+                    <h5>Mon identité</h5>
+                    <p class="mb-4 mt-4 text-center">modifier vos informations à tout moment.</p>
+                    <p class="mb-3 text-center">* Champs requis</p>
+                </div>
+                <div class="col d-flex flex-column">
+                    <div class="info-perso-field">
+                        <p class="m-0">Civilité</p>
+                        <p>{{ user.sex }}</p>
+                    </div>
+                    <div class="info-perso-field">
+                        <p class="m-0">Nom*</p>
+                        <p>{{ user.lastName }}</p>
+                    </div>
+                    <div class="info-perso-field">
+                        <p class="m-0">Prénom*</p>
+                        <p>{{ user.firstName }}</p>
+                    </div>
+                    <div class="info-perso-field">
+                        <p class="m-0">Adresse mail*</p>
+                        <p>{{ user.email }}</p>
+                    </div>
+                    <div class="info-perso-field">
+                        <p class="m-0">Téléphone</p>
+                        <p>{{ user.phone }}</p>
+                    </div>
+                    <div class="info-perso-field">
+                        <p class="m-0">Date de naissance</p>
+                        <p>{{ user.dateOfBirth|date('y-m-d') }}</p>
+                    </div>
+                    <div class="info-perso-field">
+                        <p class="m-0">Mot de passe actuel*</p>
+                        <p>*****</p>
+                    </div>
+                    <div>
+                        <button type="button" class="btn button-form"> <a href="{{ path('account_update_info_perso')}}">Modifier</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="block_adress_perso">
+                <div class="col">
+                    <div>
+                        <h5>Mon adresse</h5>
+                        <p class="mt-5 text-center">Définissez votre adresse de livraison. Cette dernière est présélectionnée lors de vos commandes.</p>
+                    </div>
+                    <div>
+                        <p class='m-0'>{{ user.firstName }} {{ user.lastName }}</p>
+                        <p class='m-0'>{{ user.adress.street }}</p>
+                        <p class=''>{{ user.adress.zipCode }} {{ user.adress.city}}</p>
+                    </div>
+                    <div>
+                        <button type="button" class="btn button-form"> <a href="{{ path('')}}">Modifier</a></button>
+                    </div class="mb-5">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

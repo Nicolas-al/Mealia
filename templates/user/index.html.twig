@@ -1,0 +1,22 @@
+
+{% block body %}
+
+<div>
+    {% include('template.html.twig') %}
+    <div class="d-flex h-100">
+        {{ include('user/template.html.twig') }}
+        <div class="w-100" id="block_user_account">
+            <div class="w-50 m-auto">
+        {% set user = app.user %}
+            <p class="text-center">Bonjour {{ user.firstName }} !</p>
+            <p class="text-center">Bienvenue sur votre compte client, vous pouvez y gérer vos informations personnelles ainsi que vos commandes.</p>
+            <p class="text-center mt-5">Pour contacter le service client :
+            accédez au formulaire de contact ou utilisez l'adresse mail : contact@mealia.fr</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

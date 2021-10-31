@@ -2,6 +2,19 @@ body{
     font-family: 'Dosis', sans-serif;
 }
 
+.price{
+    font-family: 'Dancing Script', cursive;
+}
+
+footer{
+    margin-top: 15%;
+}
+button:focus{
+    outline: none;
+
+}
+/* template */
+
 #nav a:hover{
     color: #ff9593;
 }
@@ -11,7 +24,16 @@ body{
 
 #logo img{
     width: 25%;
-    height: 280px;
+}
+#li_user{
+    display: flex;
+    position: absolute;
+    margin-top: 1%;
+    right: 12%;
+}
+.fa-user{
+    font-size: 1.4em;
+    color: #515454;
 }
 
 .fa-angle-down{
@@ -27,9 +49,281 @@ body{
 .pink-item{
     color: #ff9593;
 }
+.button-form{
+    background-color: #ff9593;
+    border: none;
+    font-weight: 300;
+    color: white;
+    margin: auto;
+}
+.button-form:hover{
+    color: white;
+}
+
+#block_boutique{
+    display: flex;
+    background: white;
+    box-shadow: 0px 0px 1px #8080808a;
+    position: absolute;
+    z-index: 3;
+    display: none;
+}
+#block_boutique li p{
+    cursor: pointer;
+}
+#block_boutique ul:nth-child(2), #block_boutique ul:nth-child(3){
+    padding: 0px;
+}
+#block_boutique li{
+    list-style: none;
+}
+#block_boutique li a{
+    color: black;
+}
+#block_boutique li a:hover{
+    text-decoration: none;
+    color: black;
+}
+#block_next_textil{
+    display: none;
+}
+
+#block_next_textil li p{
+    padding: 15px 35px 12px 35px;
+    margin-bottom: 0px;
+}
+#block_next_textil li:first-child{
+    margin-top: 66px;
+}
+#block_next_papeterie{
+    display: none;
+}
+#block_next_papeterie li:first-child{
+    margin-top: 117px;
+}
+#block_next_boutique li p{
+    
+    padding: 15px 0px 12px 36px;
+    margin-bottom: 0px;
+}
+#block_next_boutique li:first-child p{
+    padding-top: 30px;
+}
+#block_next_boutique li:last-child p{
+    padding-bottom: 30px;
+}
+
+#block_next_boutique{
+    padding: 0px;
+}
+#block_next_papeterie li p{
+    padding: 15px 35px 12px 35px;
+    margin-bottom: 0px;
+}
 
 
-/* page d'acceuil */
+#block_next_boutique li:nth-child(2), #block_next_boutique li:nth-child(3){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#block_next_boutique img{
+    width: 6%;
+    margin-top: 4%;
+    margin-right: 20px;
+}
+
+
+/* ---- SECURITY ------ */
+
+#account{
+    width: 80%;
+    margin: auto;
+}
+
+/* registration */
+
+#border_registration{
+    border : 1px dashed #ff9593;
+    width: 70%;
+    padding: 3% 17%;
+}
+#border_registration div:first-child{
+    color: #ff9593;
+}
+
+.label-registration{
+    display: none;
+}
+.sex-label{
+    display: block;
+    color: grey;
+}
+#registration_container form legend{
+    display: none;
+}
+#registration_dateOfBirth{
+    justify-content: space-around;
+    border: 1px solid #ff9593;
+    padding: 3px;
+
+}
+#registration_dateOfBirth select{
+    width: 32%;
+    border-color : #c1c0c0;
+}
+
+#registration_block_info{
+    border: 1px dashed;
+    border-radius: 3px;
+    width: 49%;
+    margin-right: 2%;
+}
+
+.form-size{
+    width: 33%;
+    justify-content: space-between;
+    display: none;
+}
+.form-size:nth-child(1){
+    display: flex;
+}
+.form-size > div:first-child{
+    width: 56%;
+}
+.form-size > div:nth-child(2){
+    width: 40%;
+}
+.form-size input{
+    border-color : #ff9593;
+    
+}
+.form-size input::placeholder{
+    color: #c1c0c0;
+}
+
+.form-size select{
+    border-color : #ff9593;
+    color: #c1c0c0;
+}
+#registration_sex{
+    display: flex;
+    justify-content: space-around;
+}
+
+#block_button_registration{
+    width: 65%;
+    text-align: justify;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+#block_button_registration p{
+    font-size: 0.8em;
+}
+#block_button_registration button{
+    background-color: #ff9593;
+    border: none;
+}
+
+/* login */
+#security_block{
+    color: #ff9593;
+}
+#login_block{
+    width: 49%;
+    box-shadow: 0px 0px 10px #a99a9a;
+}
+#login_container{
+    background: #e18b8a73;
+    color : white;
+    border-radius: 3px;
+}
+#login_container form{
+    width: 70%;
+}
+
+#account_block{
+    width: 100%;
+    color: #ff9593;
+}
+
+.input-visible:focus{
+    border-color: white;
+    box-shadow: 0 0 0 0.2rem white;
+}
+
+#mdp_forbidden{
+    text-decoration: underline;
+}
+
+#btn_new_client{
+    background-color: white;
+    color: #ff9593;
+    border-radius: 7px;
+    width: 70%;
+    border: 1px solid;
+    margin: auto;
+}
+#no_account_block{
+    width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px dashed;
+    color: #ff9593;
+}
+
+#btn_no_account{
+    background-color: white;
+    color: #ff9593;
+    border-radius: 7px;
+    width: 20%;
+    border: 1px solid;
+    margin: auto;
+}
+
+#btn_login{
+    background-color: white;
+    color: #ff9593;
+    border-radius: 7px;
+}
+
+/* naviguation template */
+
+#li_search_logo{
+    display: flex;
+    position: absolute;
+    right: 4%;
+    height: 39px;
+    align-items: center;
+}
+#li_search_cart{
+    display: flex;
+    position: absolute;
+    right: 6%;
+}
+#cart_logo{
+    width: 39px;
+}
+.notification{
+    height: 19px;
+    background: #fcbebd;
+    width: 19px;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: -38%;
+    border: 1px solid #fcbebd;
+}
+.notification p{
+    display: flex;
+    width: 6px;
+    font-size: 0.75em;
+    font-weight: bold;
+    margin: auto;
+}
+
+
+/* page d'accueil */
 
 .cercle{
     height: 200px;
@@ -41,9 +335,34 @@ body{
     height: inherit;
 }
 
+#banner{
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+#banner figure{
+    width: 70%;
+    margin: auto;
+}
+#banner img{
+    width: 85%;
+    display: flex;
+    margin: auto;
+}
+#banner figure p{
+
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    margin-top: 9%;
+    font-size: 1.9em;
+}
+
 /* étoiles Avis */
 .fa-star{
     color: #fbaeac;
+}
+
+.fa-star-half{
+    color: #fcaeac
 }
 
 
@@ -56,7 +375,7 @@ body{
     position: relative;
     padding-right: 5px;
     margin-left: -5px;
-    color: #2e270a;
+    color: #42403c;
 }
 .rating .selected:before {
     content: '\f005';
@@ -68,24 +387,40 @@ body{
 
 /* page Category et Collection */
 
-.card-select{
+#categories_show .card-select{
     width: 30%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 60px;
 }
 
-.figure{
-    width: 235px;
-    height: 340px;
+#collections_show .card-select{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+
+#categories_show .figure{
+    width: 62%;
+    height: 250px;
     display: block;
     margin: auto;
 }
 
-.figure img{
-    position: absolute;
-    width: 235px;
-    height: 340px;
+#categories_show .figure img:nth-child(1){
+    width: 100%;
+    margin-bottom: -4%;
+}
+
+#collections_show .figure img:nth-child(1){
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+}
+.figure img:nth-child(3){
+    margin-left: 16%;
+    width: 68%;
 }
 
 .opacity-select{ 
@@ -95,32 +430,45 @@ body{
     opacity: 0.4;
     position: absolute;
 }
-.figure figcaption{
-    position: absolute;
-    width: inherit;
-    text-align: center;
-    margin-top: 8%;
+#categories_show .figure figcaption{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     font-size: 1.2em;
 }
-
-.figure form{
-    margin-top: 11%;
-    text-align: center;
-    width: inherit;
-    position: absolute;
-}
-.figure form button{
-    border-radius: 17px;
-    background: #f1642b;
+#collections_show .figure figcaption{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    border: none;
-    padding: 6px 20px;
-    
+    font-size: 1.2em;
+    margin-top: 21%;
 }
-.figure form button:focus{
-    outline: none;
+#categories_show .figure figcaption p{
+    color: black;
+    margin: auto;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9em;
 }
+
+#collections_show .figure figcaption p{
+    color: black;
+    font-weight: 100;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1em;
+
+}
+.card-select > a{
+    cursor: pointer;
+}
+.card-select > a:hover{
+    color: black;
+    text-decoration: none;
+}
+
 
 /* page_contact */
 
@@ -128,6 +476,7 @@ body{
     width: 80%;
     margin: auto;
     margin-top: 5%;
+    margin-bottom: 10%;
 }
  
 .contact-line{
@@ -136,6 +485,16 @@ body{
     width: 6%;
     height: 1px;
     background: black;
+}
+#text-contact{
+    width: 40%;
+}
+
+#block_contact_form{
+    width: 50%;
+}
+address a{
+    color: #ff9593;
 }
 
 .title{
@@ -164,7 +523,127 @@ body{
     width: 10%;
     background: black;
 }
+#points_sale_block figure{
+    width: 75%;
+    margin: auto;
+}
 
 #Kabanon{
     font-size: 20px;
 }
+
+/* a propos */
+
+#apropos h4{
+    margin-bottom: 5%;
+    font-family: 'Dancing Script', cursive;
+    color: #ff9593;
+}
+
+
+#apropos #block_text{
+    width: 75%;
+    margin-left: 25%;
+}
+
+#apropos #block_text div > img{
+    width: 20px;
+    height: 20px;
+}
+#apropos img{
+    display: flex;
+    width: 60%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* page carte cadeau */
+
+#giftCard_container img{
+    width: 100%;
+    height: 650px;
+}
+#giftCard_container h1{
+    position: absolute;
+    text-transform: uppercase;
+    margin-top: 5%;
+    font-family: 'Arima Madurai', cursive;
+    color: white;
+    font-size: 3em;
+    margin-left: 33%;
+}
+#giftCard_container p{
+    position: absolute;
+    margin-top: 24%;
+    font-family: 'Dancing script', cursive;
+    color: white;
+    margin-left: 11%;
+    font-size: 2.4em;
+    width: 40%;
+}
+
+/* #giftCard_container{
+    color: #101010cc;
+}
+
+#giftCard_container #div_img{
+    width: 60%;
+}
+
+#giftCard_container #div_img img{
+    width: 100%;
+}
+#giftCard_container #div_text{
+    width: 40%;
+}
+#giftCard_container #div_text div:nth-child(3) img{
+    width: 35px;
+}
+#giftCard_container .block-logo{
+    align-items: center;
+    width: 29%;
+}
+#giftCard_container .block-logo p{
+    font-size: 0.9em;
+}
+#div_text h4{
+    text-transform: uppercase;
+}
+
+.circle-giftCard{
+        height: 45px; 
+		width: 45px; 
+		background-color: black;
+		border-radius: 50%; 
+}
+.block-circle{
+    width: 25%;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+}
+#block_circles{
+    width: 67%;
+    margin: auto;
+    display: flex;
+    margin-bottom: 8%;
+}
+.input-circle-giftCard{
+    display: contents;
+}
+.block-circle p{
+    margin-bottom: 0px;
+    margin-top: 9px;
+    position: absolute;
+}
+#block_btn_add_giftCard{
+    width: 62%;
+}
+#btn_add_giftCard{
+    width: 100%;
+    height: 100%;
+}
+.nb-giftCard{
+    border: 1px solid #ff9593;
+} */

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegistrationController!{% endblock %}
+
+{% block body %}
+
+
+<div class="row d-flex flex-column justify-content-center m-auto" id="border_registration">
+            <div class="col text-center">
+                <h4 class="mb-5">Commander sans compte client</h4>
+                <p class="mb-3 mt-2">* Champs requis</p>
+            </div>
+            <div class="col">
+                {{ form_start(form) }}
+                <div class="form-row mb-3">
+                    
+                    {{ form_row(form.clientEmail, {'label': 'Adresse mail*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                    {{ form_row(form.clientName, {'label': 'Nom*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                    {{ form_row(form.clientFirstName, {'label': 'Prénom*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                    {{ form_row(form.adress.street, {'label': 'Adresse*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                        {{ form_row(form.adress.adressSupplement, {'label': 'Complément d\'adresse', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                        {{ form_row(form.adress.zipCode, {'label': 'Code Postal*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                        {{ form_row(form.adress.city, {'label': 'Ville*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3">
+                    
+                        {{ form_row(form.adress.country, {'label': 'Pays*', 'row_attr' : {'class' : 'form-size'}, 'label_attr' : {'class' : 'label-registration'} }) }}
+                    
+                </div>
+                <div class="form-row mb-3" id="block_button_registration">
+                   <button type="submit" class="btn btn-primary button-form">Valider</button>
+                </div>
+
+                 
+                {{ form_end(form) }}
+            </div>
+    </div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

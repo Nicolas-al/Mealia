@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use App\Entity\Adress;
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -66,9 +68,52 @@ class User implements UserInterface
      */
     private $avis;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Sex;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateOfBirth;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="user")
+     */
+    private $Orders;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $newsletter;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $resetToken;
+
+    /**
+     * @ORM\OneToMany(targetEntity=GiftCard::class, mappedBy="user")
+     */
+    private $giftCards;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Avoir::class, mappedBy="user")
+     */
+    private $avoirs;
+
     public function __construct()
     {
         $this->avis = new ArrayCollection();
+        $this->Orders = new ArrayCollection();
+        $this->giftCards = new ArrayCollection();
+        $this->avoirs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -257,6 +302,156 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($avi->getUser() === $this) {
                 $avi->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPhone(): ?int
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?int $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getSex(): ?string
+    {
+        return $this->Sex;
+    }
+
+    public function setSex(string $Sex): self
+    {
+        $this->Sex = $Sex;
+
+        return $this;
+    }
+
+    public function getDateOfBirth(): ?\DateTimeInterface
+    {
+        return $this->dateOfBirth;
+    }
+
+    public function setDateOfBirth(\DateTimeInterface $dateOfBirth): self
+    {
+        $this->dateOfBirth = $dateOfBirth;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->Orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->Orders->contains($order)) {
+            $this->Orders[] = $order;
+            $order->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->Orders->removeElement($order)) {
+            // set the owning side to null (unless already changed)
+            if ($order->getUser() === $this) {
+                $order->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getNewsletter(): ?bool
+    {
+        return $this->newsletter;
+    }
+
+    public function setNewsletter(?bool $newsletter): self
+    {
+        $this->newsletter = $newsletter;
+
+        return $this;
+    }
+
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
+
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GiftCard[]
+     */
+    public function getGiftCards(): Collection
+    {
+        return $this->giftCards;
+    }
+
+    public function addGiftCard(GiftCard $giftCard): self
+    {
+        if (!$this->giftCards->contains($giftCard)) {
+            $this->giftCards[] = $giftCard;
+            $giftCard->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGiftCard(GiftCard $giftCard): self
+    {
+        if ($this->giftCards->removeElement($giftCard)) {
+            // set the owning side to null (unless already changed)
+            if ($giftCard->getUser() === $this) {
+                $giftCard->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Avoir[]
+     */
+    public function getAvoirs(): Collection
+    {
+        return $this->avoirs;
+    }
+
+    public function addAvoir(Avoir $avoir): self
+    {
+        if (!$this->avoirs->contains($avoir)) {
+            $this->avoirs[] = $avoir;
+            $avoir->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvoir(Avoir $avoir): self
+    {
+        if ($this->avoirs->removeElement($avoir)) {
+            // set the owning side to null (unless already changed)
+            if ($avoir->getUser() === $this) {
+                $avoir->setUser(null);
             }
         }
 

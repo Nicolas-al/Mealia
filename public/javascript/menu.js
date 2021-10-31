@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
-
-    if(window.location.href.indexOf("accueil") > -1) // This doesn't work, any suggestions?
+    if(window.location.pathname === "/") // This doesn't work, any suggestions?
     {
         $('#home').addClass('pink-item');
         $('#home').removeClass('black-item');
@@ -29,7 +28,7 @@ $(document).ready(function () {
         $('#apropos').removeClass('pink-item');
         $('#apropos').addClass('black-item');
     }
-    if(window.location.href.indexOf("point-de-vente") > -1) // This doesn't work, any suggestions?
+    if(window.location.href.indexOf("points-de-vente") > -1) // This doesn't work, any suggestions?
     {
         $('#point_vente').addClass('pink-item');
         $('#point_vente').removeClass('black-item');
@@ -46,20 +45,5 @@ $(document).ready(function () {
     else{
         $('#contact').removeClass('pink-item');
         $('#contact').addClass('black-item');
-    }
-
-
-        
-    // if(url == urlBoutique){
-    //     $('#boutique').addClass('active')
-    // } else{
-    //     $('#boutique').removeClass('active');
-    // }
-
-
-    // $(".nav-link").click(function(){
-    //     $(".nav-link").removeClass('active');
-    //     $(this).addClass('active');
-    //  });
-
+    };
 })

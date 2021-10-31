@@ -59,6 +59,11 @@ class ProductCollection
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="productCollections")
+     */
+    private $type;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -140,7 +145,7 @@ class ProductCollection
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -157,5 +162,22 @@ class ProductCollection
     public function getImageFile()
     {
         return $this->imageFile;
+    }
+
+    public function getImageTwo()
+    {
+        return $this->imageTwo;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }

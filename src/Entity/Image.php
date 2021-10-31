@@ -33,7 +33,7 @@ class Image
     private $oneFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $two;
     /**
@@ -43,7 +43,7 @@ class Image
     private $twoFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $three;
 
@@ -52,17 +52,6 @@ class Image
      * @var File
      */
     private $threeFile;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $four;
-
-    /**
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="four")
-     * @var File
-     */
-    private $fourFile;
 
     /**
      * @ORM\Column(type="datetime")
@@ -104,7 +93,7 @@ class Image
         return $this->two;
     }
 
-    public function setTwo( ?string $two): self
+    public function setTwo(?string $two): self
     {
         $this->two = $two;
 
@@ -146,29 +135,5 @@ class Image
     public function getThreeFile()
     {
         return $this->threeFile;
-    }
-
-    public function getFour(): ?string
-    {
-        return $this->four;
-    }
-
-    public function setFour( ?string $four): self
-    {
-        $this->four = $four;
-
-        return $this;
-    }
-    public function setFourFile(File $four = null)
-    {
-        $this->fourFile = $four;
-        if ($four) {
-            $this->updatedAt = new \DateTime('now');
-        }
-    }
-
-    public function getFourFile()
-    {
-        return $this->fourFile;
     }
 }

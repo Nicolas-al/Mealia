@@ -19,20 +19,20 @@ class CategoryController extends AbstractController
         $this->em = $em;
     }
     /**
-     * @Route("/admin/category", name="admin_category")
+     * @Route("/admin/categories", name="admin_category")
      */
     public function index(CategoryRepository $repoCategory): Response
     {
         $categories = $repoCategory->findAll();
 
-        return $this->render('category/index.html.twig', [
+        return $this->render('admin/category/index.html.twig', [
             'controller_name' => 'CategoryController',
             'categories' => $categories
         ]);
     }
 
      /**
-     * @Route("/admin/category/create", name="add_category")
+     * @Route("/admin/categorie/nouvelle", name="add_category")
      */
     public function add(Request $request)
     {

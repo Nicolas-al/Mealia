@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% include('template.html.twig') %}
+
+{{ include('order/template-steps.html.twig')}}
+
+<div class="container mt-5 mb-5">
+    <div class="row d-flex flex-column m-auto" id="adress_client_block">
+        {% if app.user %}
+            <div class="text-center mt-3 mb-5">
+                <h3>MON ADRESSE</h3>
+            </div>    
+            {% if app.session.get('adress2') %}
+                {% set sessionAdress = app.session.get('adress2') %}
+
+             <div class="col-lg-7 m-auto checked-block">
+                <div class="row mb-3">
+                    <div class="d-flex m-auto">
+                        <div class="checked" id="adress_client_choice"></div>
+                        <p class="user ml-3">Votre adresse de livraison :</p>
+                    </div>
+                </div>
+                <div class="row d-flex flex-column">
+                    <div class="d-flex m-auto text-center user" id="user_name">
+                        <p class="mr-1 mb-0"> {{ sessionAdress.name }}</p>
+                        <p class="mb-0"> {{ sessionAdress.firstName }}</p>
+                    </div>
+                    <p class="user"> {{ sessionAdress.street }}</p>
+                    <div class="d-flex user">
+                        <p class="mr-1 mb-0"> {{ sessionAdress.zipCode }}</p>
+                        <p class="mb-0"> {{ sessionAdress.city }}</p>
+                    </div>
+                    <p class="user"> {{ sessionAdress.country }}</p>
+                </div>
+            </div>
+
+            {% else %}
+            <div class="col-lg-7 m-auto checked-block">
+                <div class="row mb-3">
+                    <div class="d-flex m-auto">
+                        <div class="checked" id="adress_client_choice"></div>
+                        <p class="user ml-3">Votre adresse de livraison :</p>
+                    </div>
+                </div>
+                <div class="row d-flex flex-column">
+                    <div class="d-flex m-auto text-center user" id="user_name">
+                        <p class="mr-1 m-auto"> {{ app.user.adress.name }}</p>
+                        <p class="m-auto"> {{ app.user.adress.firstName }}</p>
+                    </div>
+                    <p class="user"> {{ app.user.adress.street }}</p>
+                    <div class="d-flex user">
+                        <p class="m-auto"> {{ app.user.adress.zipCode }}</p>
+                        <p class="m-auto"> {{ app.user.adress.city }}</p>
+                    </div>
+                    <p class="user"> {{ app.user.adress.country }}</p>
+                </div>
+            </div>
+            {% endif %}
+        <div class="col-lg-7 m-auto not-checked-block">
+            <div class="row mt-4 mb-4 ml-2">
+                <div class="d-flex m-auto">
+                    <div class="not-checked" id="adress_other_choice"></div>
+                    <p class="user ml-3">Livraison à une autre adresse</p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center mt-3 mb-5">
+            <h3>MON ADRESSE</h3>
+        </div>
+        <div class="col-lg-7 m-auto pb-4 checked-block">
+            <div class="row mb-3">
+                <div class="d-flex m-auto">
+                    <div class="checked" id="adress_client_choice"></div>
+                    <p class="user ml-3">Votre adresse de livraison :</p>
+                </div>
+            </div>
+            <div class="row d-flex flex-column">
+                <div class="d-flex m-auto text-center user" id="user_name">
+                    <p class="mr-1 m-auto"> {{ adress.name }}</p>
+                    <p class="m-auto"> {{ adress.firstName }}</p>
+                </div>
+                <p class="user">{{ adress.street }}</p>
+                <div class="d-flex user">
+                    <p class="m-auto">{{ adress.zipCode }} </p>
+                    <p class="m-auto">{{ adress.city }} </p>
+                </div>
+                <p class="user"> {{ adress.country }}</p>
+            </div>
+        </div>
+        {% endif %} 
+        
+    
+        {{ form_start(formAdress) }}
+
+                    <div class="form-row mb-3">
+                        <div class="col-md-6 offset-md-3">
+                            {{ form_row(formAdress.name, {'label': 'Nom'}) }}
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col-md-6 offset-md-3">
+                            {{ form_row(formAdress.firstName, {'label': 'Prénom'}) }}
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col-md-6 offset-md-3">
+                            {{ form_row(formAdress.street, {'label': 'Adresse de livraison'}) }}
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col-md-6 offset-md-3">
+                            {{ form_row(formAdress.adressSupplement, {'label': 'Complément d\'adresse'}) }}
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col-md-6 offset-md-3">
+                            {{ form_row(formAdress.zipCode, {'label': 'Code postal'}) }}
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col-md-6 offset-md-3">
+                            {{ form_row(formAdress.city, {'label': 'Ville'}) }}
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col-md-6 offset-md-3">
+                            {{ form_row(formAdress.country, {'label': 'Pays'}) }}
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col text-center">
+                            <button type="submit" class="btn button-form">Enregistrer</button>
+                        </div>
+                    </div>
+        {{ form_end(formAdress) }}
+    </div>
+    <div class="row m-auto">
+       {{ form_start(formSupp) }}
+
+        {{ form_row(formSupp.comment) }}
+
+        {{ form_row(formSupp.giftCard) }}
+
+        {{ form_row(formSupp.commentGiftCard) }}
+
+        <div class="form-group text-center">
+            <button type="submit" class="button-form">Valider</button>
+        </div>
+
+       {{ form_end(formSupp) }}
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

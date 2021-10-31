@@ -1,0 +1,137 @@
+html{
+    height: 100%;
+   
+}
+
+.head-invoice{
+    display: -webkit-box;
+    display: flex;
+    width: 80%;
+    margin: auto;
+    -webkit-box-pack: justify;
+    margin-bottom: 5%;
+}
+#img_invoice{
+    width: 130px;
+    height: 130px;
+}
+.head-invoice > div{
+    width: 30%;
+}
+.head-invoice > div h2{
+    text-align: end;
+}
+.head-invoice > div p{
+    text-align: end;
+
+}
+
+.adress_invoice{
+    display: -webkit-box;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    -webkit-box-pack: center;
+    margin-bottom: 10%;
+}
+.adress_invoice div{
+    width: 45%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-right: 0%;
+}
+.adress_invoice div p{
+    margin: 0;
+}
+.adress_invoice div p:first-child{
+    text-transform: uppercase;
+}
+.adress_invoice div:first-child{
+    margin-right: 5%;
+    background-color: rgb(190, 190, 190);
+}
+.adress_invoice div:nth-child(2){
+    border: 1px solid rgb(240, 240, 240);
+}
+
+.order_invoice p:first-child{
+    margin: auto;    
+    width: 80%;
+    margin-bottom: 2%;
+}
+th{
+    border: 0.52mm solid rgb(240, 240, 240);
+}
+table { 
+    border-collapse : collapse;
+    margin: auto;    
+    width: 80%;
+}
+
+thead{ 
+    /* display : table-header-group; */
+    border: 0.52mm solid rgb(240, 240, 240);
+}
+tbody{
+    border: 0.52mm solid rgb(240, 240, 240);
+    text-align: center;
+}
+tfoot{
+    display : table-row-group;
+
+}
+tfoot tr {
+     -webkit-box-pack: end;
+}
+tfoot tr td{
+    /* border: 1px solid; */
+    /* -webkit-box-pack: end; */
+}
+tfoot tr td:nth-child(3){
+    text-align: center;
+    border: 0.52mm solid rgb(240, 240, 240);
+
+}
+tfoot tr td:last-child{
+    text-align: center;
+    border: 0.52mm solid rgb(240, 240, 240);
+
+}
+
+tr {
+    page-break-inside : avoid; 
+}
+td { 
+    vertical-align : top;
+}
+
+#block_total_invoice{
+    width: 80%;
+    margin: auto;
+    margin-top: 3%;
+}
+#block_total_invoice p:first-child{
+    text-align: start;
+    margin-left: 0px;
+}
+
+
+footer{
+    width: 60%;
+    left: 10%;
+    position: absolute;
+    bottom: 0px;
+    display: -webkit-box;
+    display: flex;  
+    -webkit-box-pack: justify;
+
+}
+footer div:last-child{
+    text-align: center;
+}
+footer div p{
+    margin: 0;
+    font-size: 0.7em;
+}
+

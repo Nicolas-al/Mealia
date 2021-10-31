@@ -5,36 +5,58 @@
 {% block body %}
 {% include('template.html.twig') %}
 <div class="container mt-5" id="products_container">
-    <div class="row d-flex">
-
-    {% for product in products %}
-        <div class="col-lg-4">
-            <div class="product_block">
-                {# {% set img = 'uploads/images/'~product.image %} #}
-                <img  class="product_img" src="{{ vich_uploader_asset( product.image , 'oneFile') | imagine_filter('small_thumb')}}" alt="produit Méalia">
-                <div class="product_description">
-                    <p class="mb-0">{{ product.collection.name }}</p>
-                    <p>{{ product.price.TTC }} €</p>
+    <div class="row" id="filter_row">
+            <div class="d-flex mr-4">
+                <div id="item_filter">
+                    <div class="filter-line"></div>
+                    <div class="filter-line"></div>
+                    <div class="filter-line-short"></div>
                 </div>
-            </div>            
-            {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('show_admin_product' ,  { 'id' : product.id})}}" class="btn btn-primary">voir le produit</a>
-            {% else %}
-            <a href="{{ path('show_product' ,  { 'id' : product.id})}}" class="btn btn-primary">voir le produit</a>
-            {% endif %}
-            {% if is_granted('ROLE_ADMIN') %}
-                <div class="row">
-                    <div class="col">
-                        <a href="{{ path('update_product' ,  { 'id' : product.id})}}">modifier le produit</a>
-                    </div>
-                </div>
-                {% endif %} 
-                  
+                <p>Filtrer</p>
+            </div>
+            <div>
+                <form action="" id="filter_form">
+                    <select name="filter" id="filter" onchange="this.form.submit()">
+                        <option value="none" id="opt_none" selected>Aucun</option>
+                        <option value="asc-price" id="opt_asc">Prix croissant</option>
+                        <option value="desc-price" id="opt_desc">Prix décroissant</option>
+                    </select>
+                </form>
+            </div>
+            <p>Affichage de 1 à 12 sur {{ productsCount }} résultats</p>
+            <div class="d-flex">
+                <p>{{ knp_pagination_render(nbProducts) }}</p>
+            </div>
         </div>
+    <div class="row d-flex mt-5">
+    {% for product in nbProducts %}
+        {% if product.online == 1 %}
+        <div class="col-lg-4">
+             {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('show_admin_product' ,  { 'id' : product.id})}}" class="">
+                <div class="product_block">
+                {# {% set img = 'uploads/images/'~product.image %} #}
+                    <img  class="product_img" src="{{ vich_uploader_asset( product.image , 'oneFile') | imagine_filter('medium_thumb')}}" alt="produit Méalia">
+                </div>
+            </a>
+            {% else %}
+            <a href="{{ path('show_product' ,  { 'id' : product.id})}}" class="">
+                <div class="product_block">
+                {# {% set img = 'uploads/images/'~product.image %} #}
+                    <img  class="product_img" src="{{ vich_uploader_asset( product.image , 'oneFile') | imagine_filter('medium_thumb')}}" alt="produit Méalia">
+                </div>
+            </a>
+            {% endif %}
+             
+            <div class="product_description">
+                    <p class="mb-0">{{ product.category.name }} - {{ product.collection.name }}</p>
+                    <p class="mt-2 price"><strong class="price-style" id="priceSizeOne">{{ product.size.priceSizeOne }},00€</strong></p>
+            </div>                              
+        </div>
+        {% endif %}
     {% endfor %} 
-        {# {{ knp_pagination_render(productsPage) }} #}
-    </div>
-    
-
+    </div> 
 </div>
+{{ include('footer.html.twig') }}
+
 {% endblock %}

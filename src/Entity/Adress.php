@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AdressRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AdressRepository::class)
@@ -28,17 +29,16 @@ class Adress
     private $street;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $number;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $building;
+    * @ORM\Column(type="string", length=255, nullable=true)
+    */
+    private $adressSupplement;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 5,
+     * )
      */
     private $zipCode;
 
@@ -51,6 +51,23 @@ class Adress
      * @ORM\OneToOne(targetEntity=User::class, mappedBy="adress")
      */
     private $user;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Order::class, mappedBy="adress", cascade={"persist", "remove"})
+     */
+    private $ord_er;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstName;
+
+  
 
     public function getId(): ?int
     {
@@ -81,26 +98,14 @@ class Adress
         return $this;
     }
 
-    public function getNumber(): ?int
+    public function getAdressSupplement(): ?string
     {
-        return $this->number;
+        return $this->adressSupplement;
     }
 
-    public function setNumber(int $number): self
+    public function setAdressSupplement(?string $adressSupplement): self
     {
-        $this->number = $number;
-
-        return $this;
-    }
-
-    public function getBuilding(): ?string
-    {
-        return $this->building;
-    }
-
-    public function setBuilding(?string $building): self
-    {
-        $this->building = $building;
+        $this->adressSupplement = $adressSupplement;
 
         return $this;
     }
@@ -154,4 +159,47 @@ class Adress
         $format = "Address (id: %s, number:%s, street: %s, building: %s, city: %s, country: %s)";
         return sprintf($format, $this->id, $this->number, $this->street, $this->building, $this->zipCode, $this->city, $this->country);
     }
+
+    public function getOrdEr(): ?Order
+    {
+        return $this->ord_er;
+    }
+
+    public function setOrdEr(Order $ord_er): self
+    {
+        $this->ord_er = $ord_er;
+
+        // set the owning side of the relation if necessary
+        if ($ord_er->getAdress() !== $this) {
+            $ord_er->setAdress($this);
+        }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+
 }

@@ -1,16 +1,21 @@
-{{ form_start(formCollection) }}
+{{ form_start(formCollection,  { 'attr' : { 'class': 'w-50 m-auto' }}) }}
 
      <div class="form-row"> 
-        <div class="col-md-6">    
+        <div class="">    
             {{ form_row(formCollection.name, {'label': 'Collection'}) }}   
         </div>
-        <div class="col-md-6">    
-            {{ form_row(formCollection.zeroWaste, {'label': 'zero-dechet'}) }}   
+        <div class="d-flex">
+            <div class="mr-3">    
+                {{ form_row(formCollection.imageFile, {'label': 'Image'}) }}   
+            </div>
+            <div class="col" id="zero_waste">    
+                {{ form_row(formCollection.zeroWaste, {'label': 'zero-dechet'}) }}   
+            </div>
         </div>
-         <div class="col-md-6">    
-            {{ form_row(formCollection.imageFile, {'label': 'Image'}) }}   
-        </div>     
+        <div>
+                {{ form_row(formCollection.type, {'label': 'type'}) }}   
+        </div>    
     </div>
-    <button type="submit" class="btn btn-primary">{{ button|default('Ajouter')}}</button>
+    <button type="submit" class="btn button-form">{{ button|default('Ajouter')}}</button>
 
 {{ form_end(formCollection) }}

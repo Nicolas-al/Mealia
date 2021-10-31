@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% include('template.html.twig') %}
+<div class="d-flex">
+    {% include('admin/template.html.twig')%}
+        <div class="container pt-5">
+            <h3 class="text-center">Ajouter un type de produit</h3>
+                {{ include('type/form.html.twig', {form: formType, button : 'Ajouter'}) }}
+        </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

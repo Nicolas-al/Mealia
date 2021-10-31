@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% include('template.html.twig') %}
+
+<div class="container">
+    <div class="row d-flex flex-column" id="account">
+        <div class="row" id="account_block">
+            {% include('security/template.html.twig') %}
+        </div>
+        <div class="row text-center" id="no_account_block">
+            <div class="w-100">
+                <p>Commander sans compte client, seulement avec une adresse mail.</p>
+                <a class="btn" id="btn_no_account" href="{{ path('client_informations')}}">Continuer</a>
+            </div>
+        </div>
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="d-flex">
+    {% include('admin/template.html.twig')%}
+    <div class="container">
+    <button class="btn button-form" id="btn_add_category"><a class="text-white" href="{{path('add_type')}}"> Ajouter un Type</a></button>
+        <ul class="mt-3">
+        {% for type in types %}
+        
+            <li class="li-category mb-2"><span>-</span><a href="{{path('update_type',  { 'id' : type.id} )}}"> {{ type.name }}</a></li>
+
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+{% endblock %}

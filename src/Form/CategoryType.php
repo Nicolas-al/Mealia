@@ -2,11 +2,15 @@
 
 namespace App\Form;
 
+use App\Entity\Type;
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class CategoryType extends AbstractType
@@ -19,6 +23,17 @@ class CategoryType extends AbstractType
             ->add('imageFile', FileType::class, [
                 'required' => 'false'
             ])
+            ->add('imageFileTwo', FileType::class, [
+                'required' => 'false'
+            ])
+            ->add('type', EntityType::class, [
+                'class' => Type::class
+            ])
+            // ->add('type', ChoiceType::class, [
+            //     'choices'  => [
+            //         'Textile' => 'Textile',
+            //         'Petite Papeterie' => 'Petite Papeterie',
+            // ]])
         ;
     }
 

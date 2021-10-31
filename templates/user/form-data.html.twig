@@ -1,0 +1,32 @@
+{% block body %}
+
+<div>
+    {% include('template.html.twig') %}
+
+    <div class="d-flex">
+        {{ include('user/template.html.twig') }}
+        <div class="w-100" id="body_update_data">
+                <div class="row">
+                    <h5>Newsletter et données personnelles</h5>
+                </div>
+                <hr>
+                <div class="row" id="block_update_data">
+                    <div class="col">
+                        {{  form_start(form) }}
+                            <div class="form-row">
+                                    
+                                    {{ form_row(form.message, {'label': 'Laissez nous un message concernant vos données personnelles :', 'row_attr' : {'class' : 'w-100'} }) }}
+                                
+                            </div>
+                            <div class="form-row mb-3" id="block_update_data">
+                                <button type="submit" class="btn button-form">Envoyer</button>
+                            </div>
+                        {{  form_end(form) }}
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+{{ include('footer.html.twig') }}
+
+{% endblock %}
