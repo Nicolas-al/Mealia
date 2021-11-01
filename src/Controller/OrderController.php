@@ -133,7 +133,6 @@ class OrderController extends AbstractController
         if(!$session->has('panier')){
             return $this->redirectToRoute('main');
         }
-        dump($session->get('avantage_code'));
 
         $panier = $session->get('panier', []);
         
@@ -340,7 +339,6 @@ class OrderController extends AbstractController
         };
         $total  = $cartService->getTotal();
         $total += $priceSupp;
-        var_dump($total);
         
         // formulaire qui fait office de redirection vers le recap de la commande, on enregistre toute les données de commande en base
         $formOrderInfoSupp = $this->createForm(OrderInfoSuppType::class, $order, array('attr' => array( 'id' => 'order_info_supp_form')));
@@ -422,7 +420,6 @@ class OrderController extends AbstractController
                 $order->setGiftCard('0');
                 
             }
-            var_dump($total);
             $order->setGiftCard($formOrderInfoSupp->get('giftCard')->getData());
             $order->setPrice(round($total, 2));
             $delivery->setType($deliverySession['type']);
@@ -576,9 +573,7 @@ class OrderController extends AbstractController
             $i = 5;
             
             $orderInvoiceMax = $orderRepo->findOneByMax();
-            dump($orderInvoiceMax);
             $orderInvoiceMax->getInvoiceNumber();
-            dump($orderInvoiceMax->getInvoiceNumber());
             if ($orderInvoiceMax->getInvoiceNumber() != null){
                 $order->setInvoiceNumber($orderInvoiceMax->getInvoiceNumber() + 1);
             }else{

@@ -36,13 +36,11 @@ class StockController extends AbstractController
             if(isset($_GET["categorie"]))
             {
                 $category = $repoCategory->findOneBy(['name' => $_GET["categorie"]]);
-                var_dump($_GET["categorie"]);
                 $products = $category->getProducts(); 
             }
             elseif(isset($_GET["collection"]))
             { 
                 $collection = $repoCollection->findOneBy(['name' => $_GET["collection"]]);
-                var_dump($_GET["collection"]);
                 $products = $collection->getProducts();   
             }
             else{
@@ -70,7 +68,6 @@ class StockController extends AbstractController
 
                 if($_GET["stock"] > 0 && count($alertMail) > 0){
                     foreach($alertMail as $one){ 
-                        dump($one);
                    $message = (new \Swift_Message('Hello Email'))
                    ->setFrom('mealia@ionos.com')
                    ->setSubject('Produit disponible en stock')

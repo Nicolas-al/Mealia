@@ -23,7 +23,6 @@ Class StockService
 
         if($product->getSize()->getStockSizeOne() > 0 || $product->getSize()->getStockSizeTwo() || $product->getSize()->getStockSizeThree()){
             if($zeroStock){
-                dump('ok');
                 $this->em->remove($zeroStock);
                 $this->em->flush();
             }

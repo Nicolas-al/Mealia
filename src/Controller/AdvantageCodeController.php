@@ -16,7 +16,6 @@ class AdvantageCodeController extends AbstractController
      */
     public function index(Request $request, CartService $cartService, SessionInterface $session): Response
     {
-        // dump($request->request->get('amount-giftCard'));
 
         // if ($request->isMethod('post')){
             

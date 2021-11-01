@@ -1,5 +1,6 @@
 public/media
 ###> symfony/framework-bundle ###
+/.env-te
 /.env
 /.env.local
 /.env.local.php

@@ -37,7 +37,6 @@ class UserController extends AbstractController
     public function orderTracking(OrderRepository $repoOrder): Response
     {
         $order = $repoOrder->findOneBy([], ['id' => 'desc']);
-        dump($order);
 
         return $this->render('user/order-tracking.html.twig', [
             'controller_name' => 'UserController',
@@ -87,7 +86,6 @@ class UserController extends AbstractController
             $user->setDateOfBirth(\DateTime::createFromFormat('Y-m-d', $date));
             $user->setPassword($password);
             $user->setRoles(['ROLE_USER']);
-            dump($user);
             // 4) save the User!
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -176,7 +174,6 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) 
         { 
-            // dump($request->request->get('update_data')['message']);
             $message = (new \Swift_Message('Hello Email'))
             ->setFrom($user->getEmail())
             ->setTo('contact@mealia.fr')

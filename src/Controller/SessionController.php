@@ -44,7 +44,6 @@ class SessionController extends AbstractController
     //     foreach($panierWidthData as $item) {
     //         $idCartProduct = $item['product']->getId();
     //     }
-    //     dump($panierWidthData);
      
     // }
 }

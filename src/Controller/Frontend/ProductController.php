@@ -59,7 +59,6 @@ class ProductController extends SessionController
             12 // Nombre de résultats par page
         );
         $productsCount = count($products);
-        dump($nbProducts);
           
         return $this->render('product/index.html.twig', [
             'products' => $products,
@@ -98,7 +97,6 @@ class ProductController extends SessionController
             12 // Nombre de résultats par page
         );
         $productsCount = count($products);
-        dump($nbProducts);
           
         return $this->render('product/index.html.twig', [
             'products' => $products,
@@ -139,7 +137,6 @@ class ProductController extends SessionController
             12 // Nombre de résultats par page
         );
         $productsCount = count($products);
-        dump($nbProducts);
           
         return $this->render('product/index.html.twig', [
             'products' => $products,
@@ -186,7 +183,6 @@ class ProductController extends SessionController
         
         // on recupère tout les produits par collection pour compléter la séléction
         $products = $this->repo->findBy(['collection' => $product->getCollection()]);
-        dump($products);
         
         return $this->render('product/oneproduct.html.twig', [
             'product' => $product,

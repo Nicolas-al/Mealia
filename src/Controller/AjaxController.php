@@ -68,22 +68,18 @@ class AjaxController extends AbstractController
         // on ajoute l'adresse mail indiquée sur le produit zero stock si celle-ci n'existe pas
         // dd($zeroStock->getAlertMail());
 
-        // dump(count($arrayAlertMail));
         if($zeroStock){
             $arrayAlertMail = $zeroStock->getAlertMail();
 
             if (count($arrayAlertMail) > 0){
                 $email = $request->query->get('email');
-                dump($email);
                 if (!in_array($email, $arrayAlertMail)){
                     $arrayAlertMail[] = $request->query->get('email');
                     $zeroStock->setAlertMail($arrayAlertMail);
                 }
                 
             }else{
-                dump('else');
                 $arrayAlertMail[] = $request->query->get('email');
-                dump($arrayAlertMail);
                 $zeroStock->setAlertMail($arrayAlertMail);
             }
         }
@@ -119,9 +115,6 @@ class AjaxController extends AbstractController
         if($giftCard ){
             if($session->has('avantage_code')){ 
                 // $code = array_sum($avantageCode += $giftCard->getAmount());
-                // var_dump($avantageCode);  
-                // var_dump($giftCard->getAmount());
-                // var_dump($avantageCode += $giftCard->getAmount());
                 $session->set('avantage_code', $totalAmount);
                 return new JsonResponse(['reponse' => 'code valide']);
                 

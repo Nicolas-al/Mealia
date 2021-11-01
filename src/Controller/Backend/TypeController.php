@@ -36,7 +36,6 @@ class TypeController extends AbstractController
         if($formType->isSubmitted() && $formType->isValid()){
 
             $this->em->persist($newType);
-            var_dump($request->request->get('category'));
 
             $this->em->flush();
             // return $this->redirectToRoute('admin');

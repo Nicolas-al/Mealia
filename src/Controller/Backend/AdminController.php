@@ -53,23 +53,18 @@ class AdminController extends AbstractController
         $orders = $this->orderRepo->findAll();
 
         $date = date_format($currentDate, 'Y-m-d');
-        // var_dump($date);
         $date7Days = strftime("%Y-%m-%d", strtotime($date . '- 7 days'));
         $dateOneMonth = strftime("%Y-%m-%d", strtotime($date . '- 1 month'));
         $dateThreeMonth = strftime("%Y-%m-%d", strtotime($date . '- 3 month'));
 
-        dump($date7Days);
         foreach($orders as $order){
             $order->getCreatedAt();
             $dateOrder = date_format($order->getCreatedAt(), 'Y-m-d');
             // toutes les dates comprises entre le jour actuelles et 7 jours avant
             if ($dateOrder <= $date && $dateOrder > $date7Days) {
-                // var_dump($dateOrder);
                 $date = new \DateTime($dateOrder);
-                dump($date);
                 $orderC = $this->orderRepo->findBy(['createdAt' => $date]);
                 $nbOrder = count($orderC); 
-                dump($orderC);  
             }
             // toutes les dates comprises entre le jour actuelles et 1 mois avant
             // if ($dateOrder <= $date && $dateOrder > $dateOneMonth) {
@@ -99,7 +94,6 @@ class AdminController extends AbstractController
                 if ($request->request->has('disable'))
                 {
                     $keys = $request->request->keys();
-                    // var_dump($request->request->keys());
                     foreach($keys as $key){
                         foreach($products as $product){
                             if ($product->getId() == $key){
@@ -111,7 +105,6 @@ class AdminController extends AbstractController
                 if ($request->request->has('renew'))
                 {
                     $keys = $request->request->keys();
-                    // var_dump($request->request->keys());
                     foreach($keys as $key){
                         foreach($products as $product){
                             if ($product->getId() == $key){
@@ -124,7 +117,6 @@ class AdminController extends AbstractController
                 if ($request->request->has('delete'))
                 {
                     $keys = $request->request->keys();
-                    // var_dump($request->request->keys());
                     foreach($keys as $key){
                         foreach($products as $product){
                             if ($product->getId() == $key){
@@ -168,7 +160,6 @@ class AdminController extends AbstractController
             if ($request->request->has('disable'))
             {
                 $keys = $request->request->keys();
-                // var_dump($request->request->keys());
                 foreach($keys as $key){
                     foreach($products as $product){
                         if ($product->getId() == $key){
@@ -180,7 +171,6 @@ class AdminController extends AbstractController
             if ($request->request->has('renew'))
             {
                 $keys = $request->request->keys();
-                    // var_dump($request->request->keys());
                     foreach($keys as $key){
                         foreach($products as $product){
                             if ($product->getId() == $key){
@@ -192,7 +182,6 @@ class AdminController extends AbstractController
             if ($request->request->has('delete'))
             {
                 $keys = $request->request->keys();
-                    // var_dump($request->request->keys());
                     foreach($keys as $key){
                         foreach($products as $product){
                             if ($product->getId() == $key){
@@ -240,7 +229,6 @@ class AdminController extends AbstractController
         // }
 
         if($request->isMethod('post')){
-            dump($request->request->get('tracking-number'));
             $order = $orderRepo->findOneBy(['id' => $request->request->get('id-order-tracking')]);
             $trackingNumber = $request->request->get('tracking-number');
 

@@ -25,9 +25,7 @@ class MainController extends AbstractController
     {
 
         $orderInvoiceMax = $orderRepo->findOneByMax();
-        dump($orderInvoiceMax);
         $orderInvoiceMax->getInvoiceNumber();
-        dump($orderInvoiceMax->getInvoiceNumber() + 1 . '/' . date('Y'));
 
         $products = $this->repoProduct->findAll();
         foreach($products as $product){

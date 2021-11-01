@@ -85,7 +85,6 @@ protected $productRepository;
     //             if($nbGiftCard =! null){
     //                 if($nbGiftCard == 1){ 
     //                     // $nbGiftCard == 1;
-    //                     dump($_POST['nb-giftCard']);
     //                     $panier[$id] += $_POST['nb-giftCard'];
                         
     //                 }
@@ -156,7 +155,6 @@ protected $productRepository;
     //         ];
     //         ;
     //     }
-    //     dump($panierGiftCardWidthData);
     //     return $panierGiftCardWidthData;
     // }
 
@@ -219,7 +217,6 @@ protected $productRepository;
         foreach($panierWidthData as $item)
         {
             $quantity += $item['quantity'];
-            // var_dump($quantity);
         }
         return $this->session->set('quantity', $quantity);
     }

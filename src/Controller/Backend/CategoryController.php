@@ -42,7 +42,6 @@ class CategoryController extends AbstractController
         if($formCategory->isSubmitted() && $formCategory->isValid()){
 
             $this->em->persist($newCategory);
-            var_dump($request->request->get('category'));
 
             $this->em->flush();
             // return $this->redirectToRoute('admin');

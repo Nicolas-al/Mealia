@@ -50,7 +50,6 @@ class ProductController extends AbstractController
      */
     public function showByCategory(Category $category, ProductRepository $repoProduct, Request $request, SessionInterface $session, PaginatorInterface $paginator)
     {
-        var_dump($request->query->get('filter'));
         if($request->query->get('filter') === 'asc-price'){
             $session->set('filter', 'asc-price');
         }
@@ -72,7 +71,6 @@ class ProductController extends AbstractController
             $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
             12 // Nombre de résultats par page
         );
-        dump($nbProducts);
         return $this->render('product/index.html.twig', [
             'products' => $products,
             'nbProducts' => $nbProducts,
@@ -233,7 +231,6 @@ class ProductController extends AbstractController
             if ($request->request->get('product')['stock'] > 0 && count($alertMail) > 0){
                 
                 foreach($alertMail as $one){ 
-                    dump('ok');
                     $message = (new \Swift_Message('Hello Email'))
                     ->setFrom('mealia@ionos.com')
                     ->setSubject('Produit disponible en stock')
